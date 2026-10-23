@@ -17,11 +17,12 @@ from datetime import datetime, timezone
 REPO = os.path.dirname(os.path.abspath(__file__))
 BASE_URL = "https://fsmarketing123.github.io/marketing-pages"
 FOLDERS = {
-    "report-landing-pages": "Report Landing Pages",
+    "report-landing-pages": "Market Reports Site",
     "pitch-decks": "Pitch Decks",
-    "team-decks": "About the Team Decks",
-    "business-line-decks": "About the Business Line Decks",
-    "emails": "Emails & Campaigns",
+    "team-decks": "Team Decks",
+    "business-line-decks": "Business Line Decks",
+    "emails": "Email Templates",
+    "websites": "FS Websites",
 }
 
 
@@ -52,6 +53,7 @@ def main():
             old_path = os.path.join(REPO, old["file"])
             if os.path.exists(old_path):
                 os.remove(old_path)
+        os.makedirs(os.path.join(REPO, folder), exist_ok=True)
         with open(os.path.join(REPO, folder, filename), "w", encoding="utf-8") as fh:
             fh.write(d["html"])
         for blob in d.get("blobs", []):
@@ -62,7 +64,7 @@ def main():
                 print(json.dumps({"warning": "missing photo " + blob, "projectId": pid}), file=sys.stderr)
         by_id[pid] = {
             "projectId": pid, "name": d.get("name", filename), "folder": folder, "file": folder + "/" + filename,
-            "tags": d.get("tags", []), "version": d.get("version", 1),
+            "tags": d.get("tags", []), "version": d.get("version", 1), "protected": bool(d.get("protected")),
             "publishedAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         }
         print(json.dumps({"projectId": pid, "url": BASE_URL + "/" + folder + "/" + filename, "file": folder + "/" + filename}))
@@ -80,8 +82,8 @@ def write_index(manifest):
         if not items:
             continue
         rows = "".join(
-            '<li><a href="{f}">{n}</a><span>{t} · v{v} · {d}</span></li>'.format(
-                f=html.escape(m["file"]), n=html.escape(m["name"]), t=html.escape(", ".join(m["tags"]) or "Franklin Street"),
+            '<li><a href="{f}">{n}</a><span>{t} · v{v} · {d}{p}</span></li>'.format(
+                f=html.escape(m["file"]), n=html.escape(m["name"]), t=html.escape(", ".join(m["tags"]) or "Franklin Street"), p=" · password protected" if m.get("protected") else "",
                 v=m["version"], d=m["publishedAt"][:10])
             for m in items)
         sections.append("<section><h2>{}</h2><ul>{}</ul></section>".format(label, rows))
