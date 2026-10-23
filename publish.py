@@ -21,6 +21,7 @@ FOLDERS = {
     "pitch-decks": "Pitch Decks",
     "team-decks": "About the Team Decks",
     "business-line-decks": "About the Business Line Decks",
+    "emails": "Emails & Campaigns",
 }
 
 

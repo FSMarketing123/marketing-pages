@@ -10,6 +10,7 @@ Live at https://fsmarketing123.github.io/marketing-pages/
 | `pitch-decks/` | Pitch Decks |
 | `team-decks/` | About the Team Decks |
 | `business-line-decks/` | About the Business Line Decks |
+| `emails/` | Emails & Campaigns (web version; `assets/email/` holds the images Constant Contact emails load) |
 
 Files are named `<platform>-<business line>-<project name>.html`. `assets/` and `fonts/` are shared by every page; photos uploaded in the hub go in `assets/uploads/`. `manifest.json` lists every live page and drives `index.html`.
 
