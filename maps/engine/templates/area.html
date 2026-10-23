@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html><head>
+<!--FM-HEAD-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="runtime.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>/* ============================================================
+   FRANKLIN STREET — Colors & Type Foundations
+   Source of truth: FS Brand Guidelines (March 2026)
+   Load this file, then use the semantic vars in your designs.
+   Fonts: Arial (web/print/UI primary, self-hosted from brand
+   files), Garamond (luxury serif headline, Adobe Fonts/Typekit).
+   ============================================================ */
+
+/*
+ * The Typekit service used to deliver this font or fonts for use on websites
+ * is provided by Adobe and is subject to these Terms of Use
+ * http://www.adobe.com/products/eulas/tou_typekit. For font license
+ * information, see the list below.
+ *
+ * adobe-garamond-pro:
+ *   - http://typekit.com/eulas/00000000000000007735d91e
+ *   - http://typekit.com/eulas/00000000000000007735d921
+ *   - http://typekit.com/eulas/00000000000000007735d924
+ *   - http://typekit.com/eulas/00000000000000007735d927
+ *
+ * © 2009-2026 Adobe Systems Incorporated. All Rights Reserved.
+ */
+/*{"last_published":"2026-09-04 17:59:50 UTC"}*/
+
+/**/
+
+
+
+
+
+
+
+
+
+
+.tk-adobe-garamond-pro { font-family: "adobe-garamond-pro",serif; }
+
+
+/* --- Self-hosted Arial (uploaded brand font files) --- */
+
+
+
+
+/* --- Self-hosted Arial Narrow (condensed brand option — labels,
+   tables, dense UI; from uploaded brand files) --- */
+
+
+
+
+
+:root {
+  /* ---------- BRAND PALETTE (the only 5 + dark blue) ---------- */
+  /* Primary */
+  --fs-blue:        #005670; /* PMS 7708 C — "FS Blue" core brand */
+  --fs-teal:        #00939D; /* PMS 3541 C — brighter primary */
+  --fs-dark-blue:   #003349; /* PMS 2189 C — deepest, for headers/footers */
+  --fs-gray:        #3F4443; /* PMS 446 C  — text + neutral primary */
+  /* Secondary */
+  --fs-green:       #C6D83B; /* PMS 6193 C — THE pop accent (use sparingly) */
+  --fs-light-blue:  #7BA7BC; /* PMS 7695 C — soft supporting blue */
+
+  /* ---------- TINTS (brand colors "in any tint") ---------- */
+  --fs-blue-90:   #1a6680;
+  --fs-blue-70:   #4d8499;
+  --fs-blue-15:   #e0eaee;
+  --fs-blue-08:   #f0f5f7;
+  --fs-teal-12:   #e3f3f4;
+  --fs-green-20:  #f4f7dd;
+  --fs-green-40:  #e9f0bb;
+  --fs-light-blue-15: #eaf1f4;
+
+  /* ---------- NEUTRALS (derived, warm-cool gray scale) ---------- */
+  --fs-ink:       #1f2625; /* near-black body, warmer than #000 */
+  --fs-gray-700:  #3F4443; /* = primary gray */
+  --fs-gray-500:  #5f6564;
+  --fs-gray-400:  #868c8b;
+  --fs-gray-300:  #b6bbba;
+  --fs-gray-200:  #d9dcdb;
+  --fs-gray-100:  #eceeed;
+  --fs-gray-50:   #f5f6f6;
+  --fs-white:     #ffffff;
+
+  /* ---------- SEMANTIC: SURFACES ---------- */
+  --bg:           #ffffff;
+  --bg-subtle:    var(--fs-gray-50);
+  --bg-muted:     var(--fs-gray-100);
+  --bg-brand:     var(--fs-blue);
+  --bg-brand-deep:var(--fs-dark-blue);
+  --surface-card: #ffffff;
+  --border:       var(--fs-gray-200);
+  --border-strong:var(--fs-gray-300);
+
+  /* ---------- SEMANTIC: TEXT ---------- */
+  --fg:           var(--fs-ink);
+  --fg-muted:     var(--fs-gray-500);
+  --fg-subtle:    var(--fs-gray-400);
+  --fg-on-brand:  #ffffff;
+  --fg-on-brand-muted: rgba(255,255,255,0.72);
+  --link:         var(--fs-teal);
+  --link-hover:   var(--fs-blue);
+
+  /* ---------- SEMANTIC: ACCENT (green pop) ---------- */
+  --accent:        var(--fs-green);
+  --accent-ink:    #404715; /* readable text ON green */
+  --accent-deep:   #acbd2a; /* green hover/border */
+
+  /* ---------- TYPE FAMILIES ---------- */
+  --font-sans:    'Arial', Helvetica, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-narrow:  'Arial Narrow', 'Arial', Helvetica, sans-serif;  /* condensed: labels, tables, dense UI, signage */
+  --font-serif:   'adobe-garamond-pro', Garamond, Georgia, serif; /* served via Typekit kit rjr5vds */
+
+  /* ---------- TYPE SCALE (px @ desktop) ---------- */
+  --text-xs:   12px;
+  --text-sm:   14px;
+  --text-base: 16px;
+  --text-md:   18px;
+  --text-lg:   21px;
+  --text-xl:   26px;
+  --text-2xl:  32px;
+  --text-3xl:  42px;
+  --text-4xl:  56px;
+  --text-5xl:  72px;
+
+  /* ---------- WEIGHTS ---------- */
+  --fw-light:    300; /* @kind font */
+  --fw-regular:  400; /* @kind font */
+  --fw-medium:   600; /* @kind font */
+  --fw-bold:     700; /* @kind font */
+  --fw-x:        800; /* @kind font */
+
+  /* ---------- LINE HEIGHTS ---------- */
+  --lh-tight:  1.1; /* @kind font */
+  --lh-snug:   1.25; /* @kind font */
+  --lh-normal: 1.55; /* @kind font */
+  --lh-loose:  1.7; /* @kind font */
+
+  /* ---------- TRACKING (brand uses generous all-caps tracking) ---------- */
+  --track-tight:  -0.01em; /* @kind font */
+  --track-normal: 0; /* @kind font */
+  --track-wide:   0.08em; /* @kind font */ /* all-caps labels/buttons */
+  --track-wider:  0.16em; /* @kind font */ /* widest all-caps treatment */
+
+  /* ---------- RADII (rounded corners — brand preference) ---------- */
+  --radius-xs:  4px;
+  --radius-sm:  8px;
+  --radius-md:  12px;
+  --radius-lg:  18px;
+  --radius-xl:  28px;
+  --radius-pill: 999px;
+
+  /* ---------- SPACING (4px base) ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* ---------- SHADOWS (soft, cool-tinted) ---------- */
+  --shadow-xs: 0 1px 2px rgba(0,51,73,0.06);
+  --shadow-sm: 0 2px 8px rgba(0,51,73,0.08);
+  --shadow-md: 0 8px 24px rgba(0,51,73,0.10);
+  --shadow-lg: 0 18px 48px rgba(0,51,73,0.14);
+  --shadow-focus: 0 0 0 3px rgba(0,147,157,0.35);
+
+  /* ---------- MOTION ---------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1); /* @kind other */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1); /* @kind other */
+  --dur-fast: 140ms; /* @kind other */
+  --dur: 240ms; /* @kind other */
+  --dur-slow: 420ms; /* @kind other */
+
+  /* ---------- BRAND GRADIENTS (blue + teal family — green stays
+     a solid accent, never in gradients) ---------- */
+  --grad-deep:      linear-gradient(135deg, #003349 0%, #005670 100%); /* @kind color */
+  --grad-blue:      linear-gradient(120deg, #005670 0%, #7BA7BC 100%); /* @kind color */
+  --grad-dark-teal: linear-gradient(135deg, #003349 0%, #00939D 100%); /* @kind color */
+  --grad-blue-teal: linear-gradient(120deg, #005670 0%, #00939D 100%); /* @kind color */
+  --grad-teal:      linear-gradient(120deg, #005670 0%, #00939D 100%); /* @kind color */ /* alias (legacy name) */
+  --grad-photo-scrim: linear-gradient(180deg, rgba(0,51,73,0) 0%, rgba(0,51,73,0.78) 100%); /* @kind color */
+}
+
+/* ============================================================
+   SEMANTIC TYPOGRAPHY CLASSES
+   ============================================================ */
+.fs-h1 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-x);
+  font-size: var(--text-5xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--track-tight);
+  color: var(--fs-dark-blue);
+}
+.fs-h1--serif { font-family: var(--font-serif); font-weight: var(--fw-bold); letter-spacing: 0; }
+.fs-h2 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  font-size: var(--text-3xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--track-tight);
+  color: var(--fs-dark-blue);
+}
+.fs-h3 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  font-size: var(--text-xl);
+  line-height: var(--lh-snug);
+  color: var(--fs-blue);
+}
+.fs-lead {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-regular);
+  font-size: var(--text-lg);
+  line-height: var(--lh-normal);
+  color: var(--fg-muted);
+}
+.fs-body {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-regular);
+  font-size: var(--text-base);
+  line-height: var(--lh-normal);
+  color: var(--fg);
+}
+.fs-small {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  line-height: var(--lh-normal);
+  color: var(--fg-muted);
+}
+
+/* Optional global reset helpers (scope-friendly) */
+.fs-scope { color: var(--fg); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+.fs-scope a { color: var(--link); text-decoration: none; }
+.fs-scope a:hover { color: var(--link-hover); }
+</style>
+<style>/* Franklin Street Website UI Kit — component styles
+   (depends on ../../colors_and_type.css tokens) */
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { font-family: var(--font-sans); color: var(--fg); background: var(--bg); -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; }
+
+/* ---------- layout ---------- */
+.fsk-wrap { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+.fsk-section { padding: 88px 0; }
+.fsk-section--tight { padding: 56px 0; }
+.fsk-section--subtle { background: var(--bg-subtle); }
+.fsk-section--deep { background: var(--grad-deep); color: #fff; }
+
+/* ---------- type ---------- */
+.fsk-h1 { font-size: clamp(40px, 5.2vw, 68px); font-weight: 800; line-height: 1.05; letter-spacing: -.02em; color: var(--fs-dark-blue); margin: 0; }
+.fsk-h2 { font-size: clamp(28px, 3.4vw, 42px); font-weight: 800; line-height: 1.12; letter-spacing: -.015em; color: var(--fs-dark-blue); margin: 0; }
+.fsk-h3 { font-size: 21px; font-weight: 700; color: var(--fs-blue); margin: 0; }
+.fsk-lead { font-size: 19px; line-height: 1.55; color: var(--fg-muted); margin: 16px 0 0; max-width: 60ch; }
+.fsk-deep .fsk-h1, .fsk-deep .fsk-h2 { color: #fff; }
+.fsk-deep .fsk-lead { color: rgba(255,255,255,.74); }
+.fsk-sechead { margin-bottom: 44px; }
+.fsk-sechead--center { text-align: center; }
+.fsk-sechead--center .fsk-lead { margin-left: auto; margin-right: auto; }
+
+/* ---------- buttons ---------- */
+.fsk-btn { font-family: var(--font-sans); font-weight: 700; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; border: 0; cursor: pointer; border-radius: var(--radius-sm); display: inline-flex; align-items: center; gap: 9px; transition: all var(--dur) var(--ease-out); white-space: nowrap; }
+.fsk-btn i { width: 16px; height: 16px; }
+.fsk-btn--md { padding: 14px 24px; }
+.fsk-btn--sm { padding: 10px 16px; font-size: 12px; }
+.fsk-btn--lg { padding: 17px 30px; font-size: 14px; }
+.fsk-btn--primary { background: var(--fs-blue); color: #fff; }
+.fsk-btn--primary:hover { background: var(--fs-dark-blue); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.fsk-btn--accent { background: var(--fs-green); color: var(--accent-ink); }
+.fsk-btn--accent:hover { background: var(--accent-deep); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.fsk-btn--accent.fsk-btn--lg { background: var(--fs-light-blue); color: var(--fs-dark-blue); }
+.fsk-btn--accent.fsk-btn--lg:hover { background: #fff; color: var(--fs-dark-blue); }
+.fsk-btn--outline { background: transparent; color: var(--fs-blue); box-shadow: inset 0 0 0 1.5px var(--fs-blue); }
+.fsk-btn--outline:hover { background: var(--fs-blue-08); }
+.fsk-btn--white { background: #fff; color: var(--fs-blue); }
+.fsk-btn--white:hover { background: var(--fs-green); color: var(--accent-ink); }
+.fsk-btn--ghost { background: transparent; color: var(--fs-teal); padding-left: 4px; padding-right: 4px; }
+.fsk-btn--ghost:hover { color: var(--fs-blue); }
+.fsk-btn--ghostlight { background: transparent; color: #fff; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.4); }
+.fsk-btn--ghostlight:hover { background: rgba(255,255,255,.12); }
+.fsk-fullw { width: 100%; justify-content: center; }
+
+/* ---------- badges ---------- */
+.fsk-badge { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; padding: 5px 11px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; }
+.fsk-badge--green { background: var(--fs-green); color: var(--accent-ink); }
+.fsk-badge--blue { background: var(--fs-blue-15); color: var(--fs-blue); }
+.fsk-badge--teal { background: var(--fs-teal-12); color: #067680; }
+.fsk-badge--gray { background: var(--fs-gray-100); color: var(--fs-gray-700); }
+.fsk-badge--solid { background: var(--fs-dark-blue); color: #fff; }
+
+/* ---------- header ---------- */
+.fsk-header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.fsk-header__bar { display: flex; align-items: center; gap: 28px; height: 76px; }
+.fsk-header__logo { height: 34px; cursor: pointer; }
+.fsk-nav { display: flex; gap: 4px; margin-left: auto; }
+.fsk-nav a { font-size: 13px; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; color: var(--fs-gray-700); padding: 9px 14px; border-radius: var(--radius-sm); cursor: pointer; transition: all var(--dur-fast); position: relative; }
+.fsk-nav a:hover { color: var(--fs-blue); background: var(--fs-blue-08); }
+.fsk-nav a.active { color: var(--fs-blue); }
+.fsk-nav a.active::after { content: ''; position: absolute; left: 14px; right: 14px; bottom: 2px; height: 3px; border-radius: 2px; background: var(--fs-green); }
+.fsk-header__cta { display: flex; gap: 10px; align-items: center; }
+
+/* ---------- hero ---------- */
+.fsk-hero { position: relative; background: var(--grad-deep); color: #fff; overflow: hidden; }
+.fsk-hero__lines { position: absolute; inset: 0; opacity: .5; background-image: repeating-linear-gradient(115deg, transparent 0 58px, rgba(255,255,255,.05) 58px 59px); pointer-events: none; }
+.fsk-hero__glow { position: absolute; right: -120px; top: -80px; width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(123,167,188,.45), transparent 65%); pointer-events: none; }
+.fsk-hero__inner { position: relative; padding: 104px 0 112px; max-width: 760px; }
+.fsk-hero__title .em { color: var(--fs-light-blue); }
+.fsk-hero__cta { display: flex; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
+.fsk-hero__search { position: relative; z-index: 2; margin-top: -36px; }
+
+/* ---------- search bar ---------- */
+.fsk-searchbar { background: #fff; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); padding: 14px; display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 10px; align-items: end; }
+.fsk-field label { display: block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--fs-gray); margin: 0 0 6px 4px; }
+.fsk-field { position: relative; }
+.fsk-field .ic { position: absolute; left: 12px; top: 38px; width: 17px; height: 17px; color: var(--fs-teal); pointer-events: none; }
+.fsk-field input, .fsk-field select { width: 100%; font-family: var(--font-sans); font-size: 14px; padding: 13px 14px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); color: var(--fg); background: #fff; outline: none; transition: border var(--dur), box-shadow var(--dur); }
+.fsk-field.icon input { padding-left: 38px; }
+.fsk-field input:focus, .fsk-field select:focus { border-color: var(--fs-teal); box-shadow: var(--shadow-focus); }
+
+/* ---------- stats ---------- */
+.fsk-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.fsk-stat { text-align: center; }
+.fsk-stat__v { font-size: 46px; font-weight: 800; color: var(--fs-blue); line-height: 1; letter-spacing: -.02em; }
+.fsk-deep .fsk-stat__v { color: #fff; }
+.fsk-stat__l { font-size: 13px; color: var(--fg-muted); margin-top: 10px; text-transform: uppercase; letter-spacing: .08em; }
+.fsk-deep .fsk-stat__l { color: rgba(255,255,255,.7); }
+
+/* ---------- cards grid ---------- */
+.fsk-grid { display: grid; gap: 22px; }
+.fsk-grid--3 { grid-template-columns: repeat(3, 1fr); }
+.fsk-grid--4 { grid-template-columns: repeat(4, 1fr); }
+.fsk-grid--2 { grid-template-columns: repeat(2, 1fr); }
+
+/* service card */
+.fsk-svc { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 30px 26px; transition: all var(--dur) var(--ease-out); cursor: pointer; }
+.fsk-svc:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: transparent; }
+.fsk-svc__ic { width: 54px; height: 54px; border-radius: var(--radius-md); background: var(--fs-blue-08); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; transition: background var(--dur); }
+.fsk-svc:hover .fsk-svc__ic { background: var(--fs-green); }
+.fsk-svc__ic i { width: 26px; height: 26px; color: var(--fs-blue); }
+.fsk-svc:hover .fsk-svc__ic i { color: var(--accent-ink); }
+.fsk-svc h3 { font-size: 19px; font-weight: 700; color: var(--fs-dark-blue); margin: 0 0 8px; }
+.fsk-svc p { font-size: 14px; line-height: 1.55; color: var(--fg-muted); margin: 0 0 16px; }
+.fsk-svc__link { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--fs-teal); display: inline-flex; align-items: center; gap: 6px; }
+.fsk-svc__link i { width: 15px; height: 15px; }
+
+/* property card */
+.fsk-prop { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform var(--dur) var(--ease-out), box-shadow var(--dur); cursor: pointer; }
+.fsk-prop:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.fsk-prop__img { height: 184px; position: relative; }
+.fsk-prop__img .badge { position: absolute; top: 14px; left: 14px; }
+.fsk-prop__img .heart { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,.9); display: flex; align-items: center; justify-content: center; }
+.fsk-prop__img .heart i { width: 16px; height: 16px; color: var(--fs-gray-500); }
+.fsk-prop__img .icn { position: absolute; right: 16px; bottom: 14px; color: rgba(255,255,255,.45); width: 38px; height: 38px; }
+.fsk-prop__body { padding: 16px 18px 18px; }
+.fsk-prop__type { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--fs-teal); }
+.fsk-prop__name { font-size: 17px; font-weight: 700; color: var(--fs-dark-blue); margin: 4px 0 2px; }
+.fsk-prop__addr { font-size: 13px; color: var(--fg-muted); display: flex; align-items: center; gap: 5px; }
+.fsk-prop__addr i { width: 13px; height: 13px; }
+.fsk-prop__meta { display: flex; gap: 22px; border-top: 1px solid var(--border); margin-top: 14px; padding-top: 13px; }
+.fsk-prop__meta .v { font-size: 16px; font-weight: 700; color: var(--fs-blue); }
+.fsk-prop__meta .l { font-size: 11px; color: var(--fg-subtle); text-transform: uppercase; letter-spacing: .05em; }
+
+/* expert card */
+.fsk-expert { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 26px; text-align: center; transition: all var(--dur) var(--ease-out); }
+.fsk-expert:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.fsk-expert__av { width: 96px; height: 96px; border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 30px; font-weight: 700; font-family: var(--font-serif); }
+.fsk-expert__name { font-size: 18px; font-weight: 700; color: var(--fs-dark-blue); }
+.fsk-expert__title { font-size: 13px; color: var(--fg-muted); margin-top: 3px; }
+.fsk-expert__tags { display: flex; gap: 6px; justify-content: center; margin: 14px 0 16px; flex-wrap: wrap; }
+.fsk-expert__contact { display: flex; gap: 8px; justify-content: center; }
+.fsk-expert__contact a { width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--fs-blue); cursor: pointer; transition: all var(--dur-fast); }
+.fsk-expert__contact a:hover { background: var(--fs-blue); color: #fff; border-color: var(--fs-blue); }
+.fsk-expert__contact a i { width: 16px; height: 16px; }
+
+/* insight card */
+.fsk-insight { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); transition: all var(--dur) var(--ease-out); cursor: pointer; }
+.fsk-insight:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.fsk-insight__img { height: 168px; position: relative; }
+.fsk-insight__img .badge { position: absolute; top: 14px; left: 14px; }
+.fsk-insight__body { padding: 20px; }
+.fsk-insight__title { font-size: 18px; font-weight: 700; color: var(--fs-dark-blue); line-height: 1.3; margin: 0; }
+.fsk-insight__meta { font-size: 12px; color: var(--fg-subtle); margin-top: 14px; display: flex; gap: 14px; }
+
+/* ---------- filters row ---------- */
+.fsk-filters { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 28px; }
+.fsk-chip { font-size: 13px; font-weight: 600; padding: 9px 16px; border-radius: 999px; border: 1.5px solid var(--border); background: #fff; color: var(--fs-gray-700); cursor: pointer; transition: all var(--dur-fast); }
+.fsk-chip:hover { border-color: var(--fs-teal); color: var(--fs-blue); }
+.fsk-chip.active { background: var(--fs-blue); border-color: var(--fs-blue); color: #fff; }
+.fsk-count { margin-left: auto; font-size: 13px; color: var(--fg-muted); }
+
+/* ---------- property detail ---------- */
+.fsk-pd__gallery { display: grid; grid-template-columns: 2fr 1fr; gap: 12px; height: 420px; }
+.fsk-pd__main { border-radius: var(--radius-lg); position: relative; overflow: hidden; }
+.fsk-pd__side { display: grid; grid-template-rows: 1fr 1fr; gap: 12px; }
+.fsk-pd__side > div { border-radius: var(--radius-lg); position: relative; overflow: hidden; }
+.fsk-pd__big-icn { position: absolute; right: 24px; bottom: 20px; color: rgba(255,255,255,.4); width: 64px; height: 64px; }
+.fsk-pd__layout { display: grid; grid-template-columns: 1.7fr 1fr; gap: 40px; margin-top: 44px; }
+.fsk-pd__facts { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; margin: 24px 0; }
+.fsk-pd__fact { background: #fff; padding: 18px 20px; }
+.fsk-pd__fact .l { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--fg-subtle); }
+.fsk-pd__fact .v { font-size: 20px; font-weight: 700; color: var(--fs-dark-blue); margin-top: 4px; }
+.fsk-pd__broker { background: var(--bg-subtle); border-radius: var(--radius-lg); padding: 26px; position: sticky; top: 96px; }
+.fsk-pd__broker .av { width: 70px; height: 70px; border-radius: 50%; background: var(--grad-teal); display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--font-serif); font-size: 24px; font-weight: 700; }
+
+/* ---------- CTA band ---------- */
+.fsk-cta { background: var(--grad-teal); border-radius: var(--radius-xl); padding: 56px; text-align: center; color: #fff; position: relative; overflow: hidden; }
+.fsk-cta__lines { position: absolute; inset: 0; opacity: .4; background-image: repeating-linear-gradient(115deg, transparent 0 50px, rgba(255,255,255,.06) 50px 51px); }
+.fsk-cta h2 { color: #fff; position: relative; }
+.fsk-cta p { color: rgba(255,255,255,.8); position: relative; margin: 14px auto 28px; max-width: 50ch; font-size: 18px; }
+.fsk-cta__btns { display: flex; gap: 14px; justify-content: center; position: relative; }
+
+/* ---------- footer ---------- */
+.fsk-footer { background: var(--fs-dark-blue); color: rgba(255,255,255,.7); padding: 64px 0 32px; }
+.fsk-footer__top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.12); }
+.fsk-footer__logo { height: 34px; margin-bottom: 18px; }
+.fsk-footer__blurb { font-size: 14px; line-height: 1.6; max-width: 34ch; }
+.fsk-footer h4 { font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: #fff; margin: 0 0 16px; }
+.fsk-footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.fsk-footer a { font-size: 14px; color: rgba(255,255,255,.7); cursor: pointer; }
+.fsk-footer a:hover { color: var(--fs-green); }
+.fsk-footer__bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; font-size: 12px; color: rgba(255,255,255,.5); }
+.fsk-footer__social { display: flex; gap: 10px; }
+.fsk-footer__social a { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center; }
+.fsk-footer__social a img { width: 18px; height: 18px; filter: invert(1); opacity: .85; }
+.fsk-footer__social a:hover img { opacity: 1; }
+.fsk-expert__contact a.fsk-in { display: flex; align-items: center; }
+.fsk-expert__contact a.fsk-in img { width: 20px; height: 20px; }
+
+/* ---------- intro animation (only transform moves; opacity stays 1
+   so content is never invisible in capture/print/clone) ---------- */
+.fsk-rise { transform: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .fsk-rise { transform: translateY(16px); animation: fskRise .6s var(--ease-out) forwards; }
+}
+@keyframes fskRise { to { transform: none; } }
+
+@media (max-width: 1000px) {
+  .fsk-grid--4 { grid-template-columns: repeat(2, 1fr); }
+  .fsk-grid--3 { grid-template-columns: repeat(2, 1fr); }
+  .fsk-stats { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .fsk-pd__layout { grid-template-columns: 1fr; }
+}
+</style>
+<script src="ds.js"></script>
+<style>.maplibregl-map{font:12px/20px Helvetica Neue,Arial,Helvetica,sans-serif;overflow:hidden;position:relative;-webkit-tap-highlight-color:rgb(0 0 0/0)}.maplibregl-canvas{left:0;position:absolute;top:0}.maplibregl-map:fullscreen{height:100%;width:100%}.maplibregl-ctrl-group button.maplibregl-ctrl-compass{touch-action:none}.maplibregl-canvas-container.maplibregl-interactive,.maplibregl-ctrl-group button.maplibregl-ctrl-compass{cursor:grab;-webkit-user-select:none;-moz-user-select:none;user-select:none}.maplibregl-canvas-container.maplibregl-interactive.maplibregl-track-pointer{cursor:pointer}.maplibregl-canvas-container.maplibregl-interactive:active,.maplibregl-ctrl-group button.maplibregl-ctrl-compass:active{cursor:grabbing}.maplibregl-canvas-container.maplibregl-touch-zoom-rotate,.maplibregl-canvas-container.maplibregl-touch-zoom-rotate .maplibregl-canvas{touch-action:pan-x pan-y}.maplibregl-canvas-container.maplibregl-touch-drag-pan,.maplibregl-canvas-container.maplibregl-touch-drag-pan .maplibregl-canvas{touch-action:pinch-zoom}.maplibregl-canvas-container.maplibregl-touch-zoom-rotate.maplibregl-touch-drag-pan,.maplibregl-canvas-container.maplibregl-touch-zoom-rotate.maplibregl-touch-drag-pan .maplibregl-canvas{touch-action:none}.maplibregl-canvas-container.maplibregl-touch-drag-pan.maplibregl-cooperative-gestures,.maplibregl-canvas-container.maplibregl-touch-drag-pan.maplibregl-cooperative-gestures .maplibregl-canvas{touch-action:pan-x pan-y}.maplibregl-ctrl-bottom-left,.maplibregl-ctrl-bottom-right,.maplibregl-ctrl-top-left,.maplibregl-ctrl-top-right{pointer-events:none;position:absolute;z-index:2}.maplibregl-ctrl-top-left{left:0;top:0}.maplibregl-ctrl-top-right{right:0;top:0}.maplibregl-ctrl-bottom-left{bottom:0;left:0}.maplibregl-ctrl-bottom-right{bottom:0;right:0}.maplibregl-ctrl{clear:both;pointer-events:auto;transform:translate(0)}.maplibregl-ctrl-top-left .maplibregl-ctrl{float:left;margin:10px 0 0 10px}.maplibregl-ctrl-top-right .maplibregl-ctrl{float:right;margin:10px 10px 0 0}.maplibregl-ctrl-bottom-left .maplibregl-ctrl{float:left;margin:0 0 10px 10px}.maplibregl-ctrl-bottom-right .maplibregl-ctrl{float:right;margin:0 10px 10px 0}.maplibregl-ctrl-group{background:#fff;border-radius:4px}.maplibregl-ctrl-group:not(:empty){box-shadow:0 0 0 2px rgba(0,0,0,.1)}@media (forced-colors:active){.maplibregl-ctrl-group:not(:empty){box-shadow:0 0 0 2px ButtonText}}.maplibregl-ctrl-group button{background-color:transparent;border:0;box-sizing:border-box;cursor:pointer;display:block;height:29px;outline:none;padding:0;width:29px}.maplibregl-ctrl-group button+button{border-top:1px solid #ddd}.maplibregl-ctrl button .maplibregl-ctrl-icon{background-position:50%;background-repeat:no-repeat;display:block;height:100%;width:100%}@media (forced-colors:active){.maplibregl-ctrl-icon{background-color:transparent}.maplibregl-ctrl-group button+button{border-top:1px solid ButtonText}}.maplibregl-ctrl button::-moz-focus-inner{border:0;padding:0}.maplibregl-ctrl-attrib-button:focus,.maplibregl-ctrl-group button:focus{box-shadow:0 0 2px 2px #0096ff}.maplibregl-ctrl button:disabled{cursor:not-allowed}.maplibregl-ctrl button:disabled .maplibregl-ctrl-icon{opacity:.25}.maplibregl-ctrl button:not(:disabled):hover{background-color:rgb(0 0 0/5%)}.maplibregl-ctrl-group button:focus:focus-visible{box-shadow:0 0 2px 2px #0096ff}.maplibregl-ctrl-group button:focus:not(:focus-visible){box-shadow:none}.maplibregl-ctrl-group button:focus:first-child{border-radius:4px 4px 0 0}.maplibregl-ctrl-group button:focus:last-child{border-radius:0 0 4px 4px}.maplibregl-ctrl-group button:focus:only-child{border-radius:inherit}.maplibregl-ctrl button.maplibregl-ctrl-zoom-out .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23333' viewBox='0 0 29 29'%3E%3Cpath d='M10 13c-.75 0-1.5.75-1.5 1.5S9.25 16 10 16h9c.75 0 1.5-.75 1.5-1.5S19.75 13 19 13z'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-zoom-in .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23333' viewBox='0 0 29 29'%3E%3Cpath d='M14.5 8.5c-.75 0-1.5.75-1.5 1.5v3h-3c-.75 0-1.5.75-1.5 1.5S9.25 16 10 16h3v3c0 .75.75 1.5 1.5 1.5S16 19.75 16 19v-3h3c.75 0 1.5-.75 1.5-1.5S19.75 13 19 13h-3v-3c0-.75-.75-1.5-1.5-1.5'/%3E%3C/svg%3E")}@media (forced-colors:active){.maplibregl-ctrl button.maplibregl-ctrl-zoom-out .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23fff' viewBox='0 0 29 29'%3E%3Cpath d='M10 13c-.75 0-1.5.75-1.5 1.5S9.25 16 10 16h9c.75 0 1.5-.75 1.5-1.5S19.75 13 19 13z'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-zoom-in .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23fff' viewBox='0 0 29 29'%3E%3Cpath d='M14.5 8.5c-.75 0-1.5.75-1.5 1.5v3h-3c-.75 0-1.5.75-1.5 1.5S9.25 16 10 16h3v3c0 .75.75 1.5 1.5 1.5S16 19.75 16 19v-3h3c.75 0 1.5-.75 1.5-1.5S19.75 13 19 13h-3v-3c0-.75-.75-1.5-1.5-1.5'/%3E%3C/svg%3E")}}@media (forced-colors:active) and (prefers-color-scheme:light){.maplibregl-ctrl button.maplibregl-ctrl-zoom-out .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' viewBox='0 0 29 29'%3E%3Cpath d='M10 13c-.75 0-1.5.75-1.5 1.5S9.25 16 10 16h9c.75 0 1.5-.75 1.5-1.5S19.75 13 19 13z'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-zoom-in .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' viewBox='0 0 29 29'%3E%3Cpath d='M14.5 8.5c-.75 0-1.5.75-1.5 1.5v3h-3c-.75 0-1.5.75-1.5 1.5S9.25 16 10 16h3v3c0 .75.75 1.5 1.5 1.5S16 19.75 16 19v-3h3c.75 0 1.5-.75 1.5-1.5S19.75 13 19 13h-3v-3c0-.75-.75-1.5-1.5-1.5'/%3E%3C/svg%3E")}}.maplibregl-ctrl button.maplibregl-ctrl-fullscreen .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23333' viewBox='0 0 29 29'%3E%3Cpath d='M24 16v5.5c0 1.75-.75 2.5-2.5 2.5H16v-1l3-1.5-4-5.5 1-1 5.5 4 1.5-3zM6 16l1.5 3 5.5-4 1 1-4 5.5 3 1.5v1H7.5C5.75 24 5 23.25 5 21.5V16zm7-11v1l-3 1.5 4 5.5-1 1-5.5-4L6 13H5V7.5C5 5.75 5.75 5 7.5 5zm11 2.5c0-1.75-.75-2.5-2.5-2.5H16v1l3 1.5-4 5.5 1 1 5.5-4 1.5 3h1z'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-shrink .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' viewBox='0 0 29 29'%3E%3Cpath d='M18.5 16c-1.75 0-2.5.75-2.5 2.5V24h1l1.5-3 5.5 4 1-1-4-5.5 3-1.5v-1zM13 18.5c0-1.75-.75-2.5-2.5-2.5H5v1l3 1.5L4 24l1 1 5.5-4 1.5 3h1zm3-8c0 1.75.75 2.5 2.5 2.5H24v-1l-3-1.5L25 5l-1-1-5.5 4L17 5h-1zM10.5 13c1.75 0 2.5-.75 2.5-2.5V5h-1l-1.5 3L5 4 4 5l4 5.5L5 12v1z'/%3E%3C/svg%3E")}@media (forced-colors:active){.maplibregl-ctrl button.maplibregl-ctrl-fullscreen .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23fff' viewBox='0 0 29 29'%3E%3Cpath d='M24 16v5.5c0 1.75-.75 2.5-2.5 2.5H16v-1l3-1.5-4-5.5 1-1 5.5 4 1.5-3zM6 16l1.5 3 5.5-4 1 1-4 5.5 3 1.5v1H7.5C5.75 24 5 23.25 5 21.5V16zm7-11v1l-3 1.5 4 5.5-1 1-5.5-4L6 13H5V7.5C5 5.75 5.75 5 7.5 5zm11 2.5c0-1.75-.75-2.5-2.5-2.5H16v1l3 1.5-4 5.5 1 1 5.5-4 1.5 3h1z'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-shrink .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23fff' viewBox='0 0 29 29'%3E%3Cpath d='M18.5 16c-1.75 0-2.5.75-2.5 2.5V24h1l1.5-3 5.5 4 1-1-4-5.5 3-1.5v-1zM13 18.5c0-1.75-.75-2.5-2.5-2.5H5v1l3 1.5L4 24l1 1 5.5-4 1.5 3h1zm3-8c0 1.75.75 2.5 2.5 2.5H24v-1l-3-1.5L25 5l-1-1-5.5 4L17 5h-1zM10.5 13c1.75 0 2.5-.75 2.5-2.5V5h-1l-1.5 3L5 4 4 5l4 5.5L5 12v1z'/%3E%3C/svg%3E")}}@media (forced-colors:active) and (prefers-color-scheme:light){.maplibregl-ctrl button.maplibregl-ctrl-fullscreen .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' viewBox='0 0 29 29'%3E%3Cpath d='M24 16v5.5c0 1.75-.75 2.5-2.5 2.5H16v-1l3-1.5-4-5.5 1-1 5.5 4 1.5-3zM6 16l1.5 3 5.5-4 1 1-4 5.5 3 1.5v1H7.5C5.75 24 5 23.25 5 21.5V16zm7-11v1l-3 1.5 4 5.5-1 1-5.5-4L6 13H5V7.5C5 5.75 5.75 5 7.5 5zm11 2.5c0-1.75-.75-2.5-2.5-2.5H16v1l3 1.5-4 5.5 1 1 5.5-4 1.5 3h1z'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-shrink .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' viewBox='0 0 29 29'%3E%3Cpath d='M18.5 16c-1.75 0-2.5.75-2.5 2.5V24h1l1.5-3 5.5 4 1-1-4-5.5 3-1.5v-1zM13 18.5c0-1.75-.75-2.5-2.5-2.5H5v1l3 1.5L4 24l1 1 5.5-4 1.5 3h1zm3-8c0 1.75.75 2.5 2.5 2.5H24v-1l-3-1.5L25 5l-1-1-5.5 4L17 5h-1zM10.5 13c1.75 0 2.5-.75 2.5-2.5V5h-1l-1.5 3L5 4 4 5l4 5.5L5 12v1z'/%3E%3C/svg%3E")}}.maplibregl-ctrl button.maplibregl-ctrl-compass .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23333' viewBox='0 0 29 29'%3E%3Cpath d='m10.5 14 4-8 4 8z'/%3E%3Cpath fill='%23ccc' d='m10.5 16 4 8 4-8z'/%3E%3C/svg%3E")}@media (forced-colors:active){.maplibregl-ctrl button.maplibregl-ctrl-compass .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23fff' viewBox='0 0 29 29'%3E%3Cpath d='m10.5 14 4-8 4 8z'/%3E%3Cpath fill='%23ccc' d='m10.5 16 4 8 4-8z'/%3E%3C/svg%3E")}}@media (forced-colors:active) and (prefers-color-scheme:light){.maplibregl-ctrl button.maplibregl-ctrl-compass .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' viewBox='0 0 29 29'%3E%3Cpath d='m10.5 14 4-8 4 8z'/%3E%3Cpath fill='%23ccc' d='m10.5 16 4 8 4-8z'/%3E%3C/svg%3E")}}.maplibregl-ctrl button.maplibregl-ctrl-terrain .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='%23333' viewBox='0 0 22 22'%3E%3Cpath d='m1.754 13.406 4.453-4.851 3.09 3.09 3.281 3.277.969-.969-3.309-3.312 3.844-4.121 6.148 6.886h1.082v-.855l-7.207-8.07-4.84 5.187L6.169 6.57l-5.48 5.965v.871ZM.688 16.844h20.625v1.375H.688Zm0 0'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-terrain-enabled .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='%2333b5e5' viewBox='0 0 22 22'%3E%3Cpath d='m1.754 13.406 4.453-4.851 3.09 3.09 3.281 3.277.969-.969-3.309-3.312 3.844-4.121 6.148 6.886h1.082v-.855l-7.207-8.07-4.84 5.187L6.169 6.57l-5.48 5.965v.871ZM.688 16.844h20.625v1.375H.688Zm0 0'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23333' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate:disabled .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23aaa' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3Cpath fill='red' d='m14 5 1 1-9 9-1-1z'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate.maplibregl-ctrl-geolocate-active .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%2333b5e5' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate.maplibregl-ctrl-geolocate-active-error .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23e58978' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate.maplibregl-ctrl-geolocate-background .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%2333b5e5' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate.maplibregl-ctrl-geolocate-background-error .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23e54e33' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate.maplibregl-ctrl-geolocate-waiting .maplibregl-ctrl-icon{animation:maplibregl-spin 2s linear infinite}@media (forced-colors:active){.maplibregl-ctrl button.maplibregl-ctrl-geolocate .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23fff' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate:disabled .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23999' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3Cpath fill='red' d='m14 5 1 1-9 9-1-1z'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate.maplibregl-ctrl-geolocate-active .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%2333b5e5' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate.maplibregl-ctrl-geolocate-active-error .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23e58978' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate.maplibregl-ctrl-geolocate-background .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%2333b5e5' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate.maplibregl-ctrl-geolocate-background-error .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23e54e33' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3C/svg%3E")}}@media (forced-colors:active) and (prefers-color-scheme:light){.maplibregl-ctrl button.maplibregl-ctrl-geolocate .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3C/svg%3E")}.maplibregl-ctrl button.maplibregl-ctrl-geolocate:disabled .maplibregl-ctrl-icon{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='29' fill='%23666' viewBox='0 0 20 20'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 0 0 5.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 0 0 9 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 0 0 3.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0 0 11 5.1V5s0-1-1-1m0 2.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 1 0-7'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3Cpath fill='red' d='m14 5 1 1-9 9-1-1z'/%3E%3C/svg%3E")}}@keyframes maplibregl-spin{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}a.maplibregl-ctrl-logo{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='23' fill='none'%3E%3Cpath fill='%23000' fill-opacity='.4' fill-rule='evenodd' d='M17.408 16.796h-1.827l2.501-12.095h.198l3.324 6.533.988 2.19.988-2.19 3.258-6.533h.181l2.6 12.095h-1.81l-1.218-5.644-.362-1.71-.658 1.71-2.929 5.644h-.098l-2.914-5.644-.757-1.71-.345 1.71zm1.958-3.42-.726 3.663a1.255 1.255 0 0 1-1.232 1.011h-1.827a1.255 1.255 0 0 1-1.229-1.509l2.501-12.095a1.255 1.255 0 0 1 1.23-1.001h.197a1.25 1.25 0 0 1 1.12.685l3.19 6.273 3.125-6.263a1.25 1.25 0 0 1 1.123-.695h.181a1.255 1.255 0 0 1 1.227.991l1.443 6.71a5 5 0 0 1 .314-.787l.009-.016a4.6 4.6 0 0 1 1.777-1.887c.782-.46 1.668-.667 2.611-.667a4.6 4.6 0 0 1 1.7.32l.306.134c.21-.16.474-.256.759-.256h1.694a1.255 1.255 0 0 1 1.212.925 1.255 1.255 0 0 1 1.212-.925h1.711c.284 0 .545.094.755.252.613-.3 1.312-.45 2.075-.45 1.356 0 2.557.445 3.482 1.4q.47.48.763 1.064V4.701a1.255 1.255 0 0 1 1.255-1.255h1.86A1.255 1.255 0 0 1 54.44 4.7v9.194h2.217c.19 0 .37.043.532.118v-4.77c0-.356.147-.678.385-.906a2.42 2.42 0 0 1-.682-1.71c0-.665.267-1.253.735-1.7a2.45 2.45 0 0 1 1.722-.674 2.43 2.43 0 0 1 1.705.675q.318.302.504.683V4.7a1.255 1.255 0 0 1 1.255-1.255h1.744A1.255 1.255 0 0 1 65.812 4.7v3.335a4.8 4.8 0 0 1 1.526-.246c.938 0 1.817.214 2.59.69a4.47 4.47 0 0 1 1.67 1.743v-.98a1.255 1.255 0 0 1 1.256-1.256h1.777c.233 0 .451.064.639.174a3.4 3.4 0 0 1 1.567-.372c.346 0 .861.02 1.285.232a1.25 1.25 0 0 1 .689 1.004 4.7 4.7 0 0 1 .853-.588c.795-.44 1.675-.647 2.61-.647 1.385 0 2.65.39 3.525 1.396.836.938 1.168 2.173 1.168 3.528q-.001.515-.056 1.051a1.255 1.255 0 0 1-.947 1.09l.408.952a1.255 1.255 0 0 1-.477 1.552c-.418.268-.92.463-1.458.612-.613.171-1.304.244-2.049.244-1.06 0-2.043-.207-2.886-.698l-.015-.008c-.798-.48-1.419-1.135-1.818-1.963l-.004-.008a5.8 5.8 0 0 1-.548-2.512q0-.429.053-.843a1.3 1.3 0 0 1-.333-.086l-.166-.004c-.223 0-.426.062-.643.228-.03.024-.142.139-.142.59v3.883a1.255 1.255 0 0 1-1.256 1.256h-1.777a1.255 1.255 0 0 1-1.256-1.256V15.69l-.032.057a4.8 4.8 0 0 1-1.86 1.833 5.04 5.04 0 0 1-2.484.634 4.5 4.5 0 0 1-1.935-.424 1.25 1.25 0 0 1-.764.258h-1.71a1.255 1.255 0 0 1-1.256-1.255V7.687a2.4 2.4 0 0 1-.428.625c.253.23.412.561.412.93v7.553a1.255 1.255 0 0 1-1.256 1.255h-1.843a1.25 1.25 0 0 1-.894-.373c-.228.23-.544.373-.894.373H51.32a1.255 1.255 0 0 1-1.256-1.255v-1.251l-.061.117a4.7 4.7 0 0 1-1.782 1.884 4.77 4.77 0 0 1-2.485.67 5.6 5.6 0 0 1-1.485-.188l.009 2.764a1.255 1.255 0 0 1-1.255 1.259h-1.729a1.255 1.255 0 0 1-1.255-1.255v-3.537a1.255 1.255 0 0 1-1.167.793h-1.679a1.25 1.25 0 0 1-.77-.263 4.5 4.5 0 0 1-1.945.429c-.885 0-1.724-.21-2.495-.632l-.017-.01a5 5 0 0 1-1.081-.836 1.255 1.255 0 0 1-1.254 1.312h-1.81a1.255 1.255 0 0 1-1.228-.99l-.782-3.625-2.044 3.939a1.25 1.25 0 0 1-1.115.676h-.098a1.25 1.25 0 0 1-1.116-.68l-2.061-3.994zM35.92 16.63l.207-.114.223-.15q.493-.356.735-.785l.061-.118.033 1.332h1.678V9.242h-1.694l-.033 1.267q-.133-.329-.526-.658l-.032-.028a3.2 3.2 0 0 0-.668-.428l-.27-.12a3.3 3.3 0 0 0-1.235-.23q-1.136-.001-1.974.493a3.36 3.36 0 0 0-1.3 1.382q-.445.89-.444 2.074 0 1.2.51 2.107a3.8 3.8 0 0 0 1.382 1.381 3.9 3.9 0 0 0 1.893.477q.795 0 1.455-.33zm-2.789-5.38q-.576.675-.575 1.762 0 1.102.559 1.794.576.675 1.645.675a2.25 2.25 0 0 0 .934-.19 2.2 2.2 0 0 0 .468-.29l.178-.161a2.2 2.2 0 0 0 .397-.561q.244-.5.244-1.15v-.115q0-.708-.296-1.267l-.043-.077a2.2 2.2 0 0 0-.633-.709l-.13-.086-.047-.028a2.1 2.1 0 0 0-1.073-.285q-1.052 0-1.629.692zm2.316 2.706c.163-.17.28-.407.28-.83v-.114c0-.292-.06-.508-.15-.68a.96.96 0 0 0-.353-.389.85.85 0 0 0-.464-.127c-.4 0-.56.114-.664.239l-.01.012c-.148.174-.275.45-.275.945 0 .506.122.801.27.99.097.11.266.224.68.224.303 0 .504-.09.687-.269zm7.545 1.705a2.6 2.6 0 0 0 .331.423q.319.33.755.548l.173.074q.65.255 1.49.255 1.02 0 1.844-.493a3.45 3.45 0 0 0 1.316-1.4q.493-.904.493-2.089 0-1.909-.988-2.913-.988-1.02-2.584-1.02-.898 0-1.575.347a3 3 0 0 0-.415.262l-.199.166a3.4 3.4 0 0 0-.64.82V9.242h-1.712v11.553h1.729l-.017-5.134zm.53-1.138q.206.29.48.5l.155.11.053.034q.51.296 1.119.297 1.07 0 1.645-.675.577-.69.576-1.762 0-1.119-.576-1.777-.558-.675-1.645-.675-.435 0-.835.16a2 2 0 0 0-.284.136 2 2 0 0 0-.363.254 2.2 2.2 0 0 0-.46.569l-.082.162a2.6 2.6 0 0 0-.213 1.072v.115q0 .707.296 1.267l.135.211zm.964-.818a1.1 1.1 0 0 0 .367.385.94.94 0 0 0 .476.118c.423 0 .59-.117.687-.23.159-.194.28-.478.28-.95 0-.53-.133-.8-.266-.952l-.021-.025c-.078-.094-.231-.221-.68-.221a1 1 0 0 0-.503.135l-.012.007a.86.86 0 0 0-.335.343c-.073.133-.132.324-.132.614v.115a1.4 1.4 0 0 0 .14.66zm15.7-6.222q.347-.346.346-.856a1.05 1.05 0 0 0-.345-.79 1.18 1.18 0 0 0-.84-.329q-.51 0-.855.33a1.05 1.05 0 0 0-.346.79q0 .51.346.855.345.346.856.346.51 0 .839-.346zm4.337 9.314.033-1.332q.191.403.59.747l.098.081a4 4 0 0 0 .316.224l.223.122a3.2 3.2 0 0 0 1.44.322 3.8 3.8 0 0 0 1.875-.477 3.5 3.5 0 0 0 1.382-1.366q.527-.89.526-2.09 0-1.184-.444-2.073a3.24 3.24 0 0 0-1.283-1.399q-.823-.51-1.942-.51a3.5 3.5 0 0 0-1.527.344l-.086.043-.165.09a3 3 0 0 0-.33.214q-.432.315-.656.707a2 2 0 0 0-.099.198l.082-1.283V4.701h-1.744v12.095zm.473-2.509a2.5 2.5 0 0 0 .566.7q.117.098.245.18l.144.08a2.1 2.1 0 0 0 .975.232q1.07 0 1.645-.675.576-.69.576-1.778 0-1.102-.576-1.777-.56-.691-1.645-.692a2.2 2.2 0 0 0-1.015.235q-.22.113-.415.282l-.15.142a2.1 2.1 0 0 0-.42.594q-.223.479-.223 1.1v.115q0 .705.293 1.26zm2.616-.293c.157-.191.28-.479.28-.967 0-.51-.13-.79-.276-.961l-.021-.026c-.082-.1-.232-.225-.67-.225a.87.87 0 0 0-.681.279l-.012.011c-.154.155-.274.38-.274.807v.115c0 .285.057.499.144.669a1.1 1.1 0 0 0 .367.405c.137.082.28.123.455.123.423 0 .59-.118.686-.23zm8.266-3.013q.345-.13.724-.14l.069-.002q.493 0 .642.099l.247-1.794q-.196-.099-.717-.099a2.3 2.3 0 0 0-.545.063 2 2 0 0 0-.411.148 2.2 2.2 0 0 0-.4.249 2.5 2.5 0 0 0-.485.499 2.7 2.7 0 0 0-.32.581l-.05.137v-1.48h-1.778v7.553h1.777v-3.884q0-.546.159-.943a1.5 1.5 0 0 1 .466-.636 2.5 2.5 0 0 1 .399-.253 2 2 0 0 1 .224-.099zm9.784 2.656.05-.922q0-1.743-.856-2.698-.838-.97-2.584-.97-1.119-.001-2.007.493a3.46 3.46 0 0 0-1.4 1.382q-.493.906-.493 2.106 0 1.07.428 1.975.428.89 1.332 1.432.906.526 2.255.526.973 0 1.668-.185l.044-.012.135-.04q.613-.184.984-.421l-.542-1.267q-.3.162-.642.274l-.297.087q-.51.131-1.3.131-.954 0-1.497-.444a1.6 1.6 0 0 1-.192-.193q-.366-.44-.512-1.234l-.004-.021zm-5.427-1.256-.003.022h3.752v-.138q-.011-.727-.288-1.118a1 1 0 0 0-.156-.176q-.46-.428-1.316-.428-.986 0-1.494.604-.379.45-.494 1.234zm-27.053 2.77V4.7h-1.86v12.095h5.333V15.15zm7.103-5.908v7.553h-1.843V9.242h1.843z'/%3E%3Cpath fill='%23fff' d='m19.63 11.151-.757-1.71-.345 1.71-1.12 5.644h-1.827L18.083 4.7h.197l3.325 6.533.988 2.19.988-2.19L26.839 4.7h.181l2.6 12.095h-1.81l-1.218-5.644-.362-1.71-.658 1.71-2.93 5.644h-.098l-2.913-5.644zm14.836 5.81q-1.02 0-1.893-.478a3.8 3.8 0 0 1-1.381-1.382q-.51-.906-.51-2.106 0-1.185.444-2.074a3.36 3.36 0 0 1 1.3-1.382q.839-.494 1.974-.494a3.3 3.3 0 0 1 1.234.231 3.3 3.3 0 0 1 .97.575q.396.33.527.659l.033-1.267h1.694v7.553H37.18l-.033-1.332q-.279.593-1.02 1.053a3.17 3.17 0 0 1-1.662.444zm.296-1.482q.938 0 1.58-.642.642-.66.642-1.711v-.115q0-.708-.296-1.267a2.2 2.2 0 0 0-.807-.872 2.1 2.1 0 0 0-1.119-.313q-1.053 0-1.629.692-.575.675-.575 1.76 0 1.103.559 1.795.577.675 1.645.675zm6.521-6.237h1.711v1.4q.906-1.597 2.83-1.597 1.596 0 2.584 1.02.988 1.005.988 2.914 0 1.185-.493 2.09a3.46 3.46 0 0 1-1.316 1.399 3.5 3.5 0 0 1-1.844.493q-.954 0-1.662-.329a2.67 2.67 0 0 1-1.086-.97l.017 5.134h-1.728zm4.048 6.22q1.07 0 1.645-.674.577-.69.576-1.762 0-1.119-.576-1.777-.558-.675-1.645-.675-.592 0-1.12.296-.51.28-.822.823-.296.527-.296 1.234v.115q0 .708.296 1.267.313.543.823.855.51.296 1.119.297z'/%3E%3Cpath fill='%23e1e3e9' d='M51.325 4.7h1.86v10.45h3.473v1.646h-5.333zm7.12 4.542h1.843v7.553h-1.843zm.905-1.415a1.16 1.16 0 0 1-.856-.346 1.17 1.17 0 0 1-.346-.856 1.05 1.05 0 0 1 .346-.79q.346-.329.856-.329.494 0 .839.33a1.05 1.05 0 0 1 .345.79 1.16 1.16 0 0 1-.345.855q-.33.346-.84.346zm7.875 9.133a3.17 3.17 0 0 1-1.662-.444q-.723-.46-1.004-1.053l-.033 1.332h-1.71V4.701h1.743v4.657l-.082 1.283q.279-.658 1.086-1.119a3.5 3.5 0 0 1 1.778-.477q1.119 0 1.942.51a3.24 3.24 0 0 1 1.283 1.4q.445.888.444 2.072 0 1.201-.526 2.09a3.5 3.5 0 0 1-1.382 1.366 3.8 3.8 0 0 1-1.876.477zm-.296-1.481q1.069 0 1.645-.675.577-.69.577-1.778 0-1.102-.577-1.776-.56-.691-1.645-.692a2.12 2.12 0 0 0-1.58.659q-.642.641-.642 1.694v.115q0 .71.296 1.267a2.4 2.4 0 0 0 .807.872 2.1 2.1 0 0 0 1.119.313zm5.927-6.237h1.777v1.481q.263-.757.856-1.217a2.14 2.14 0 0 1 1.349-.46q.527 0 .724.098l-.247 1.794q-.149-.099-.642-.099-.774 0-1.416.494-.626.493-.626 1.58v3.883h-1.777V9.242zm9.534 7.718q-1.35 0-2.255-.526-.904-.543-1.332-1.432a4.6 4.6 0 0 1-.428-1.975q0-1.2.493-2.106a3.46 3.46 0 0 1 1.4-1.382q.889-.495 2.007-.494 1.744 0 2.584.97.855.956.856 2.7 0 .444-.05.92h-5.43q.18 1.005.708 1.45.542.443 1.497.443.79 0 1.3-.131a4 4 0 0 0 .938-.362l.542 1.267q-.411.263-1.119.46-.708.198-1.711.197zm1.596-4.558q.016-1.02-.444-1.432-.46-.428-1.316-.428-1.728 0-1.991 1.86z'/%3E%3Cpath d='M5.074 15.948a.484.657 0 0 0-.486.659v1.84a.484.657 0 0 0 .486.659h4.101a.484.657 0 0 0 .486-.659v-1.84a.484.657 0 0 0-.486-.659zm3.56 1.16H5.617v.838h3.017z' style='fill:%23fff;fill-rule:evenodd;stroke-width:1.03600001'/%3E%3Cg style='stroke-width:1.12603545'%3E%3Cpath d='M-9.408-1.416c-3.833-.025-7.056 2.912-7.08 6.615-.02 3.08 1.653 4.832 3.107 6.268.903.892 1.721 1.74 2.32 2.902l-.525-.004c-.543-.003-.992.304-1.24.639a1.87 1.87 0 0 0-.362 1.121l-.011 1.877c-.003.402.104.787.347 1.125.244.338.688.653 1.23.656l4.142.028c.542.003.99-.306 1.238-.641a1.87 1.87 0 0 0 .363-1.121l.012-1.875a1.87 1.87 0 0 0-.348-1.127c-.243-.338-.688-.653-1.23-.656l-.518-.004c.597-1.145 1.425-1.983 2.348-2.87 1.473-1.414 3.18-3.149 3.2-6.226-.016-3.59-2.923-6.684-6.993-6.707m-.006 1.1v.002c3.274.02 5.92 2.532 5.9 5.6-.017 2.706-1.39 4.026-2.863 5.44-1.034.994-2.118 2.033-2.814 3.633-.018.041-.052.055-.075.065q-.013.004-.02.01a.34.34 0 0 1-.226.084.34.34 0 0 1-.224-.086l-.092-.077c-.699-1.615-1.768-2.669-2.781-3.67-1.454-1.435-2.797-2.762-2.78-5.478.02-3.067 2.7-5.545 5.975-5.523m-.02 2.826c-1.62-.01-2.944 1.315-2.955 2.96-.01 1.646 1.295 2.988 2.916 2.999h.002c1.621.01 2.943-1.316 2.953-2.961.011-1.646-1.294-2.988-2.916-2.998m-.005 1.1c1.017.006 1.829.83 1.822 1.89s-.83 1.874-1.848 1.867c-1.018-.006-1.829-.83-1.822-1.89s.83-1.874 1.848-1.868m-2.155 11.857 4.14.025c.271.002.49.305.487.676l-.013 1.875c-.003.37-.224.67-.495.668l-4.14-.025c-.27-.002-.487-.306-.485-.676l.012-1.875c.003-.37.224-.67.494-.668' style='color:%23000;font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:%23000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:evenodd;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:%23000;solid-opacity:1;vector-effect:none;fill:%23000;fill-opacity:.4;fill-rule:evenodd;stroke:none;stroke-width:2.47727823;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto' transform='translate(15.553 2.85)scale(.88807)'/%3E%3Cpath d='M-9.415-.316C-12.69-.338-15.37 2.14-15.39 5.207c-.017 2.716 1.326 4.041 2.78 5.477 1.013 1 2.081 2.055 2.78 3.67l.092.076a.34.34 0 0 0 .225.086.34.34 0 0 0 .227-.083l.019-.01c.022-.009.057-.024.074-.064.697-1.6 1.78-2.64 2.814-3.634 1.473-1.414 2.847-2.733 2.864-5.44.02-3.067-2.627-5.58-5.901-5.601m-.057 8.784c1.621.011 2.944-1.315 2.955-2.96.01-1.646-1.295-2.988-2.916-2.999-1.622-.01-2.945 1.315-2.955 2.96s1.295 2.989 2.916 3' style='clip-rule:evenodd;fill:%23e1e3e9;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.47727823;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:.4' transform='translate(15.553 2.85)scale(.88807)'/%3E%3Cpath d='M-11.594 15.465c-.27-.002-.492.297-.494.668l-.012 1.876c-.003.371.214.673.485.675l4.14.027c.271.002.492-.298.495-.668l.012-1.877c.003-.37-.215-.672-.485-.674z' style='clip-rule:evenodd;fill:%23fff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.47727823;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:.4' transform='translate(15.553 2.85)scale(.88807)'/%3E%3C/g%3E%3C/svg%3E");background-repeat:no-repeat;cursor:pointer;display:block;height:23px;margin:0 0 -4px -4px;overflow:hidden;width:88px}a.maplibregl-ctrl-logo.maplibregl-compact{width:14px}@media (forced-colors:active){a.maplibregl-ctrl-logo{background-color:transparent;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='23' fill='none'%3E%3Cpath fill='%23000' fill-opacity='.4' fill-rule='evenodd' d='M17.408 16.796h-1.827l2.501-12.095h.198l3.324 6.533.988 2.19.988-2.19 3.258-6.533h.181l2.6 12.095h-1.81l-1.218-5.644-.362-1.71-.658 1.71-2.929 5.644h-.098l-2.914-5.644-.757-1.71-.345 1.71zm1.958-3.42-.726 3.663a1.255 1.255 0 0 1-1.232 1.011h-1.827a1.255 1.255 0 0 1-1.229-1.509l2.501-12.095a1.255 1.255 0 0 1 1.23-1.001h.197a1.25 1.25 0 0 1 1.12.685l3.19 6.273 3.125-6.263a1.25 1.25 0 0 1 1.123-.695h.181a1.255 1.255 0 0 1 1.227.991l1.443 6.71a5 5 0 0 1 .314-.787l.009-.016a4.6 4.6 0 0 1 1.777-1.887c.782-.46 1.668-.667 2.611-.667a4.6 4.6 0 0 1 1.7.32l.306.134c.21-.16.474-.256.759-.256h1.694a1.255 1.255 0 0 1 1.212.925 1.255 1.255 0 0 1 1.212-.925h1.711c.284 0 .545.094.755.252.613-.3 1.312-.45 2.075-.45 1.356 0 2.557.445 3.482 1.4q.47.48.763 1.064V4.701a1.255 1.255 0 0 1 1.255-1.255h1.86A1.255 1.255 0 0 1 54.44 4.7v9.194h2.217c.19 0 .37.043.532.118v-4.77c0-.356.147-.678.385-.906a2.42 2.42 0 0 1-.682-1.71c0-.665.267-1.253.735-1.7a2.45 2.45 0 0 1 1.722-.674 2.43 2.43 0 0 1 1.705.675q.318.302.504.683V4.7a1.255 1.255 0 0 1 1.255-1.255h1.744A1.255 1.255 0 0 1 65.812 4.7v3.335a4.8 4.8 0 0 1 1.526-.246c.938 0 1.817.214 2.59.69a4.47 4.47 0 0 1 1.67 1.743v-.98a1.255 1.255 0 0 1 1.256-1.256h1.777c.233 0 .451.064.639.174a3.4 3.4 0 0 1 1.567-.372c.346 0 .861.02 1.285.232a1.25 1.25 0 0 1 .689 1.004 4.7 4.7 0 0 1 .853-.588c.795-.44 1.675-.647 2.61-.647 1.385 0 2.65.39 3.525 1.396.836.938 1.168 2.173 1.168 3.528q-.001.515-.056 1.051a1.255 1.255 0 0 1-.947 1.09l.408.952a1.255 1.255 0 0 1-.477 1.552c-.418.268-.92.463-1.458.612-.613.171-1.304.244-2.049.244-1.06 0-2.043-.207-2.886-.698l-.015-.008c-.798-.48-1.419-1.135-1.818-1.963l-.004-.008a5.8 5.8 0 0 1-.548-2.512q0-.429.053-.843a1.3 1.3 0 0 1-.333-.086l-.166-.004c-.223 0-.426.062-.643.228-.03.024-.142.139-.142.59v3.883a1.255 1.255 0 0 1-1.256 1.256h-1.777a1.255 1.255 0 0 1-1.256-1.256V15.69l-.032.057a4.8 4.8 0 0 1-1.86 1.833 5.04 5.04 0 0 1-2.484.634 4.5 4.5 0 0 1-1.935-.424 1.25 1.25 0 0 1-.764.258h-1.71a1.255 1.255 0 0 1-1.256-1.255V7.687a2.4 2.4 0 0 1-.428.625c.253.23.412.561.412.93v7.553a1.255 1.255 0 0 1-1.256 1.255h-1.843a1.25 1.25 0 0 1-.894-.373c-.228.23-.544.373-.894.373H51.32a1.255 1.255 0 0 1-1.256-1.255v-1.251l-.061.117a4.7 4.7 0 0 1-1.782 1.884 4.77 4.77 0 0 1-2.485.67 5.6 5.6 0 0 1-1.485-.188l.009 2.764a1.255 1.255 0 0 1-1.255 1.259h-1.729a1.255 1.255 0 0 1-1.255-1.255v-3.537a1.255 1.255 0 0 1-1.167.793h-1.679a1.25 1.25 0 0 1-.77-.263 4.5 4.5 0 0 1-1.945.429c-.885 0-1.724-.21-2.495-.632l-.017-.01a5 5 0 0 1-1.081-.836 1.255 1.255 0 0 1-1.254 1.312h-1.81a1.255 1.255 0 0 1-1.228-.99l-.782-3.625-2.044 3.939a1.25 1.25 0 0 1-1.115.676h-.098a1.25 1.25 0 0 1-1.116-.68l-2.061-3.994zM35.92 16.63l.207-.114.223-.15q.493-.356.735-.785l.061-.118.033 1.332h1.678V9.242h-1.694l-.033 1.267q-.133-.329-.526-.658l-.032-.028a3.2 3.2 0 0 0-.668-.428l-.27-.12a3.3 3.3 0 0 0-1.235-.23q-1.136-.001-1.974.493a3.36 3.36 0 0 0-1.3 1.382q-.445.89-.444 2.074 0 1.2.51 2.107a3.8 3.8 0 0 0 1.382 1.381 3.9 3.9 0 0 0 1.893.477q.795 0 1.455-.33zm-2.789-5.38q-.576.675-.575 1.762 0 1.102.559 1.794.576.675 1.645.675a2.25 2.25 0 0 0 .934-.19 2.2 2.2 0 0 0 .468-.29l.178-.161a2.2 2.2 0 0 0 .397-.561q.244-.5.244-1.15v-.115q0-.708-.296-1.267l-.043-.077a2.2 2.2 0 0 0-.633-.709l-.13-.086-.047-.028a2.1 2.1 0 0 0-1.073-.285q-1.052 0-1.629.692zm2.316 2.706c.163-.17.28-.407.28-.83v-.114c0-.292-.06-.508-.15-.68a.96.96 0 0 0-.353-.389.85.85 0 0 0-.464-.127c-.4 0-.56.114-.664.239l-.01.012c-.148.174-.275.45-.275.945 0 .506.122.801.27.99.097.11.266.224.68.224.303 0 .504-.09.687-.269zm7.545 1.705a2.6 2.6 0 0 0 .331.423q.319.33.755.548l.173.074q.65.255 1.49.255 1.02 0 1.844-.493a3.45 3.45 0 0 0 1.316-1.4q.493-.904.493-2.089 0-1.909-.988-2.913-.988-1.02-2.584-1.02-.898 0-1.575.347a3 3 0 0 0-.415.262l-.199.166a3.4 3.4 0 0 0-.64.82V9.242h-1.712v11.553h1.729l-.017-5.134zm.53-1.138q.206.29.48.5l.155.11.053.034q.51.296 1.119.297 1.07 0 1.645-.675.577-.69.576-1.762 0-1.119-.576-1.777-.558-.675-1.645-.675-.435 0-.835.16a2 2 0 0 0-.284.136 2 2 0 0 0-.363.254 2.2 2.2 0 0 0-.46.569l-.082.162a2.6 2.6 0 0 0-.213 1.072v.115q0 .707.296 1.267l.135.211zm.964-.818a1.1 1.1 0 0 0 .367.385.94.94 0 0 0 .476.118c.423 0 .59-.117.687-.23.159-.194.28-.478.28-.95 0-.53-.133-.8-.266-.952l-.021-.025c-.078-.094-.231-.221-.68-.221a1 1 0 0 0-.503.135l-.012.007a.86.86 0 0 0-.335.343c-.073.133-.132.324-.132.614v.115a1.4 1.4 0 0 0 .14.66zm15.7-6.222q.347-.346.346-.856a1.05 1.05 0 0 0-.345-.79 1.18 1.18 0 0 0-.84-.329q-.51 0-.855.33a1.05 1.05 0 0 0-.346.79q0 .51.346.855.345.346.856.346.51 0 .839-.346zm4.337 9.314.033-1.332q.191.403.59.747l.098.081a4 4 0 0 0 .316.224l.223.122a3.2 3.2 0 0 0 1.44.322 3.8 3.8 0 0 0 1.875-.477 3.5 3.5 0 0 0 1.382-1.366q.527-.89.526-2.09 0-1.184-.444-2.073a3.24 3.24 0 0 0-1.283-1.399q-.823-.51-1.942-.51a3.5 3.5 0 0 0-1.527.344l-.086.043-.165.09a3 3 0 0 0-.33.214q-.432.315-.656.707a2 2 0 0 0-.099.198l.082-1.283V4.701h-1.744v12.095zm.473-2.509a2.5 2.5 0 0 0 .566.7q.117.098.245.18l.144.08a2.1 2.1 0 0 0 .975.232q1.07 0 1.645-.675.576-.69.576-1.778 0-1.102-.576-1.777-.56-.691-1.645-.692a2.2 2.2 0 0 0-1.015.235q-.22.113-.415.282l-.15.142a2.1 2.1 0 0 0-.42.594q-.223.479-.223 1.1v.115q0 .705.293 1.26zm2.616-.293c.157-.191.28-.479.28-.967 0-.51-.13-.79-.276-.961l-.021-.026c-.082-.1-.232-.225-.67-.225a.87.87 0 0 0-.681.279l-.012.011c-.154.155-.274.38-.274.807v.115c0 .285.057.499.144.669a1.1 1.1 0 0 0 .367.405c.137.082.28.123.455.123.423 0 .59-.118.686-.23zm8.266-3.013q.345-.13.724-.14l.069-.002q.493 0 .642.099l.247-1.794q-.196-.099-.717-.099a2.3 2.3 0 0 0-.545.063 2 2 0 0 0-.411.148 2.2 2.2 0 0 0-.4.249 2.5 2.5 0 0 0-.485.499 2.7 2.7 0 0 0-.32.581l-.05.137v-1.48h-1.778v7.553h1.777v-3.884q0-.546.159-.943a1.5 1.5 0 0 1 .466-.636 2.5 2.5 0 0 1 .399-.253 2 2 0 0 1 .224-.099zm9.784 2.656.05-.922q0-1.743-.856-2.698-.838-.97-2.584-.97-1.119-.001-2.007.493a3.46 3.46 0 0 0-1.4 1.382q-.493.906-.493 2.106 0 1.07.428 1.975.428.89 1.332 1.432.906.526 2.255.526.973 0 1.668-.185l.044-.012.135-.04q.613-.184.984-.421l-.542-1.267q-.3.162-.642.274l-.297.087q-.51.131-1.3.131-.954 0-1.497-.444a1.6 1.6 0 0 1-.192-.193q-.366-.44-.512-1.234l-.004-.021zm-5.427-1.256-.003.022h3.752v-.138q-.011-.727-.288-1.118a1 1 0 0 0-.156-.176q-.46-.428-1.316-.428-.986 0-1.494.604-.379.45-.494 1.234zm-27.053 2.77V4.7h-1.86v12.095h5.333V15.15zm7.103-5.908v7.553h-1.843V9.242h1.843z'/%3E%3Cpath fill='%23fff' d='m19.63 11.151-.757-1.71-.345 1.71-1.12 5.644h-1.827L18.083 4.7h.197l3.325 6.533.988 2.19.988-2.19L26.839 4.7h.181l2.6 12.095h-1.81l-1.218-5.644-.362-1.71-.658 1.71-2.93 5.644h-.098l-2.913-5.644zm14.836 5.81q-1.02 0-1.893-.478a3.8 3.8 0 0 1-1.381-1.382q-.51-.906-.51-2.106 0-1.185.444-2.074a3.36 3.36 0 0 1 1.3-1.382q.839-.494 1.974-.494a3.3 3.3 0 0 1 1.234.231 3.3 3.3 0 0 1 .97.575q.396.33.527.659l.033-1.267h1.694v7.553H37.18l-.033-1.332q-.279.593-1.02 1.053a3.17 3.17 0 0 1-1.662.444zm.296-1.482q.938 0 1.58-.642.642-.66.642-1.711v-.115q0-.708-.296-1.267a2.2 2.2 0 0 0-.807-.872 2.1 2.1 0 0 0-1.119-.313q-1.053 0-1.629.692-.575.675-.575 1.76 0 1.103.559 1.795.577.675 1.645.675zm6.521-6.237h1.711v1.4q.906-1.597 2.83-1.597 1.596 0 2.584 1.02.988 1.005.988 2.914 0 1.185-.493 2.09a3.46 3.46 0 0 1-1.316 1.399 3.5 3.5 0 0 1-1.844.493q-.954 0-1.662-.329a2.67 2.67 0 0 1-1.086-.97l.017 5.134h-1.728zm4.048 6.22q1.07 0 1.645-.674.577-.69.576-1.762 0-1.119-.576-1.777-.558-.675-1.645-.675-.592 0-1.12.296-.51.28-.822.823-.296.527-.296 1.234v.115q0 .708.296 1.267.313.543.823.855.51.296 1.119.297z'/%3E%3Cpath fill='%23e1e3e9' d='M51.325 4.7h1.86v10.45h3.473v1.646h-5.333zm7.12 4.542h1.843v7.553h-1.843zm.905-1.415a1.16 1.16 0 0 1-.856-.346 1.17 1.17 0 0 1-.346-.856 1.05 1.05 0 0 1 .346-.79q.346-.329.856-.329.494 0 .839.33a1.05 1.05 0 0 1 .345.79 1.16 1.16 0 0 1-.345.855q-.33.346-.84.346zm7.875 9.133a3.17 3.17 0 0 1-1.662-.444q-.723-.46-1.004-1.053l-.033 1.332h-1.71V4.701h1.743v4.657l-.082 1.283q.279-.658 1.086-1.119a3.5 3.5 0 0 1 1.778-.477q1.119 0 1.942.51a3.24 3.24 0 0 1 1.283 1.4q.445.888.444 2.072 0 1.201-.526 2.09a3.5 3.5 0 0 1-1.382 1.366 3.8 3.8 0 0 1-1.876.477zm-.296-1.481q1.069 0 1.645-.675.577-.69.577-1.778 0-1.102-.577-1.776-.56-.691-1.645-.692a2.12 2.12 0 0 0-1.58.659q-.642.641-.642 1.694v.115q0 .71.296 1.267a2.4 2.4 0 0 0 .807.872 2.1 2.1 0 0 0 1.119.313zm5.927-6.237h1.777v1.481q.263-.757.856-1.217a2.14 2.14 0 0 1 1.349-.46q.527 0 .724.098l-.247 1.794q-.149-.099-.642-.099-.774 0-1.416.494-.626.493-.626 1.58v3.883h-1.777V9.242zm9.534 7.718q-1.35 0-2.255-.526-.904-.543-1.332-1.432a4.6 4.6 0 0 1-.428-1.975q0-1.2.493-2.106a3.46 3.46 0 0 1 1.4-1.382q.889-.495 2.007-.494 1.744 0 2.584.97.855.956.856 2.7 0 .444-.05.92h-5.43q.18 1.005.708 1.45.542.443 1.497.443.79 0 1.3-.131a4 4 0 0 0 .938-.362l.542 1.267q-.411.263-1.119.46-.708.198-1.711.197zm1.596-4.558q.016-1.02-.444-1.432-.46-.428-1.316-.428-1.728 0-1.991 1.86z'/%3E%3Cpath d='M5.074 15.948a.484.657 0 0 0-.486.659v1.84a.484.657 0 0 0 .486.659h4.101a.484.657 0 0 0 .486-.659v-1.84a.484.657 0 0 0-.486-.659zm3.56 1.16H5.617v.838h3.017z' style='fill:%23fff;fill-rule:evenodd;stroke-width:1.03600001'/%3E%3Cg style='stroke-width:1.12603545'%3E%3Cpath d='M-9.408-1.416c-3.833-.025-7.056 2.912-7.08 6.615-.02 3.08 1.653 4.832 3.107 6.268.903.892 1.721 1.74 2.32 2.902l-.525-.004c-.543-.003-.992.304-1.24.639a1.87 1.87 0 0 0-.362 1.121l-.011 1.877c-.003.402.104.787.347 1.125.244.338.688.653 1.23.656l4.142.028c.542.003.99-.306 1.238-.641a1.87 1.87 0 0 0 .363-1.121l.012-1.875a1.87 1.87 0 0 0-.348-1.127c-.243-.338-.688-.653-1.23-.656l-.518-.004c.597-1.145 1.425-1.983 2.348-2.87 1.473-1.414 3.18-3.149 3.2-6.226-.016-3.59-2.923-6.684-6.993-6.707m-.006 1.1v.002c3.274.02 5.92 2.532 5.9 5.6-.017 2.706-1.39 4.026-2.863 5.44-1.034.994-2.118 2.033-2.814 3.633-.018.041-.052.055-.075.065q-.013.004-.02.01a.34.34 0 0 1-.226.084.34.34 0 0 1-.224-.086l-.092-.077c-.699-1.615-1.768-2.669-2.781-3.67-1.454-1.435-2.797-2.762-2.78-5.478.02-3.067 2.7-5.545 5.975-5.523m-.02 2.826c-1.62-.01-2.944 1.315-2.955 2.96-.01 1.646 1.295 2.988 2.916 2.999h.002c1.621.01 2.943-1.316 2.953-2.961.011-1.646-1.294-2.988-2.916-2.998m-.005 1.1c1.017.006 1.829.83 1.822 1.89s-.83 1.874-1.848 1.867c-1.018-.006-1.829-.83-1.822-1.89s.83-1.874 1.848-1.868m-2.155 11.857 4.14.025c.271.002.49.305.487.676l-.013 1.875c-.003.37-.224.67-.495.668l-4.14-.025c-.27-.002-.487-.306-.485-.676l.012-1.875c.003-.37.224-.67.494-.668' style='color:%23000;font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:%23000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:evenodd;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:%23000;solid-opacity:1;vector-effect:none;fill:%23000;fill-opacity:.4;fill-rule:evenodd;stroke:none;stroke-width:2.47727823;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto' transform='translate(15.553 2.85)scale(.88807)'/%3E%3Cpath d='M-9.415-.316C-12.69-.338-15.37 2.14-15.39 5.207c-.017 2.716 1.326 4.041 2.78 5.477 1.013 1 2.081 2.055 2.78 3.67l.092.076a.34.34 0 0 0 .225.086.34.34 0 0 0 .227-.083l.019-.01c.022-.009.057-.024.074-.064.697-1.6 1.78-2.64 2.814-3.634 1.473-1.414 2.847-2.733 2.864-5.44.02-3.067-2.627-5.58-5.901-5.601m-.057 8.784c1.621.011 2.944-1.315 2.955-2.96.01-1.646-1.295-2.988-2.916-2.999-1.622-.01-2.945 1.315-2.955 2.96s1.295 2.989 2.916 3' style='clip-rule:evenodd;fill:%23e1e3e9;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.47727823;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:.4' transform='translate(15.553 2.85)scale(.88807)'/%3E%3Cpath d='M-11.594 15.465c-.27-.002-.492.297-.494.668l-.012 1.876c-.003.371.214.673.485.675l4.14.027c.271.002.492-.298.495-.668l.012-1.877c.003-.37-.215-.672-.485-.674z' style='clip-rule:evenodd;fill:%23fff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.47727823;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:.4' transform='translate(15.553 2.85)scale(.88807)'/%3E%3C/g%3E%3C/svg%3E")}}@media (forced-colors:active) and (prefers-color-scheme:light){a.maplibregl-ctrl-logo{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='23' fill='none'%3E%3Cpath fill='%23000' fill-opacity='.4' fill-rule='evenodd' d='M17.408 16.796h-1.827l2.501-12.095h.198l3.324 6.533.988 2.19.988-2.19 3.258-6.533h.181l2.6 12.095h-1.81l-1.218-5.644-.362-1.71-.658 1.71-2.929 5.644h-.098l-2.914-5.644-.757-1.71-.345 1.71zm1.958-3.42-.726 3.663a1.255 1.255 0 0 1-1.232 1.011h-1.827a1.255 1.255 0 0 1-1.229-1.509l2.501-12.095a1.255 1.255 0 0 1 1.23-1.001h.197a1.25 1.25 0 0 1 1.12.685l3.19 6.273 3.125-6.263a1.25 1.25 0 0 1 1.123-.695h.181a1.255 1.255 0 0 1 1.227.991l1.443 6.71a5 5 0 0 1 .314-.787l.009-.016a4.6 4.6 0 0 1 1.777-1.887c.782-.46 1.668-.667 2.611-.667a4.6 4.6 0 0 1 1.7.32l.306.134c.21-.16.474-.256.759-.256h1.694a1.255 1.255 0 0 1 1.212.925 1.255 1.255 0 0 1 1.212-.925h1.711c.284 0 .545.094.755.252.613-.3 1.312-.45 2.075-.45 1.356 0 2.557.445 3.482 1.4q.47.48.763 1.064V4.701a1.255 1.255 0 0 1 1.255-1.255h1.86A1.255 1.255 0 0 1 54.44 4.7v9.194h2.217c.19 0 .37.043.532.118v-4.77c0-.356.147-.678.385-.906a2.42 2.42 0 0 1-.682-1.71c0-.665.267-1.253.735-1.7a2.45 2.45 0 0 1 1.722-.674 2.43 2.43 0 0 1 1.705.675q.318.302.504.683V4.7a1.255 1.255 0 0 1 1.255-1.255h1.744A1.255 1.255 0 0 1 65.812 4.7v3.335a4.8 4.8 0 0 1 1.526-.246c.938 0 1.817.214 2.59.69a4.47 4.47 0 0 1 1.67 1.743v-.98a1.255 1.255 0 0 1 1.256-1.256h1.777c.233 0 .451.064.639.174a3.4 3.4 0 0 1 1.567-.372c.346 0 .861.02 1.285.232a1.25 1.25 0 0 1 .689 1.004 4.7 4.7 0 0 1 .853-.588c.795-.44 1.675-.647 2.61-.647 1.385 0 2.65.39 3.525 1.396.836.938 1.168 2.173 1.168 3.528q-.001.515-.056 1.051a1.255 1.255 0 0 1-.947 1.09l.408.952a1.255 1.255 0 0 1-.477 1.552c-.418.268-.92.463-1.458.612-.613.171-1.304.244-2.049.244-1.06 0-2.043-.207-2.886-.698l-.015-.008c-.798-.48-1.419-1.135-1.818-1.963l-.004-.008a5.8 5.8 0 0 1-.548-2.512q0-.429.053-.843a1.3 1.3 0 0 1-.333-.086l-.166-.004c-.223 0-.426.062-.643.228-.03.024-.142.139-.142.59v3.883a1.255 1.255 0 0 1-1.256 1.256h-1.777a1.255 1.255 0 0 1-1.256-1.256V15.69l-.032.057a4.8 4.8 0 0 1-1.86 1.833 5.04 5.04 0 0 1-2.484.634 4.5 4.5 0 0 1-1.935-.424 1.25 1.25 0 0 1-.764.258h-1.71a1.255 1.255 0 0 1-1.256-1.255V7.687a2.4 2.4 0 0 1-.428.625c.253.23.412.561.412.93v7.553a1.255 1.255 0 0 1-1.256 1.255h-1.843a1.25 1.25 0 0 1-.894-.373c-.228.23-.544.373-.894.373H51.32a1.255 1.255 0 0 1-1.256-1.255v-1.251l-.061.117a4.7 4.7 0 0 1-1.782 1.884 4.77 4.77 0 0 1-2.485.67 5.6 5.6 0 0 1-1.485-.188l.009 2.764a1.255 1.255 0 0 1-1.255 1.259h-1.729a1.255 1.255 0 0 1-1.255-1.255v-3.537a1.255 1.255 0 0 1-1.167.793h-1.679a1.25 1.25 0 0 1-.77-.263 4.5 4.5 0 0 1-1.945.429c-.885 0-1.724-.21-2.495-.632l-.017-.01a5 5 0 0 1-1.081-.836 1.255 1.255 0 0 1-1.254 1.312h-1.81a1.255 1.255 0 0 1-1.228-.99l-.782-3.625-2.044 3.939a1.25 1.25 0 0 1-1.115.676h-.098a1.25 1.25 0 0 1-1.116-.68l-2.061-3.994zM35.92 16.63l.207-.114.223-.15q.493-.356.735-.785l.061-.118.033 1.332h1.678V9.242h-1.694l-.033 1.267q-.133-.329-.526-.658l-.032-.028a3.2 3.2 0 0 0-.668-.428l-.27-.12a3.3 3.3 0 0 0-1.235-.23q-1.136-.001-1.974.493a3.36 3.36 0 0 0-1.3 1.382q-.445.89-.444 2.074 0 1.2.51 2.107a3.8 3.8 0 0 0 1.382 1.381 3.9 3.9 0 0 0 1.893.477q.795 0 1.455-.33zm-2.789-5.38q-.576.675-.575 1.762 0 1.102.559 1.794.576.675 1.645.675a2.25 2.25 0 0 0 .934-.19 2.2 2.2 0 0 0 .468-.29l.178-.161a2.2 2.2 0 0 0 .397-.561q.244-.5.244-1.15v-.115q0-.708-.296-1.267l-.043-.077a2.2 2.2 0 0 0-.633-.709l-.13-.086-.047-.028a2.1 2.1 0 0 0-1.073-.285q-1.052 0-1.629.692zm2.316 2.706c.163-.17.28-.407.28-.83v-.114c0-.292-.06-.508-.15-.68a.96.96 0 0 0-.353-.389.85.85 0 0 0-.464-.127c-.4 0-.56.114-.664.239l-.01.012c-.148.174-.275.45-.275.945 0 .506.122.801.27.99.097.11.266.224.68.224.303 0 .504-.09.687-.269zm7.545 1.705a2.6 2.6 0 0 0 .331.423q.319.33.755.548l.173.074q.65.255 1.49.255 1.02 0 1.844-.493a3.45 3.45 0 0 0 1.316-1.4q.493-.904.493-2.089 0-1.909-.988-2.913-.988-1.02-2.584-1.02-.898 0-1.575.347a3 3 0 0 0-.415.262l-.199.166a3.4 3.4 0 0 0-.64.82V9.242h-1.712v11.553h1.729l-.017-5.134zm.53-1.138q.206.29.48.5l.155.11.053.034q.51.296 1.119.297 1.07 0 1.645-.675.577-.69.576-1.762 0-1.119-.576-1.777-.558-.675-1.645-.675-.435 0-.835.16a2 2 0 0 0-.284.136 2 2 0 0 0-.363.254 2.2 2.2 0 0 0-.46.569l-.082.162a2.6 2.6 0 0 0-.213 1.072v.115q0 .707.296 1.267l.135.211zm.964-.818a1.1 1.1 0 0 0 .367.385.94.94 0 0 0 .476.118c.423 0 .59-.117.687-.23.159-.194.28-.478.28-.95 0-.53-.133-.8-.266-.952l-.021-.025c-.078-.094-.231-.221-.68-.221a1 1 0 0 0-.503.135l-.012.007a.86.86 0 0 0-.335.343c-.073.133-.132.324-.132.614v.115a1.4 1.4 0 0 0 .14.66zm15.7-6.222q.347-.346.346-.856a1.05 1.05 0 0 0-.345-.79 1.18 1.18 0 0 0-.84-.329q-.51 0-.855.33a1.05 1.05 0 0 0-.346.79q0 .51.346.855.345.346.856.346.51 0 .839-.346zm4.337 9.314.033-1.332q.191.403.59.747l.098.081a4 4 0 0 0 .316.224l.223.122a3.2 3.2 0 0 0 1.44.322 3.8 3.8 0 0 0 1.875-.477 3.5 3.5 0 0 0 1.382-1.366q.527-.89.526-2.09 0-1.184-.444-2.073a3.24 3.24 0 0 0-1.283-1.399q-.823-.51-1.942-.51a3.5 3.5 0 0 0-1.527.344l-.086.043-.165.09a3 3 0 0 0-.33.214q-.432.315-.656.707a2 2 0 0 0-.099.198l.082-1.283V4.701h-1.744v12.095zm.473-2.509a2.5 2.5 0 0 0 .566.7q.117.098.245.18l.144.08a2.1 2.1 0 0 0 .975.232q1.07 0 1.645-.675.576-.69.576-1.778 0-1.102-.576-1.777-.56-.691-1.645-.692a2.2 2.2 0 0 0-1.015.235q-.22.113-.415.282l-.15.142a2.1 2.1 0 0 0-.42.594q-.223.479-.223 1.1v.115q0 .705.293 1.26zm2.616-.293c.157-.191.28-.479.28-.967 0-.51-.13-.79-.276-.961l-.021-.026c-.082-.1-.232-.225-.67-.225a.87.87 0 0 0-.681.279l-.012.011c-.154.155-.274.38-.274.807v.115c0 .285.057.499.144.669a1.1 1.1 0 0 0 .367.405c.137.082.28.123.455.123.423 0 .59-.118.686-.23zm8.266-3.013q.345-.13.724-.14l.069-.002q.493 0 .642.099l.247-1.794q-.196-.099-.717-.099a2.3 2.3 0 0 0-.545.063 2 2 0 0 0-.411.148 2.2 2.2 0 0 0-.4.249 2.5 2.5 0 0 0-.485.499 2.7 2.7 0 0 0-.32.581l-.05.137v-1.48h-1.778v7.553h1.777v-3.884q0-.546.159-.943a1.5 1.5 0 0 1 .466-.636 2.5 2.5 0 0 1 .399-.253 2 2 0 0 1 .224-.099zm9.784 2.656.05-.922q0-1.743-.856-2.698-.838-.97-2.584-.97-1.119-.001-2.007.493a3.46 3.46 0 0 0-1.4 1.382q-.493.906-.493 2.106 0 1.07.428 1.975.428.89 1.332 1.432.906.526 2.255.526.973 0 1.668-.185l.044-.012.135-.04q.613-.184.984-.421l-.542-1.267q-.3.162-.642.274l-.297.087q-.51.131-1.3.131-.954 0-1.497-.444a1.6 1.6 0 0 1-.192-.193q-.366-.44-.512-1.234l-.004-.021zm-5.427-1.256-.003.022h3.752v-.138q-.011-.727-.288-1.118a1 1 0 0 0-.156-.176q-.46-.428-1.316-.428-.986 0-1.494.604-.379.45-.494 1.234zm-27.053 2.77V4.7h-1.86v12.095h5.333V15.15zm7.103-5.908v7.553h-1.843V9.242h1.843z'/%3E%3Cpath fill='%23fff' d='m19.63 11.151-.757-1.71-.345 1.71-1.12 5.644h-1.827L18.083 4.7h.197l3.325 6.533.988 2.19.988-2.19L26.839 4.7h.181l2.6 12.095h-1.81l-1.218-5.644-.362-1.71-.658 1.71-2.93 5.644h-.098l-2.913-5.644zm14.836 5.81q-1.02 0-1.893-.478a3.8 3.8 0 0 1-1.381-1.382q-.51-.906-.51-2.106 0-1.185.444-2.074a3.36 3.36 0 0 1 1.3-1.382q.839-.494 1.974-.494a3.3 3.3 0 0 1 1.234.231 3.3 3.3 0 0 1 .97.575q.396.33.527.659l.033-1.267h1.694v7.553H37.18l-.033-1.332q-.279.593-1.02 1.053a3.17 3.17 0 0 1-1.662.444zm.296-1.482q.938 0 1.58-.642.642-.66.642-1.711v-.115q0-.708-.296-1.267a2.2 2.2 0 0 0-.807-.872 2.1 2.1 0 0 0-1.119-.313q-1.053 0-1.629.692-.575.675-.575 1.76 0 1.103.559 1.795.577.675 1.645.675zm6.521-6.237h1.711v1.4q.906-1.597 2.83-1.597 1.596 0 2.584 1.02.988 1.005.988 2.914 0 1.185-.493 2.09a3.46 3.46 0 0 1-1.316 1.399 3.5 3.5 0 0 1-1.844.493q-.954 0-1.662-.329a2.67 2.67 0 0 1-1.086-.97l.017 5.134h-1.728zm4.048 6.22q1.07 0 1.645-.674.577-.69.576-1.762 0-1.119-.576-1.777-.558-.675-1.645-.675-.592 0-1.12.296-.51.28-.822.823-.296.527-.296 1.234v.115q0 .708.296 1.267.313.543.823.855.51.296 1.119.297z'/%3E%3Cpath fill='%23e1e3e9' d='M51.325 4.7h1.86v10.45h3.473v1.646h-5.333zm7.12 4.542h1.843v7.553h-1.843zm.905-1.415a1.16 1.16 0 0 1-.856-.346 1.17 1.17 0 0 1-.346-.856 1.05 1.05 0 0 1 .346-.79q.346-.329.856-.329.494 0 .839.33a1.05 1.05 0 0 1 .345.79 1.16 1.16 0 0 1-.345.855q-.33.346-.84.346zm7.875 9.133a3.17 3.17 0 0 1-1.662-.444q-.723-.46-1.004-1.053l-.033 1.332h-1.71V4.701h1.743v4.657l-.082 1.283q.279-.658 1.086-1.119a3.5 3.5 0 0 1 1.778-.477q1.119 0 1.942.51a3.24 3.24 0 0 1 1.283 1.4q.445.888.444 2.072 0 1.201-.526 2.09a3.5 3.5 0 0 1-1.382 1.366 3.8 3.8 0 0 1-1.876.477zm-.296-1.481q1.069 0 1.645-.675.577-.69.577-1.778 0-1.102-.577-1.776-.56-.691-1.645-.692a2.12 2.12 0 0 0-1.58.659q-.642.641-.642 1.694v.115q0 .71.296 1.267a2.4 2.4 0 0 0 .807.872 2.1 2.1 0 0 0 1.119.313zm5.927-6.237h1.777v1.481q.263-.757.856-1.217a2.14 2.14 0 0 1 1.349-.46q.527 0 .724.098l-.247 1.794q-.149-.099-.642-.099-.774 0-1.416.494-.626.493-.626 1.58v3.883h-1.777V9.242zm9.534 7.718q-1.35 0-2.255-.526-.904-.543-1.332-1.432a4.6 4.6 0 0 1-.428-1.975q0-1.2.493-2.106a3.46 3.46 0 0 1 1.4-1.382q.889-.495 2.007-.494 1.744 0 2.584.97.855.956.856 2.7 0 .444-.05.92h-5.43q.18 1.005.708 1.45.542.443 1.497.443.79 0 1.3-.131a4 4 0 0 0 .938-.362l.542 1.267q-.411.263-1.119.46-.708.198-1.711.197zm1.596-4.558q.016-1.02-.444-1.432-.46-.428-1.316-.428-1.728 0-1.991 1.86z'/%3E%3Cpath d='M5.074 15.948a.484.657 0 0 0-.486.659v1.84a.484.657 0 0 0 .486.659h4.101a.484.657 0 0 0 .486-.659v-1.84a.484.657 0 0 0-.486-.659zm3.56 1.16H5.617v.838h3.017z' style='fill:%23fff;fill-rule:evenodd;stroke-width:1.03600001'/%3E%3Cg style='stroke-width:1.12603545'%3E%3Cpath d='M-9.408-1.416c-3.833-.025-7.056 2.912-7.08 6.615-.02 3.08 1.653 4.832 3.107 6.268.903.892 1.721 1.74 2.32 2.902l-.525-.004c-.543-.003-.992.304-1.24.639a1.87 1.87 0 0 0-.362 1.121l-.011 1.877c-.003.402.104.787.347 1.125.244.338.688.653 1.23.656l4.142.028c.542.003.99-.306 1.238-.641a1.87 1.87 0 0 0 .363-1.121l.012-1.875a1.87 1.87 0 0 0-.348-1.127c-.243-.338-.688-.653-1.23-.656l-.518-.004c.597-1.145 1.425-1.983 2.348-2.87 1.473-1.414 3.18-3.149 3.2-6.226-.016-3.59-2.923-6.684-6.993-6.707m-.006 1.1v.002c3.274.02 5.92 2.532 5.9 5.6-.017 2.706-1.39 4.026-2.863 5.44-1.034.994-2.118 2.033-2.814 3.633-.018.041-.052.055-.075.065q-.013.004-.02.01a.34.34 0 0 1-.226.084.34.34 0 0 1-.224-.086l-.092-.077c-.699-1.615-1.768-2.669-2.781-3.67-1.454-1.435-2.797-2.762-2.78-5.478.02-3.067 2.7-5.545 5.975-5.523m-.02 2.826c-1.62-.01-2.944 1.315-2.955 2.96-.01 1.646 1.295 2.988 2.916 2.999h.002c1.621.01 2.943-1.316 2.953-2.961.011-1.646-1.294-2.988-2.916-2.998m-.005 1.1c1.017.006 1.829.83 1.822 1.89s-.83 1.874-1.848 1.867c-1.018-.006-1.829-.83-1.822-1.89s.83-1.874 1.848-1.868m-2.155 11.857 4.14.025c.271.002.49.305.487.676l-.013 1.875c-.003.37-.224.67-.495.668l-4.14-.025c-.27-.002-.487-.306-.485-.676l.012-1.875c.003-.37.224-.67.494-.668' style='color:%23000;font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:%23000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:evenodd;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:%23000;solid-opacity:1;vector-effect:none;fill:%23000;fill-opacity:.4;fill-rule:evenodd;stroke:none;stroke-width:2.47727823;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto' transform='translate(15.553 2.85)scale(.88807)'/%3E%3Cpath d='M-9.415-.316C-12.69-.338-15.37 2.14-15.39 5.207c-.017 2.716 1.326 4.041 2.78 5.477 1.013 1 2.081 2.055 2.78 3.67l.092.076a.34.34 0 0 0 .225.086.34.34 0 0 0 .227-.083l.019-.01c.022-.009.057-.024.074-.064.697-1.6 1.78-2.64 2.814-3.634 1.473-1.414 2.847-2.733 2.864-5.44.02-3.067-2.627-5.58-5.901-5.601m-.057 8.784c1.621.011 2.944-1.315 2.955-2.96.01-1.646-1.295-2.988-2.916-2.999-1.622-.01-2.945 1.315-2.955 2.96s1.295 2.989 2.916 3' style='clip-rule:evenodd;fill:%23e1e3e9;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.47727823;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:.4' transform='translate(15.553 2.85)scale(.88807)'/%3E%3Cpath d='M-11.594 15.465c-.27-.002-.492.297-.494.668l-.012 1.876c-.003.371.214.673.485.675l4.14.027c.271.002.492-.298.495-.668l.012-1.877c.003-.37-.215-.672-.485-.674z' style='clip-rule:evenodd;fill:%23fff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.47727823;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:.4' transform='translate(15.553 2.85)scale(.88807)'/%3E%3C/g%3E%3C/svg%3E")}}.maplibregl-ctrl.maplibregl-ctrl-attrib{background-color:hsla(0,0%,100%,.5);margin:0;padding:0 5px}@media screen{.maplibregl-ctrl-attrib.maplibregl-compact{background-color:#fff;border-radius:12px;box-sizing:content-box;color:#000;margin:10px;min-height:20px;padding:2px 24px 2px 0;position:relative}.maplibregl-ctrl-attrib.maplibregl-compact-show{padding:2px 28px 2px 8px;visibility:visible}.maplibregl-ctrl-bottom-left>.maplibregl-ctrl-attrib.maplibregl-compact-show,.maplibregl-ctrl-top-left>.maplibregl-ctrl-attrib.maplibregl-compact-show{border-radius:12px;padding:2px 8px 2px 28px}.maplibregl-ctrl-attrib.maplibregl-compact .maplibregl-ctrl-attrib-inner{display:none}.maplibregl-ctrl-attrib-button{background-color:hsla(0,0%,100%,.5);background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill-rule='evenodd' viewBox='0 0 20 20'%3E%3Cpath d='M4 10a6 6 0 1 0 12 0 6 6 0 1 0-12 0m5-3a1 1 0 1 0 2 0 1 1 0 1 0-2 0m0 3a1 1 0 1 1 2 0v3a1 1 0 1 1-2 0'/%3E%3C/svg%3E");border:0;border-radius:12px;box-sizing:border-box;cursor:pointer;display:none;height:24px;outline:none;position:absolute;right:0;top:0;width:24px}.maplibregl-ctrl-attrib summary.maplibregl-ctrl-attrib-button{-webkit-appearance:none;-moz-appearance:none;appearance:none;list-style:none}.maplibregl-ctrl-attrib summary.maplibregl-ctrl-attrib-button::-webkit-details-marker{display:none}.maplibregl-ctrl-bottom-left .maplibregl-ctrl-attrib-button,.maplibregl-ctrl-top-left .maplibregl-ctrl-attrib-button{left:0}.maplibregl-ctrl-attrib.maplibregl-compact .maplibregl-ctrl-attrib-button,.maplibregl-ctrl-attrib.maplibregl-compact-show .maplibregl-ctrl-attrib-inner{display:block}.maplibregl-ctrl-attrib.maplibregl-compact-show .maplibregl-ctrl-attrib-button{background-color:rgb(0 0 0/5%)}.maplibregl-ctrl-bottom-right>.maplibregl-ctrl-attrib.maplibregl-compact:after{bottom:0;right:0}.maplibregl-ctrl-top-right>.maplibregl-ctrl-attrib.maplibregl-compact:after{right:0;top:0}.maplibregl-ctrl-top-left>.maplibregl-ctrl-attrib.maplibregl-compact:after{left:0;top:0}.maplibregl-ctrl-bottom-left>.maplibregl-ctrl-attrib.maplibregl-compact:after{bottom:0;left:0}}@media screen and (forced-colors:active){.maplibregl-ctrl-attrib.maplibregl-compact:after{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23fff' fill-rule='evenodd' viewBox='0 0 20 20'%3E%3Cpath d='M4 10a6 6 0 1 0 12 0 6 6 0 1 0-12 0m5-3a1 1 0 1 0 2 0 1 1 0 1 0-2 0m0 3a1 1 0 1 1 2 0v3a1 1 0 1 1-2 0'/%3E%3C/svg%3E")}}@media screen and (forced-colors:active) and (prefers-color-scheme:light){.maplibregl-ctrl-attrib.maplibregl-compact:after{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill-rule='evenodd' viewBox='0 0 20 20'%3E%3Cpath d='M4 10a6 6 0 1 0 12 0 6 6 0 1 0-12 0m5-3a1 1 0 1 0 2 0 1 1 0 1 0-2 0m0 3a1 1 0 1 1 2 0v3a1 1 0 1 1-2 0'/%3E%3C/svg%3E")}}.maplibregl-ctrl-attrib a{color:rgba(0,0,0,.75);text-decoration:none}.maplibregl-ctrl-attrib a:hover{color:inherit;text-decoration:underline}.maplibregl-attrib-empty{display:none}.maplibregl-ctrl-scale{background-color:hsla(0,0%,100%,.75);border:2px solid #333;border-top:#333;box-sizing:border-box;color:#333;font-size:10px;padding:0 5px}.maplibregl-popup{display:flex;left:0;pointer-events:none;position:absolute;top:0;will-change:transform}.maplibregl-popup-anchor-top,.maplibregl-popup-anchor-top-left,.maplibregl-popup-anchor-top-right{flex-direction:column}.maplibregl-popup-anchor-bottom,.maplibregl-popup-anchor-bottom-left,.maplibregl-popup-anchor-bottom-right{flex-direction:column-reverse}.maplibregl-popup-anchor-left{flex-direction:row}.maplibregl-popup-anchor-right{flex-direction:row-reverse}.maplibregl-popup-tip{border:10px solid transparent;height:0;width:0;z-index:1}.maplibregl-popup-anchor-top .maplibregl-popup-tip{align-self:center;border-bottom-color:#fff;border-top:none}.maplibregl-popup-anchor-top-left .maplibregl-popup-tip{align-self:flex-start;border-bottom-color:#fff;border-left:none;border-top:none}.maplibregl-popup-anchor-top-right .maplibregl-popup-tip{align-self:flex-end;border-bottom-color:#fff;border-right:none;border-top:none}.maplibregl-popup-anchor-bottom .maplibregl-popup-tip{align-self:center;border-bottom:none;border-top-color:#fff}.maplibregl-popup-anchor-bottom-left .maplibregl-popup-tip{align-self:flex-start;border-bottom:none;border-left:none;border-top-color:#fff}.maplibregl-popup-anchor-bottom-right .maplibregl-popup-tip{align-self:flex-end;border-bottom:none;border-right:none;border-top-color:#fff}.maplibregl-popup-anchor-left .maplibregl-popup-tip{align-self:center;border-left:none;border-right-color:#fff}.maplibregl-popup-anchor-right .maplibregl-popup-tip{align-self:center;border-left-color:#fff;border-right:none}.maplibregl-popup-close-button{background-color:transparent;border:0;border-radius:0 3px 0 0;cursor:pointer;position:absolute;right:0;top:0}.maplibregl-popup-close-button:hover{background-color:rgb(0 0 0/5%)}.maplibregl-popup-content{background:#fff;border-radius:3px;box-shadow:0 1px 2px rgba(0,0,0,.1);padding:15px 10px;pointer-events:auto;position:relative}.maplibregl-popup-anchor-top-left .maplibregl-popup-content{border-top-left-radius:0}.maplibregl-popup-anchor-top-right .maplibregl-popup-content{border-top-right-radius:0}.maplibregl-popup-anchor-bottom-left .maplibregl-popup-content{border-bottom-left-radius:0}.maplibregl-popup-anchor-bottom-right .maplibregl-popup-content{border-bottom-right-radius:0}.maplibregl-popup-track-pointer{display:none}.maplibregl-popup-track-pointer *{pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.maplibregl-map:hover .maplibregl-popup-track-pointer{display:flex}.maplibregl-map:active .maplibregl-popup-track-pointer{display:none}.maplibregl-marker{left:0;position:absolute;top:0;transition:opacity .2s;will-change:transform}.maplibregl-user-location-dot,.maplibregl-user-location-dot:before{background-color:#1da1f2;border-radius:50%;height:15px;width:15px}.maplibregl-user-location-dot:before{animation:maplibregl-user-location-dot-pulse 2s infinite;content:"";position:absolute}.maplibregl-user-location-dot:after{border:2px solid #fff;border-radius:50%;box-shadow:0 0 3px rgba(0,0,0,.35);box-sizing:border-box;content:"";height:19px;left:-2px;position:absolute;top:-2px;width:19px}@keyframes maplibregl-user-location-dot-pulse{0%{opacity:1;transform:scale(1)}70%{opacity:0;transform:scale(3)}to{opacity:0;transform:scale(1)}}.maplibregl-user-location-dot-stale{background-color:#aaa}.maplibregl-user-location-dot-stale:after{display:none}.maplibregl-user-location-accuracy-circle{background-color:#1da1f233;border-radius:100%;height:1px;width:1px}.maplibregl-crosshair,.maplibregl-crosshair .maplibregl-interactive,.maplibregl-crosshair .maplibregl-interactive:active{cursor:crosshair}.maplibregl-boxzoom{background:#fff;border:2px dotted #202020;height:0;left:0;opacity:.5;position:absolute;top:0;width:0}.maplibregl-cooperative-gesture-screen{align-items:center;background:rgba(0,0,0,.4);color:#fff;display:flex;font-size:1.4em;inset:0;justify-content:center;line-height:1.2;opacity:0;padding:1rem;pointer-events:none;position:absolute;transition:opacity 1s ease 1s;z-index:99999}.maplibregl-cooperative-gesture-screen.maplibregl-show{opacity:1;transition:opacity .05s}.maplibregl-cooperative-gesture-screen .maplibregl-mobile-message{display:none}@media (hover:none),(width <= 480px){.maplibregl-cooperative-gesture-screen .maplibregl-desktop-message{display:none}.maplibregl-cooperative-gesture-screen .maplibregl-mobile-message{display:block}}.maplibregl-pseudo-fullscreen{height:100%!important;left:0!important;position:fixed!important;top:0!important;width:100%!important;z-index:99999}</style>
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<style>
+
+
+
+
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:#5b6360;font-family:'Arial',Helvetica,sans-serif;-webkit-font-smoothing:antialiased;}
+a{color:#00939D;}a:hover{color:#005670;}
+.maplibregl-canvas{outline:none;}
+@media print{
+  @page{size:11in 8.5in;margin:0;}
+  html,body{background:#fff;}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+  #stage{position:static!important;display:block!important;overflow:visible!important;}
+  [data-pg]{display:flex!important;position:relative!important;left:auto!important;box-shadow:none!important;transform:none!important;zoom:0.8;break-after:page;page-break-after:always;}
+  #drawer,#drawerToggle,#viewTabs,.edit-only{display:none!important;}
+}
+</style>
+</helmet>
+<div id="stage" style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+  <sc-for list="{{ pages }}" as="p" hint-placeholder-count="1">
+  <div data-pg="1" style="width:1320px;height:1020px;background:#fff;position:{{ p.pos }};left:{{ p.left }};flex:none;box-shadow:0 24px 70px rgba(0,0,0,.45);overflow:hidden;display:flex;flex-direction:column;transform-origin:center center;">
+
+    <div style="height:104px;flex:none;"></div>
+
+    <div style="flex:1;display:flex;min-height:0;padding:22px;gap:22px;">
+      <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:22px;">
+        <div data-map="1" sc-camel-on-pointer-down="{{ p.panDown }}" sc-camel-on-wheel="{{ p.wheel }}" style="position:relative;width:100%;flex:1;min-height:0;border-radius:14px;overflow:hidden;border:1px solid #d9dcdb;box-shadow:0 6px 20px rgba(0,51,73,.16);background:#eef1f1;user-select:none;cursor:grab;">
+          <div ref="{{ p.mapRef }}" style="position:absolute;inset:0;"></div>
+
+          {{ p.pinLayer }}
+
+          <div style="position:absolute;right:16px;top:16px;z-index:8;width:64px;height:76px;background:#fff;border-radius:12px;border:1px solid #d9dcdb;box-shadow:0 4px 14px rgba(0,51,73,.22);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;pointer-events:none;">
+            <span style="font-size:15px;font-weight:700;letter-spacing:.06em;color:#003349;line-height:1;">N</span>
+            <svg width="34" height="44" sc-camel-view-box="0 0 34 44" style="display:block;"><polygon points="17,2 29,40 17,32" fill="#003349"></polygon><polygon points="17,2 5,40 17,32" fill="#00939D"></polygon></svg>
+          </div>
+
+          <sc-if value="{{ p.hasApt }}" hint-placeholder-val="{{ false }}">
+            {{ p.aptArrow }}
+            <div data-apt-card="1" sc-camel-on-pointer-down="{{ p.aptDown }}" title="Drag to move the airport card" style="position:absolute;left:{{ p.aptLeft }};top:{{ p.aptTop }};transform:translate(-50%,-50%);z-index:8;display:flex;align-items:center;gap:12px;background:#003349;color:#fff;border:2px solid #fff;border-radius:12px;padding:9px 16px 9px 10px;box-shadow:0 4px 14px rgba(0,51,73,.4);white-space:nowrap;cursor:grab;">
+              <span style="width:38px;height:38px;border-radius:50%;background:#C6D83B;display:flex;align-items:center;justify-content:center;flex:none;">
+                <svg width="22" height="22" sc-camel-view-box="0 0 24 24" style="display:block;transform:{{ p.aptRot }};"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="#003349"></path></svg>
+              </span>
+              <div style="display:flex;flex-direction:column;gap:3px;line-height:1.05;">
+                <sc-if value="{{ p.aptHasDrive }}">
+                  <span style="font-family:'Arial Narrow','Arial',sans-serif;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#C6D83B;">{{ p.aptDrive }}</span>
+                </sc-if>
+                <span style="font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">{{ p.aptName }}</span>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ p.hasDistKey }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;left:16px;top:16px;z-index:8;background:#fff;border-radius:12px;box-shadow:0 4px 14px rgba(0,51,73,.22);border:1px solid #d9dcdb;overflow:hidden;min-width:210px;pointer-events:none;">
+              <div style="background:#003349;color:#fff;padding:9px 14px;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-bottom:3px solid #C6D83B;">Districts</div>
+              <div style="display:flex;flex-direction:column;gap:8px;padding:11px 14px 12px;">
+                <sc-for list="{{ p.distKey }}" as="k" hint-placeholder-count="4">
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <span style="width:18px;height:18px;border-radius:4px;background:{{ k.color }};border:2px solid {{ k.color }};box-shadow:inset 0 0 0 2px #fff;flex:none;"></span>
+                    <span style="font-family:'Arial Narrow','Arial',sans-serif;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#003349;white-space:nowrap;">{{ k.name }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ p.hasSubject }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;left:{{ p.subjectLeft }};top:{{ p.subjectTop }};width:0;height:0;z-index:9;">
+              {{ p.subjectLine }}
+              <div sc-camel-on-pointer-down="{{ p.subjectDown }}" title="Drag to move the star (label stays put)" style="position:absolute;left:0;top:0;transform:translate(-50%,-50%);cursor:crosshair;">{{ starEl }}</div>
+              <div sc-camel-on-pointer-down="{{ p.subjectLabelDown }}" title="Drag to move the label (star stays put)" style="position:absolute;left:{{ p.slx }};top:{{ p.sly }};transform:translate(-50%,-50%);cursor:grab;white-space:nowrap;background:#fff;color:#003349;font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,.45);border-bottom:3px solid #C6D83B;">{{ property }}</div>
+            </div>
+          </sc-if>
+
+          <div style="position:absolute;right:12px;bottom:8px;z-index:7;font-family:'Arial Narrow','Arial',sans-serif;font-size:11px;color:#3F4443;background:rgba(255,255,255,.75);padding:2px 6px;border-radius:4px;letter-spacing:.04em;">© OpenStreetMap contributors · © OpenFreeMap · Locations approximate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-for>
+</div>
+
+<div id="viewTabs" style="position:fixed;bottom:14px;left:14px;z-index:30;display:flex;align-items:center;flex-wrap:nowrap;gap:3px;background:rgba(0,51,73,.92);padding:5px;border-radius:10px;box-shadow:0 4px 14px rgba(0,0,0,.3);">
+  <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="2">
+    <button sc-camel-on-click="{{ t.go }}" style="background:{{ t.bg }};color:{{ t.fg }};border:none;border-radius:7px;padding:6px 10px;font-family:'Arial',sans-serif;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;">{{ t.label }}</button>
+  </sc-for>
+  <span style="width:1px;height:24px;background:rgba(255,255,255,.3);margin:0 6px;"></span>
+  <span style="font-family:'Arial Narrow','Arial',sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#C6D83B;padding:0 4px;white-space:nowrap;">Drag map to pan</span>
+  <button sc-camel-on-click="{{ zoomOut }}" title="Zoom out" style="background:#fff;color:#003349;border:none;border-radius:6px;width:28px;height:26px;font-weight:700;font-size:15px;cursor:pointer;">−</button>
+  <button sc-camel-on-click="{{ zoomIn }}" title="Zoom in" style="background:#fff;color:#003349;border:none;border-radius:6px;width:28px;height:26px;font-weight:700;font-size:15px;cursor:pointer;">+</button>
+  <button sc-camel-on-click="{{ toggleDistricts }}" style="background:{{ distBg }};color:{{ distFg }};border:1px solid rgba(255,255,255,.5);border-radius:6px;padding:4px 9px;font-weight:700;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap;">{{ distLabel }}</button>
+  <button sc-camel-on-click="{{ recenter }}" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5);border-radius:6px;padding:4px 9px;font-weight:700;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Re-center</button>
+</div>
+
+<button id="drawerToggle" sc-camel-on-click="{{ toggleDrawer }}" style="position:fixed;bottom:14px;right:14px;z-index:30;background:#005670;color:#fff;border:none;border-radius:8px;padding:10px 16px;font-family:'Arial',sans-serif;font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.3);" style-hover="background:#003349;">{{ toggleLabel }}</button>
+
+<div id="drawer" style="position:fixed;top:0;right:0;bottom:0;width:460px;z-index:25;background:#fff;box-shadow:-10px 0 40px rgba(0,0,0,.35);display:flex;flex-direction:column;transform:{{ drawerTf }};transition:transform 320ms cubic-bezier(0.22,1,0.36,1);">
+  <div style="background:#003349;color:#fff;padding:18px 20px 14px;flex:none;border-bottom:4px solid #C6D83B;">
+    <div style="font-size:19px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">Points of Interest</div>
+    <div style="font-family:'Arial Narrow','Arial',sans-serif;font-size:13px;color:#7BA7BC;margin-top:6px;letter-spacing:.04em;">{{ status }}</div>
+  </div>
+  <div style="flex:1;min-height:0;overflow:auto;padding:14px 18px 24px;display:flex;flex-direction:column;gap:18px;">
+
+    <div style="display:flex;gap:8px;">
+      <button sc-camel-on-click="{{ refresh }}" style="flex:1;background:#005670;color:#fff;border:none;border-radius:8px;padding:9px;font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;">Refresh Sources</button>
+      <button sc-camel-on-click="{{ resetView }}" style="flex:1;background:#fff;color:#3F4443;border:1px solid #d9dcdb;border-radius:8px;padding:9px;font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;">Reset Labels ({{ activeLabel }})</button>
+      <button sc-camel-on-click="{{ resetAll }}" style="flex:1;background:#fff;color:#3F4443;border:1px solid #d9dcdb;border-radius:8px;padding:9px;font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;">Reset All</button>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:6px;">
+      <div style="font-family:'Arial Narrow','Arial',sans-serif;font-weight:700;font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:#003349;">On the Map · {{ activeLabel }} View</div>
+      <sc-for list="{{ onMap }}" as="p" hint-placeholder-count="3">
+        <div style="display:grid;grid-template-columns:30px minmax(0,1fr) 34px 28px;gap:6px;align-items:center;padding:6px 0;border-bottom:1px solid #e7eaea;">
+          <span style="display:flex;">{{ p.badge }}</span>
+          <div style="display:flex;flex-direction:column;gap:3px;">
+            <input value="{{ p.name }}" sc-camel-on-change="{{ p.setName }}" style="font:700 13px Arial,sans-serif;color:#003349;border:1px solid #d9dcdb;border-radius:6px;padding:4px 7px;">
+            <sc-if value="{{ p.isLM }}">
+              <input value="{{ p.note }}" sc-camel-on-change="{{ p.setNote }}" placeholder="Note" style="font:12px 'Arial Narrow',Arial,sans-serif;color:#3F4443;border:1px solid #d9dcdb;border-radius:6px;padding:4px 7px;">
+              <input value="{{ p.drive }}" sc-camel-on-change="{{ p.setDrive }}" placeholder="Drive time, e.g. 5-Minute Drive" style="font:12px 'Arial Narrow',Arial,sans-serif;color:#5a6a10;border:1px solid #d9dcdb;border-radius:6px;padding:4px 7px;">
+            </sc-if>
+            <sc-if value="{{ p.isRet }}">
+              <input value="{{ p.logo }}" sc-camel-on-change="{{ p.setLogo }}" placeholder="Logo file, e.g. assets/logos/publix.png" style="font:12px 'Arial Narrow',Arial,sans-serif;color:#005670;border:1px dashed #7BA7BC;border-radius:6px;padding:4px 7px;">
+            </sc-if>
+          </div>
+          <button sc-camel-on-click="{{ p.toggleVis }}" title="Show / hide on this view" style="background:{{ p.visBg }};border:1px solid #d9dcdb;border-radius:6px;height:28px;color:{{ p.visFg }};cursor:pointer;font-size:11px;font-weight:700;">{{ p.visLabel }}</button>
+          <button sc-camel-on-click="{{ p.remove }}" title="Remove" style="background:none;border:1px solid #d9dcdb;border-radius:6px;height:28px;color:#6b716f;cursor:pointer;font-size:14px;">×</button>
+        </div>
+      </sc-for>
+    </div>
+
+    <sc-for list="{{ candGroups }}" as="g" hint-placeholder-count="2">
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <div style="display:flex;align-items:center;gap:8px;border-left:5px solid {{ g.color }};padding-left:8px;">
+          <span style="font-family:'Arial Narrow','Arial',sans-serif;font-weight:700;font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:#003349;">{{ g.label }}</span>
+          <span style="font-family:'Arial Narrow','Arial',sans-serif;font-size:12px;color:#8a908f;">{{ g.count }}</span>
+        </div>
+        <sc-for list="{{ g.items }}" as="c" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;gap:10px;padding:5px 0;border-bottom:1px solid #f0f2f2;">
+            <div style="flex:1;min-width:0;line-height:1.2;">
+              <span style="display:block;font-size:13px;font-weight:700;color:#003349;">{{ c.name }}</span>
+              <span style="display:block;font-family:'Arial Narrow','Arial',sans-serif;font-size:12px;color:#6b716f;">{{ c.meta }}</span>
+            </div>
+            <sc-if value="{{ c.added }}">
+              <span style="font-family:'Arial Narrow','Arial',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#00939D;">Added</span>
+            </sc-if>
+            <sc-if value="{{ c.canAdd }}">
+              <button sc-camel-on-click="{{ c.add }}" style="background:#C6D83B;color:#404715;border:none;border-radius:6px;padding:5px 12px;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;">Add</button>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </sc-for>
+  </div>
+</div>
+
+
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-fm-props="1" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1320,&quot;height&quot;:1020},&quot;property&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;214 3rd Ave N&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Subject&quot;},&quot;address&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;214 3rd Ave N, Nashville, TN 37219&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Subject&quot;},&quot;lat&quot;:{&quot;editor&quot;:&quot;float&quot;,&quot;default&quot;:36.16415,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Subject&quot;},&quot;lng&quot;:{&quot;editor&quot;:&quot;float&quot;,&quot;default&quot;:-86.77795,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Subject&quot;},&quot;radiusMi&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:3,&quot;min&quot;:0.5,&quot;max&quot;:5,&quot;step&quot;:0.5,&quot;unit&quot;:&quot;mi&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Sourcing&quot;},&quot;mapStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;light&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;color&quot;,&quot;bright&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Map&quot;},&quot;showDrive&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Map&quot;}}">
+const FM = window.FRAME_MAP || {};
+const VIEWS = [
+  { id: 'd', label: (FM.views && FM.views[0] && FM.views[0].label) || 'Close-In', zoom: (FM.views && FM.views[0] && FM.views[0].zoom) || 15.1, center: (FM.views && FM.views[0] && FM.views[0].center) || undefined },
+  { id: 'm', label: (FM.views && FM.views[1] && FM.views[1].label) || 'Metro', zoom: (FM.views && FM.views[1] && FM.views[1].zoom) || 11.7, center: (FM.views && FM.views[1] && FM.views[1].center) || undefined },
+];
+const SEED = FM.seed || [];
+const DISTRICTS = FM.districts || [];
+const DIST_COLORS = ['#00939D', '#C6D83B', '#005670', '#7BA7BC', '#8a9a1f', '#003349', '#5fc0c6', '#3F4443'];
+const distColor = (p, all) => p.color || DIST_COLORS[Math.max(0, all.filter((q) => q.cat === 'DIST').findIndex((q) => q.id === p.id)) % DIST_COLORS.length];
+const distPoi = ([name, poly], i) => ({ id: 'dist' + i, cat: 'DIST', name, poly, lat: poly.reduce((a, q) => a + q[1], 0) / poly.length, lng: poly.reduce((a, q) => a + q[0], 0) / poly.length, note: '', drive: '', only: 'm' });
+const LOGOS_BUILTIN = [[/best buy/i, 'best-buy'], [/whole foods/i, 'whole-foods'], [/sprouts/i, 'sprouts'], [/winn-?dixie/i, 'winn-dixie'], [/publix/i, 'publix'], [/walmart/i, 'walmart'], [/ikea/i, 'ikea'], [/^target/i, 'target'], [/ulta/i, 'ulta'], [/total wine/i, 'total-wine'], [/walgreens/i, 'walgreens'], [/sephora/i, 'sephora'], [/\bnike\b/i, 'nike'], [/^apple\b/i, 'apple'], [/anthropologie/i, 'anthropologie'], [/lululemon/i, 'lululemon']].map(([re, f]) => [re, 'logos/' + f + '.png']);
+const LOGOS = FMLogoRules().concat(LOGOS_BUILTIN);
+const sideOf = (c) => Math.abs(c.ldx || 0) > Math.abs(c.ldy || 0) * 1.1;
+const logoFor = (p) => p.logo || (LOGOS.find(([re]) => re.test(p.name)) || [])[1] || '';
+const STYLES = { light: 'https://tiles.openfreemap.org/styles/positron', color: 'https://tiles.openfreemap.org/styles/liberty', bright: 'https://tiles.openfreemap.org/styles/bright' };
+
+class Component extends DCLogic {
+  state = { data: null, cands: { RET: [], LM: [] }, status: 'Loading sources…', open: false, view: 'd' };
+  maps = {};
+  mapRefs = { d: React.createRef(), m: React.createRef() };
+
+  get key() { return FM.key || 'frame-map'; }
+  defaults() {
+    const views = {};
+    VIEWS.forEach((v) => { views[v.id] = { id: v.id, center: v.center || null, zoom: v.zoom, pos: {} }; });
+    return {
+      subject: { lat: this.props.lat ?? 36.16415, lng: this.props.lng ?? -86.77795 },
+      pois: SEED.map((s, i) => ({ id: 'p' + i, cat: s[0], name: s[1], lat: s[2], lng: s[3], note: s[4] || '', drive: s[5] || '', only: s[6] || '' })).concat(DISTRICTS.map(distPoi)),
+      views,
+    };
+  }
+  componentDidMount() {
+    let saved = null;
+    try { saved = JSON.parse(FMStore.get(this.key) || 'null'); } catch (e) {}
+    if (saved && !saved.coreOnlyDowntown) { const s0 = saved.subject; saved.pois.forEach((p) => { if (p.only == null || p.only === '') { const dLa = (p.lat - s0.lat) * 69, dLo = (p.lng - s0.lng) * 69 * Math.cos(s0.lat * Math.PI / 180); if (p.cat === 'RET' && Math.hypot(dLa, dLo) < 1.5) p.only = 'd'; } }); saved.coreOnlyDowntown = true; }
+    if (saved && !saved.driveV2) { saved.pois.forEach((p) => { if (/^vanderbilt/i.test(p.name)) p.drive = ''; if (/airport/i.test(p.name)) p.drive = '15-Minute Drive'; }); saved.driveV2 = true; }
+    if (saved && !saved.distMetroOnly) { saved.pois.forEach((p) => { if (p.cat === 'DIST') { p.only = 'm'; if (saved.views.d && saved.views.d.pos[p.id]) delete saved.views.d.pos[p.id].hide; } }); saved.distMetroOnly = true; }
+    if (saved && !saved.metroFrameV2) { saved.views.m = { ...saved.views.m, center: [-86.775, 36.148], zoom: 11.7 }; saved.metroFrameV2 = true; }
+    if (saved && !saved.metroV2) {
+      saved.pois = saved.pois.filter((p) => !(p.cat === 'LM' && /^(the gulch|germantown)$/i.test(p.name)));
+      const have = new Set(saved.pois.map((p) => p.name.toLowerCase()));
+      this.defaults().pois.filter((p) => !have.has(p.name.toLowerCase())).forEach((p) => saved.pois.push({ ...p, id: p.cat === 'DIST' ? p.id : 'pm2' + p.id }));
+      saved.metroV2 = true;
+    }
+    if (saved && !saved.leadersV2) { Object.values(saved.views).forEach((v) => { Object.keys(v.pos).forEach((k) => { const { ldx, ldy, ...rest } = v.pos[k]; v.pos[k] = rest; }); }); saved.leadersV2 = true; }
+    this.setState({ data: saved || this.defaults() }, () => { this.ensureMaps(); this.geocode(); this.source(); });
+    const fit = () => {
+      const s = Math.min((window.innerWidth - 40) / 1320, (window.innerHeight - 40) / 1020, 1);
+      document.querySelectorAll('[data-pg]').forEach((p) => { p.style.transform = 'scale(' + s + ')'; });
+    };
+    this._fit = fit; window.addEventListener('resize', fit); fit(); setTimeout(fit, 300);
+    this._move = (e) => this.onMove(e); this._up = () => this.onUp();
+    window.addEventListener('pointermove', this._move); window.addEventListener('pointerup', this._up);
+  }
+  componentDidUpdate(pp) {
+    if (this._fit) this._fit();
+    this.ensureMaps();
+    Object.keys(this.maps).forEach((k) => this.syncDistricts(k));
+    const card = document.querySelector('[data-apt-card]');
+    if (card) { const sz = [card.offsetWidth, card.offsetHeight], o = this._aptSize; if (!o || Math.abs(o[0] - sz[0]) > 1 || Math.abs(o[1] - sz[1]) > 1) { this._aptSize = sz; this.tick(); } }
+    if (pp.mapStyle !== this.props.mapStyle) Object.values(this.maps).forEach((m) => m.setStyle(this.styleUrl));
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._fit);
+    window.removeEventListener('pointermove', this._move); window.removeEventListener('pointerup', this._up);
+    Object.values(this.maps).forEach((m) => m.remove());
+  }
+  get styleUrl() { return STYLES[this.props.mapStyle] || STYLES.light; }
+  save(data) { this.setState({ data }); try { FMStore.set(this.key, data); } catch (e) {} }
+  get subj() { const d = this.state.data; return d ? d.subject : { lat: 36.16415, lng: -86.77795 }; }
+  get radius() { return this.props.radiusMi ?? 3; }
+  tick() { if (this._raf) return; this._raf = requestAnimationFrame(() => { this._raf = null; this.forceUpdate(); }); }
+
+  ensureMaps() {
+    if (!this.state.data) return;
+    if (!window.maplibregl) { clearTimeout(this._wait); this._wait = setTimeout(() => this.ensureMaps(), 150); return; }
+    VIEWS.forEach((v) => {
+      const el = this.mapRefs[v.id].current; if (this.maps[v.id] || !el) return;
+      const vd = this.state.data.views[v.id], s = this.subj;
+      const m = new maplibregl.Map({ container: el, style: this.styleUrl, center: vd.center || [s.lng, s.lat], zoom: vd.zoom, interactive: false, attributionControl: false, preserveDrawingBuffer: true, fadeDuration: 0 });
+      m.on('move', () => this.tick()); m.on('load', () => { this.syncDistricts(v.id, true); this.tick(); }); m.on('style.load', () => this.syncDistricts(v.id, true)); m.on('resize', () => this.tick());
+      this.maps[v.id] = m;
+    });
+    this.tick();
+  }
+  syncDistricts(vid, force) {
+    const m = this.maps[vid], d = this.state.data; if (!m || !d || !m.isStyleLoaded()) return;
+    const vd = d.views[vid];
+    const feats = d.pois.filter((p) => d.showDistricts !== false && p.cat === 'DIST' && p.poly && !((vd.pos[p.id] || {}).hide ?? (p.only && p.only !== vid)))
+      .map((p) => ({ type: 'Feature', properties: { name: p.name, color: distColor(p, d.pois) }, geometry: { type: 'Polygon', coordinates: [[...p.poly, p.poly[0]]] } }));
+    const fc = { type: 'FeatureCollection', features: feats }, key = JSON.stringify(fc);
+    this._dk = this._dk || {};
+    const src = m.getSource('districts');
+    if (src) { if (force || this._dk[vid] !== key) src.setData(fc); }
+    else {
+      m.addSource('districts', { type: 'geojson', data: fc });
+      m.addLayer({ id: 'dist-fill', type: 'fill', source: 'districts', paint: { 'fill-color': ['get', 'color'], 'fill-opacity': 0.28 } });
+      m.addLayer({ id: 'dist-line', type: 'line', source: 'districts', paint: { 'line-color': ['get', 'color'], 'line-width': 2.6 } });
+    }
+    this._dk[vid] = key;
+  }
+  async geocode() {
+    const d = this.state.data; if (d.geocoded) return;
+    try {
+      const q = this.props.address ?? '214 3rd Ave N, Nashville, TN 37219';
+      const r = await (await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + encodeURIComponent(q))).json();
+      if (r && r[0]) {
+        const subject = { lat: +r[0].lat, lng: +r[0].lon }, cur = this.state.data;
+        this.save({ ...cur, subject, geocoded: true });
+        if (!cur.views.d.center && this.maps.d) this.maps.d.jumpTo({ center: [subject.lng, subject.lat] });
+      }
+    } catch (e) { console.warn('geocode failed', e); }
+  }
+
+  miles(lat, lng) {
+    if (lat == null) return null;
+    const s = this.subj, R = 3958.8, t = Math.PI / 180, dLa = (lat - s.lat) * t, dLo = (lng - s.lng) * t;
+    const a = Math.sin(dLa / 2) ** 2 + Math.cos(s.lat * t) * Math.cos(lat * t) * Math.sin(dLo / 2) ** 2;
+    return 2 * R * Math.asin(Math.sqrt(a));
+  }
+  posFor(vid, p) {
+    const m = this.maps[vid]; if (!m) return null;
+    const vd = this.state.data.views[vid], o = vd.pos[p.id] || {};
+    const pt = m.project([p.lng, p.lat]), c = m.getContainer(), W = c.clientWidth, H = c.clientHeight;
+    const out = pt.x < W * 0.03 || pt.x > W * 0.97 || pt.y < H * 0.03 || pt.y > H * 0.97;
+    const hide = o.hide ?? ((p.only && p.only !== vid) || (p.cat === 'DIST' ? (pt.x < 0 || pt.x > W || pt.y < 0 || pt.y > H) : out));
+    return { x: pt.x, y: pt.y, ldx: o.ldx, ldy: o.ldy, hide, own: o.ldy != null };
+  }
+  patchView(vid, fn) { const d = this.state.data; this.save({ ...d, views: { ...d.views, [vid]: fn(d.views[vid]) } }); }
+  saveCam(vid) { const m = this.maps[vid]; if (!m) return; const c = m.getCenter(); this.patchView(vid, (x) => ({ ...x, center: [c.lng, c.lat], zoom: +m.getZoom().toFixed(2) })); }
+
+  async source() {
+    const { lat, lng } = this.subj, rMi = this.radius, rM = rMi * 1609.34;
+    const out = { RET: {}, LM: {} };
+    const put = (cat, name, la, lo, meta) => {
+      const d = this.miles(la, lo); if (d == null || d > rMi) return;
+      const k = name.toLowerCase().trim();
+      if (!out[cat][k] || out[cat][k].dist > d) out[cat][k] = { name, lat: la, lng: lo, dist: d, meta };
+    };
+    const BRANDS = /\b(publix|walmart|target|the home depot|home depot|lowe'?s|costco|sam'?s club|aldi|whole foods|trader joe'?s|sprouts|the fresh market|best buy|t\.?j\.? ?maxx|marshalls|homegoods|ross dress|kohl'?s|dillard'?s|macy'?s|nordstrom|burlington|hobby lobby|michaels|petsmart|petco|dick'?s sporting goods|academy sports|ulta beauty|sephora|old navy|staples|office depot|lidl|kroger|harris teeter|food lion|ikea|apple|nike|lululemon|patagonia|rei|crate & barrel|pottery barn|west elm|williams-sonoma|anthropologie|urban outfitters|walgreens|cvs|total wine|turnip truck|barnes & noble)\b/i;
+    const SHOPCLS = ['shop', 'grocery', 'department_store', 'clothing_store', 'supermarket', 'mall', 'wholesale', 'doityourself', 'hardware', 'electronics', 'furniture', 'pet', 'books', 'sports', 'pharmacy', 'chemist', 'beauty', 'cosmetics', 'shoes', 'outdoor', 'alcohol_shop'];
+    const LMCLS = /^(attraction|museum|stadium|theatre|arts_centre|castle|monument|memorial|zoo|aquarium|theme_park|college|university|park)$/;
+    try {
+      this.setState({ status: 'Reading OpenFreeMap tiles…' });
+      const tj = await (await fetch('https://tiles.openfreemap.org/planet')).json();
+      const tmpl = tj.tiles[0];
+      const [{ VectorTile }, PbfMod] = await Promise.all([import('https://esm.sh/@mapbox/vector-tile@2.0.3'), import('https://esm.sh/pbf@4.0.1')]);
+      const Pbf = PbfMod.default || PbfMod.Pbf;
+      const z = 14, n = 2 ** z;
+      const tx = (lo) => Math.floor((lo + 180) / 360 * n);
+      const ty = (la) => { const r = la * Math.PI / 180; return Math.floor((1 - Math.log(Math.tan(r) + 1 / Math.cos(r)) / Math.PI) / 2 * n); };
+      const dLat = rM / 111320, dLng = rM / (111320 * Math.cos(lat * Math.PI / 180));
+      const jobs = [];
+      for (let x = tx(lng - dLng); x <= tx(lng + dLng); x++) for (let y = ty(lat + dLat); y <= ty(lat - dLat); y++) if (jobs.length < 64) jobs.push([x, y]);
+      await Promise.all(jobs.map(async ([x, y]) => {
+        const r = await fetch(tmpl.replace('{z}', z).replace('{x}', x).replace('{y}', y));
+        if (!r.ok) return;
+        const vt = new VectorTile(new Pbf(new Uint8Array(await r.arrayBuffer())));
+        const poi = vt.layers.poi; if (!poi) return;
+        for (let i = 0; i < poi.length; i++) {
+          const f = poi.feature(i), p = f.properties, name = p.name || p['name:latin'];
+          if (!name || p.class === 'fuel') continue;
+          const c = f.toGeoJSON(x, y, z).geometry.coordinates; if (typeof c[0] !== 'number') continue;
+          const sub = String(p.subclass || p.class || '').replace(/_/g, ' ');
+          const shopLike = SHOPCLS.includes(p.class) || SHOPCLS.includes(p.subclass);
+          if (shopLike && (BRANDS.test(name) || ['department_store', 'mall'].includes(p.subclass))) put('RET', name, c[1], c[0], sub);
+          else if (LMCLS.test(p.class || '') || LMCLS.test(p.subclass || '')) { if ((p.rank ?? 99) <= 20 || /stadium|museum|theatre|arts_centre|university|attraction/.test(p.class + ' ' + p.subclass)) put('LM', name, c[1], c[0], sub); }
+        }
+      }));
+    } catch (e) { console.warn('tile sourcing failed', e); }
+    const list = (o) => Object.values(o).sort((a, b) => a.dist - b.dist).slice(0, 40);
+    const cands = { RET: list(out.RET), LM: list(out.LM) };
+    let d = this.state.data;
+    if (!d.retSeeded && cands.RET.length) { cands.RET.slice(0, 8).forEach((c) => { d = this.withAdded(d, 'RET', c); }); this.save({ ...d, retSeeded: true }); }
+    this.setState({ cands, status: cands.RET.length + ' retailers · ' + cands.LM.length + ' landmarks within ' + rMi + ' mi' });
+  }
+  withAdded(d, cat, c) {
+    if (d.pois.some((p) => p.name.toLowerCase() === c.name.toLowerCase())) return d;
+    return { ...d, pois: [...d.pois, { id: 'p' + Date.now() + Math.random().toString(36).slice(2, 5), cat, name: c.name, note: '', drive: '', lat: c.lat, lng: c.lng, only: (c.dist ?? 0) < 1.5 ? 'd' : '' }] };
+  }
+
+  startDrag(e, vid, kind, id) {
+    if (e.button && e.button !== 0) return;
+    e.preventDefault(); e.stopPropagation();
+    const el = e.currentTarget.closest('[data-map]'); if (!el) return;
+    const rect = el.getBoundingClientRect(), scale = rect.width / el.offsetWidth;
+    const base = { vid, kind, id, sx: e.clientX, sy: e.clientY, lx: e.clientX, ly: e.clientY, scale };
+    if (kind === 'pan') { this.drag = base; return; }
+    if (kind === 'apt') { this.drag = { ...base, A0: this.state.data.views[vid].apt || { dx: 0, dy: 0 } }; return; }
+    const vd = this.state.data.views[vid];
+    if (kind === 'subject' || kind === 'slabel') {
+      const m = this.maps[vid], pt = m.project([this.subj.lng, this.subj.lat]);
+      this.drag = { ...base, o: { x: pt.x, y: pt.y }, L0: vd.subjectLabel || { dx: 0, dy: 40 } };
+    } else this.drag = { ...base, o: { ...(this._layout[vid][id]) } };
+  }
+  onMove(e) {
+    const g = this.drag; if (!g) return;
+    if (g.kind === 'pan') { const m = this.maps[g.vid]; m && m.panBy([-(e.clientX - g.lx) / g.scale, -(e.clientY - g.ly) / g.scale], { duration: 0 }); g.lx = e.clientX; g.ly = e.clientY; return; }
+    const dx = (e.clientX - g.sx) / g.scale, dy = (e.clientY - g.sy) / g.scale;
+    const d = this.state.data, vd = d.views[g.vid], m = this.maps[g.vid];
+    if (g.kind === 'apt') {
+      this.setState({ data: { ...d, views: { ...d.views, [g.vid]: { ...vd, apt: { dx: g.A0.dx + dx, dy: g.A0.dy + dy } } } } });
+    } else if (g.kind === 'subject') {
+      const ll = m.unproject([g.o.x + dx, g.o.y + dy]);
+      this.setState({ data: { ...d, subject: { lat: ll.lat, lng: ll.lng }, views: { ...d.views, [g.vid]: { ...vd, subjectLabel: { dx: g.L0.dx - dx, dy: g.L0.dy - dy } } } } });
+    } else if (g.kind === 'slabel') {
+      this.setState({ data: { ...d, views: { ...d.views, [g.vid]: { ...vd, subjectLabel: { dx: g.L0.dx + dx, dy: g.L0.dy + dy } } } } });
+    } else if (g.kind === 'pin') {
+      const ll = m.unproject([g.o.x + dx, g.o.y + dy]);
+      this.setState({ data: { ...d, pois: d.pois.map((p) => p.id === g.id ? { ...p, lat: ll.lat, lng: ll.lng } : p), views: { ...d.views, [g.vid]: { ...vd, pos: { ...vd.pos, [g.id]: { ...(vd.pos[g.id] || {}), ldx: g.o.ldx - dx, ldy: g.o.ldy - dy } } } } } });
+    } else {
+      this.setState({ data: { ...d, views: { ...d.views, [g.vid]: { ...vd, pos: { ...vd.pos, [g.id]: { ...(vd.pos[g.id] || {}), ldx: g.o.ldx + dx, ldy: g.o.ldy + dy } } } } } });
+    }
+  }
+  onUp() { const g = this.drag; if (!g) return; this.drag = null; if (g.kind === 'pan') this.saveCam(g.vid); else this.save(this.state.data); }
+
+  ordered(list) {
+    const ORDER = ['RET', 'LM', 'DIST'];
+    return list.map((p) => ({ ...p, dist: this.miles(p.lat, p.lng) }))
+      .sort((a, b) => ORDER.indexOf(a.cat) - ORDER.indexOf(b.cat) || (a.dist ?? 99) - (b.dist ?? 99))
+      .map((p, i) => ({ ...p, n: i + 1, logo: logoFor(p) }));
+  }
+  CAT() {
+    return {
+      RET: { label: 'Notable Retail', color: '#00939D', ink: '#ffffff' },
+      LM: { label: 'Major Landmarks', color: '#003349', ink: '#ffffff' },
+      DIST: { label: 'Districts', color: '#00939D', ink: '#ffffff' },
+    };
+  }
+
+  renderVals() {
+    const R = React.createElement, C = this.CAT();
+    const d = this.state.data || this.defaults();
+    const av = this.state.view;
+    const svg = (w, h, inner, filter) => R('svg', { width: w, height: h, viewBox: `0 0 ${w} ${h}`, style: { display: 'block', overflow: 'visible', filter: filter || 'none', pointerEvents: 'none' }, dangerouslySetInnerHTML: { __html: inner } });
+    const sq = (cx, cy, s, fill, sw) => `<rect x="${cx - s / 2}" y="${cy - s / 2}" width="${s}" height="${s}" rx="${s * 0.2}" fill="${fill}" stroke="#fff" stroke-width="${sw}"/>`;
+    const star = (cx, cy, R0, r0) => { const pts = []; for (let i = 0; i < 10; i++) { const a = -Math.PI / 2 + i * Math.PI / 5, r = i % 2 ? r0 : R0; pts.push((cx + r * Math.cos(a)).toFixed(2) + ',' + (cy + r * Math.sin(a)).toFixed(2)); } return `<polygon points="${pts.join(' ')}" fill="#F7C600" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/>`; };
+    const badge = (cat, n, sz) => { const c = C[cat], s = String(n), fs = s.length > 1 ? sz * 0.44 : sz * 0.5; return svg(sz, sz, sq(sz / 2, sz / 2, sz - 3, c.color, 2) + `<text x="${sz / 2}" y="${sz / 2 + fs * 0.34}" font-size="${fs}" font-weight="700" text-anchor="middle" font-family="Arial" fill="${c.ink}">${s}</text>`); };
+    const pois = this.ordered(d.pois);
+    const fmt = (m) => m == null ? '—' : m < 0.1 ? '< 0.1 mi' : m.toFixed(1) + ' mi';
+    const showDrive = this.props.showDrive ?? true;
+
+    this._layout = this._layout || {};
+    const pages = VIEWS.map((v) => {
+      const vid = v.id, vd = d.views[vid], m = this.maps[vid];
+      const c = m && m.getContainer(), W = c ? c.clientWidth : 1276, H = c ? c.clientHeight : 872;
+      const layout = {};
+      let apt = null;
+      const lf = m ? Math.max(0.4, Math.min(1.15, Math.pow(2, (m.getZoom() - 15) * 0.35))) : 1;
+      const df = m ? Math.max(0.75, Math.min(1.2, Math.pow(2, (m.getZoom() - 14) * 0.3))) : 1, distLabels = [];
+      if (m) {
+        const sp = m.project([this.subj.lng, this.subj.lat]);
+        const L0 = vd.subjectLabel || { dx: 0, dy: 40 };
+        const fixedBoxes = [[sp.x - 22, sp.y - 22, sp.x + 22, sp.y + 22], [sp.x + L0.dx - 80, sp.y + L0.dy - 16, sp.x + L0.dx + 80, sp.y + L0.dy + 16]];
+        const fixedSegs = [[sp.x, sp.y, sp.x + L0.dx, sp.y + L0.dy]];
+        pois.filter((p) => p.cat === 'DIST' && d.showDistricts !== false).forEach((p) => { const ps = this.posFor(vid, p); if (!ps || ps.hide) return; const w = p.name.length * 8 * df + 10, h = 18 * df; distLabels.push({ p, x: ps.x, y: ps.y, color: distColor(p, d.pois) }); });
+        fixedBoxes.push([W - 92, 0, W, 104]);
+        const ap = vid === 'd' && d.pois.find((p) => /airport/i.test(p.name));
+        if (ap) {
+          const a = m.project([ap.lng, ap.lat]);
+          if (a.x < 0 || a.x > W || a.y < 0 || a.y > H) {
+            let ux = a.x - sp.x, uy = a.y - sp.y; const len = Math.hypot(ux, uy) || 1; ux /= len; uy /= len;
+            const mx = 26, myT = 26, myB = 40, tx = ux > 0 ? (W - mx - sp.x) / ux : ux < 0 ? (mx - sp.x) / ux : Infinity, ty = uy > 0 ? (H - myB - sp.y) / uy : uy < 0 ? (myT - sp.y) / uy : Infinity;
+            const t = Math.min(tx, ty), ex = sp.x + ux * t, ey = sp.y + uy * t, AL = 70, cw = (this._aptSize || [470, 62])[0], ch = (this._aptSize || [470, 62])[1];
+            const off = AL + 10 + Math.abs(ux) * cw / 2 + Math.abs(uy) * ch / 2;
+            const AO = vd.apt || { dx: 0, dy: 0 };
+            let cx = ex - ux * off + AO.dx, cy = ey - uy * off + AO.dy;
+            cx = Math.max(cw / 2 + 12, Math.min(W - cw / 2 - 12, cx)); cy = Math.max(ch / 2 + 12, Math.min(H - ch / 2 - 30, cy));
+            let vx = ex - cx, vy = ey - cy; const vl = Math.hypot(vx, vy) || 1; vx /= vl; vy /= vl;
+            const te = Math.min(Math.abs(vx) > 1e-6 ? (cw / 2) / Math.abs(vx) : Infinity, Math.abs(vy) > 1e-6 ? (ch / 2) / Math.abs(vy) : Infinity);
+            const sx = cx + vx * te, sy = cy + vy * te;
+            apt = { p: ap, cx, cy, ex, ey, sx, sy, rot: Math.atan2(uy, ux) * 180 / Math.PI + 90 };
+            fixedBoxes.push([cx - cw / 2, cy - ch / 2, cx + cw / 2, cy + ch / 2]); fixedSegs.push([sx, sy, ex, ey]);
+          }
+        }
+        if (distLabels.length) fixedBoxes.push([0, 0, 250, 54 + distLabels.length * 26]);
+        const items = pois.filter((p) => p.cat !== 'DIST').map((p) => ({ p, ps: this.posFor(vid, p) })).filter((o) => o.ps && !o.ps.hide).map(({ p, ps }) => {
+          const w = p.logo ? 166 * lf : Math.max(p.name.length * (p.cat === 'RET' ? 8.6 : 11), (p.note || '').length * 6.8, (p.drive && showDrive ? p.drive.length * 8.2 : 0)) + 30;
+          const h = p.cat === 'RET' ? (p.logo ? 58 * lf : 36) : (p.note ? 52 : 36) + (p.drive && showDrive ? 17 : 0);
+          return { p, ps, w, h };
+        });
+        const boxOf = (it, c) => { const cx = it.ps.x + c.ldx, cy = it.ps.y + c.ldy; if (sideOf(c)) return c.ldx > 0 ? [cx, cy - it.h / 2, cx + it.w, cy + it.h / 2] : [cx - it.w, cy - it.h / 2, cx, cy + it.h / 2]; return c.ldy < 0 ? [cx - it.w / 2, cy - it.h, cx + it.w / 2, cy] : [cx - it.w / 2, cy, cx + it.w / 2, cy + it.h]; };
+        const ov = (a, b, g) => a[0] < b[2] + g && a[2] > b[0] - g && a[1] < b[3] + g && a[3] > b[1] - g;
+        const ccw = (ax, ay, bx, by, cx, cy) => (cy - ay) * (bx - ax) - (by - ay) * (cx - ax);
+        const segX = (s, t) => { const d1 = ccw(t[0], t[1], t[2], t[3], s[0], s[1]), d2 = ccw(t[0], t[1], t[2], t[3], s[2], s[3]), d3 = ccw(s[0], s[1], s[2], s[3], t[0], t[1]), d4 = ccw(s[0], s[1], s[2], s[3], t[2], t[3]); return d1 * d2 < 0 && d3 * d4 < 0; };
+        const segBox = (s, b) => { const pad = 4, B = [b[0] - pad, b[1] - pad, b[2] + pad, b[3] + pad]; const inside = (x, y) => x > B[0] && x < B[2] && y > B[1] && y < B[3]; if (inside((s[0] + s[2]) / 2, (s[1] + s[3]) / 2)) return true; return [[B[0], B[1], B[2], B[1]], [B[2], B[1], B[2], B[3]], [B[2], B[3], B[0], B[3]], [B[0], B[3], B[0], B[1]]].some((e) => segX(s, e)); };
+        const segOf = (it, c) => [it.ps.x, it.ps.y, it.ps.x + c.ldx, it.ps.y + c.ldy];
+        const inb = (b) => b[1] >= 10 && b[3] <= H - 28 && b[0] >= 10 && b[2] <= W - 10;
+        const candsFor = (it) => {
+          const out = [];
+          for (const dist of [44, 70, 100, 135, 175, 220]) for (const sx of [0, 0.25, -0.25, 0.5, -0.5]) { out.push({ ldx: sx * dist, ldy: -dist }); out.push({ ldx: sx * dist, ldy: dist }); }
+          for (const dx of [40, 70, 110, 160, 220]) for (const dy of [0, -0.3, 0.3, -0.6, 0.6]) { out.push({ ldx: dx, ldy: dy * dx }); out.push({ ldx: -dx, ldy: dy * dx }); }
+          // radial fan from the local cluster centroid — leaders pointing away from neighbours can't cross each other
+          const nb = items.filter((o) => Math.hypot(o.ps.x - it.ps.x, o.ps.y - it.ps.y) < 200);
+          if (nb.length > 1) {
+            const cx = nb.reduce((a, o) => a + o.ps.x, 0) / nb.length, cy = nb.reduce((a, o) => a + o.ps.y, 0) / nb.length;
+            const a0 = Math.atan2(it.ps.y - cy, it.ps.x - cx) || -Math.PI / 2;
+            for (const da of [0, 0.25, -0.25, 0.5, -0.5]) for (const r of [80, 130, 190, 260, 330]) {
+              const a = a0 + da, ex = Math.cos(a) * r, ey = Math.sin(a) * r;
+              out.push({ ldx: ex, ldy: ey < 0 ? Math.min(ey, -30) : Math.max(ey, 30) });
+            }
+          }
+          return out;
+        };
+        const cost = (it, c, others) => {
+          const b = boxOf(it, c), s = segOf(it, c);
+          let k = Math.hypot(c.ldx, c.ldy) * 0.6 + Math.abs(c.ldx) * 0.4 + (c.ldy > 0 ? 8 : 0);
+          if (!inb(b)) k += 1e6;
+          fixedBoxes.forEach((q) => { if (ov(b, q, 8)) k += 2e5; if (segBox(s, q)) k += 4e4; });
+          fixedSegs.forEach((q) => { if (segX(s, q) || segBox(q, b)) k += 6e4; });
+          others.forEach((o) => {
+            if (ov(b, o.b, 8)) k += 2e5;
+            if (o.it.ps.x > b[0] - 8 && o.it.ps.x < b[2] + 8 && o.it.ps.y > b[1] - 8 && o.it.ps.y < b[3] + 8) k += 8e4;
+            if (Math.hypot(it.ps.x - o.it.ps.x, it.ps.y - o.it.ps.y) > 2 && segX(s, o.s)) k += 1.5e5;
+            if (segBox(s, o.b)) k += 5e4;
+            if (segBox(o.s, b)) k += 5e4;
+          });
+          return k;
+        };
+        const placedOf = {};
+        const others = (id) => Object.keys(placedOf).filter((k) => k !== id).map((k) => placedOf[k]);
+        const put = (it, c) => { placedOf[it.p.id] = { it, c, b: boxOf(it, c), s: segOf(it, c) }; };
+        items.forEach((it) => { if (it.ps.own && fixedBoxes.some((q) => ov(boxOf(it, { ldx: it.ps.ldx ?? 0, ldy: it.ps.ldy ?? -60 }), q, 4))) it.ps = { ...it.ps, own: false }; });
+        items.filter((it) => it.ps.own).forEach((it) => put(it, { ldx: it.ps.ldx ?? 0, ldy: it.ps.ldy ?? -60 }));
+        const free = items.filter((it) => !it.ps.own).sort((a, b) => items.filter((o) => Math.hypot(o.ps.x - b.ps.x, o.ps.y - b.ps.y) < 180).length - items.filter((o) => Math.hypot(o.ps.x - a.ps.x, o.ps.y - a.ps.y) < 180).length);
+        const best = (it) => { const os = others(it.p.id); let bc = null, bk = Infinity; candsFor(it).forEach((c) => { const k = cost(it, c, os); if (k < bk) { bk = k; bc = c; } }); return bc; };
+        free.forEach((it) => put(it, best(it)));
+        for (let pass = 0; pass < 3; pass++) free.forEach((it) => put(it, best(it)));
+        items.forEach((it) => { const q = placedOf[it.p.id]; layout[it.p.id] = { ...it.ps, ...q.c }; });
+      }
+      this._layout[vid] = layout;
+      const distLayer = [].map((q) => R('div', { key: 'dl' + q.p.id, style: { position: 'absolute', left: q.x, top: q.y, transform: 'translate(-50%,-50%)', whiteSpace: 'nowrap', fontFamily: "'Arial Narrow',Arial,sans-serif", fontWeight: 700, fontSize: 13 * df, letterSpacing: '.12em', textTransform: 'uppercase', color: '#003349', textShadow: '0 0 3px #fff, 0 0 3px #fff, 0 0 5px #fff', pointerEvents: 'none' } }, q.p.name));
+      const pinLayer = R('div', { style: { position: 'absolute', inset: 0, zIndex: 5, pointerEvents: 'none' } }, distLayer, pois.filter((p) => p.cat !== 'DIST').map((p) => {
+        const ps = layout[p.id]; if (!ps) return null;
+        const c = C[p.cat], h = (kind) => (e) => this.startDrag(e, vid, kind, p.id), up = ps.ldy < 0;
+        const tf = sideOf(ps) ? (ps.ldx > 0 ? 'translate(0,-50%)' : 'translate(-100%,-50%)') : (up ? 'translate(-50%,-100%)' : 'translate(-50%,0)');
+        let label;
+        if (p.cat === 'RET') {
+          label = p.logo
+            ? R('div', { style: { background: '#fff', borderRadius: 10 * lf, padding: (6 * lf) + 'px ' + (8 * lf) + 'px', boxShadow: '0 3px 10px rgba(0,51,73,.35)', display: 'flex', alignItems: 'center' } },
+                R('img', { src: FMAsset(p.logo), alt: p.name, draggable: false, style: { height: 46 * lf, maxWidth: 150 * lf, objectFit: 'contain', display: 'block' } }))
+            : R('div', { style: { background: '#fff', borderRadius: 8, padding: '6px 11px', boxShadow: '0 3px 10px rgba(0,51,73,.35)', border: '2px solid #00939D', fontWeight: 700, fontSize: 13.5, color: '#003349', whiteSpace: 'nowrap', letterSpacing: '.02em' } }, p.name);
+        } else {
+          label = R('div', { style: { background: c.color, color: c.ink, borderRadius: 8, padding: '7px 12px', boxShadow: '0 3px 10px rgba(0,51,73,.35)', border: '2px solid #fff', display: 'flex', flexDirection: 'column', gap: 3, whiteSpace: 'nowrap', lineHeight: 1.05 } },
+            p.drive && showDrive ? R('span', { style: { fontFamily: "'Arial Narrow',Arial,sans-serif", fontSize: 13, fontWeight: 700, letterSpacing: '.12em', textTransform: 'uppercase', color: '#C6D83B' } }, p.drive) : null,
+            R('span', { style: { fontSize: 14, fontWeight: 700, letterSpacing: '.08em', textTransform: 'uppercase' } }, p.name),
+            p.note ? R('span', { style: { fontFamily: "'Arial Narrow',Arial,sans-serif", fontSize: 12.5, fontWeight: 700, letterSpacing: '.04em', color: '#7BA7BC' } }, p.note) : null);
+        }
+        return R('div', { key: p.id, style: { position: 'absolute', left: ps.x, top: ps.y, width: 0, height: 0 } },
+          R('svg', { width: 1, height: 1, style: { position: 'absolute', left: 0, top: 0, overflow: 'visible', filter: 'drop-shadow(0 1px 1.5px rgba(0,51,73,.45))' } },
+            R('line', { x1: 0, y1: 0, x2: ps.ldx, y2: ps.ldy, stroke: c.color, strokeWidth: 2, strokeLinecap: 'round' }),
+            R('circle', { cx: 0, cy: 0, r: 6, fill: c.color, stroke: '#fff', strokeWidth: 2.4 })),
+          R('div', { title: p.name + ' — drag to move the point (label stays put)', onPointerDown: h('pin'), style: { position: 'absolute', left: -14, top: -14, width: 28, height: 28, borderRadius: '50%', cursor: 'crosshair', pointerEvents: 'auto' } }),
+          R('div', { title: 'Drag to move the label (point stays put)', onPointerDown: h('lead'), style: { position: 'absolute', left: ps.ldx, top: ps.ldy, transform: tf, cursor: 'grab', pointerEvents: 'auto' } }, label));
+      }));
+      const sp = m ? m.project([this.subj.lng, this.subj.lat]) : null, L = vd.subjectLabel || { dx: 0, dy: 40 };
+      return {
+        id: vid, mapRef: this.mapRefs[vid],
+        hasDistKey: distLabels.length > 0,
+        hasApt: !!apt, aptLeft: apt ? apt.cx + 'px' : '0px', aptTop: apt ? apt.cy + 'px' : '0px',
+        aptName: apt ? apt.p.name + (apt.p.note ? ' (' + apt.p.note + ')' : '') : '', aptDrive: apt ? apt.p.drive : '', aptHasDrive: !!(apt && apt.p.drive),
+        aptDown: (e) => this.startDrag(e, vid, 'apt'),
+        aptRot: apt ? 'rotate(' + apt.rot.toFixed(1) + 'deg)' : 'none',
+        aptArrow: apt ? R('svg', { style: { position: 'absolute', inset: 0, width: '100%', height: '100%', overflow: 'visible', pointerEvents: 'none', zIndex: 8, filter: 'drop-shadow(0 1px 2px rgba(0,51,73,.4))' } },
+          R('defs', null, R('marker', { id: 'aptHead', viewBox: '0 0 10 10', refX: 6, refY: 5, markerWidth: 4, markerHeight: 4, orient: 'auto' }, R('path', { d: 'M0,0 L10,5 L0,10 z', fill: '#003349' }))),
+          R('line', { x1: apt.sx, y1: apt.sy, x2: apt.ex, y2: apt.ey, stroke: '#003349', strokeWidth: 5, strokeLinecap: 'round', markerEnd: 'url(#aptHead)' })) : null,
+        distKey: distLabels.slice().sort((a, b) => a.p.name.localeCompare(b.p.name)).map((q) => ({ name: q.p.name, color: q.color })),
+        pos: vid === av ? 'relative' : 'absolute', left: vid === av ? 'auto' : '-20000px',
+        pinLayer, hasSubject: !!sp,
+        subjectLeft: sp ? sp.x + 'px' : '0px', subjectTop: sp ? sp.y + 'px' : '0px',
+        subjectDown: (e) => this.startDrag(e, vid, 'subject'), subjectLabelDown: (e) => this.startDrag(e, vid, 'slabel'),
+        slx: L.dx + 'px', sly: L.dy + 'px',
+        subjectLine: R('svg', { width: 1, height: 1, style: { position: 'absolute', left: 0, top: 0, overflow: 'visible', pointerEvents: 'none', filter: 'drop-shadow(0 1px 1.5px rgba(0,51,73,.45))' } }, R('line', { x1: 0, y1: 0, x2: L.dx, y2: L.dy, stroke: '#003349', strokeWidth: 2, strokeLinecap: 'round' })),
+        panDown: (e) => this.startDrag(e, vid, 'pan'),
+        wheel: (e) => { const mm = this.maps[vid]; if (!mm) return; mm.setZoom(mm.getZoom() - e.deltaY * 0.0025); clearTimeout(this._wz); this._wz = setTimeout(() => this.saveCam(vid), 250); },
+      };
+    });
+
+    const avd = d.views[av];
+    const update = (id, patch) => this.save({ ...d, pois: d.pois.map((p) => p.id === id ? { ...p, ...patch } : p) });
+    const onMap = pois.map((p) => {
+      const ps = this.posFor(av, p), vis = ps ? !ps.hide : true;
+      return { name: p.name, note: p.note, logo: p.logo || '', drive: p.drive || '', isRet: p.cat === 'RET', isLM: p.cat === 'LM', badge: badge(p.cat, p.n, 26),
+        visLabel: vis ? 'ON' : 'OFF', visBg: vis ? '#e0f2f3' : '#fff', visFg: vis ? '#00737a' : '#8a908f',
+        toggleVis: () => this.patchView(av, (x) => ({ ...x, pos: { ...x.pos, [p.id]: { ...(x.pos[p.id] || {}), hide: vis } } })),
+        setName: (e) => update(p.id, { name: e.target.value }), setNote: (e) => update(p.id, { note: e.target.value }),
+        setDrive: (e) => update(p.id, { drive: e.target.value }), setLogo: (e) => update(p.id, { logo: e.target.value.trim() }),
+        remove: () => this.save({ ...d, pois: d.pois.filter((x) => x.id !== p.id) }) };
+    });
+    const names = new Set(d.pois.map((p) => p.name.toLowerCase()));
+    const candGroups = [['RET', 'Retail Found Nearby'], ['LM', 'Landmarks Found Nearby']].map(([k, label]) => {
+      const items = this.state.cands[k].map((c) => { const added = names.has(c.name.toLowerCase()); return { name: c.name, meta: fmt(c.dist) + (c.meta ? ' · ' + c.meta : ''), added, canAdd: !added, add: () => this.save(this.withAdded(this.state.data, k, c)) }; });
+      return { label, color: C[k].color, count: items.length ? items.length + ' found' : 'none found', items };
+    });
+    const zoom = (dz) => () => { const m = this.maps[av]; if (!m) return; m.setZoom(m.getZoom() + dz); this.saveCam(av); };
+
+    return {
+      property: this.props.property ?? '214 3rd Ave N',
+      pages, onMap, candGroups,
+      tabs: VIEWS.map((v) => ({ label: v.label, bg: v.id === av ? '#C6D83B' : 'transparent', fg: v.id === av ? '#404715' : '#fff', go: () => this.setState({ view: v.id }, () => { const m = this.maps[v.id]; m && m.resize(); }) })),
+      activeLabel: VIEWS.find((v) => v.id === av).label,
+      distLabel: d.showDistricts !== false ? 'Districts: On' : 'Districts: Off',
+      distBg: d.showDistricts !== false ? '#C6D83B' : 'transparent', distFg: d.showDistricts !== false ? '#404715' : '#fff',
+      toggleDistricts: () => this.save({ ...d, showDistricts: d.showDistricts === false }),
+      zoomIn: zoom(0.25), zoomOut: zoom(-0.25),
+      recenter: () => { const m = this.maps[av], v = VIEWS.find((x) => x.id === av); if (!m) return; m.jumpTo({ center: v.center || [this.subj.lng, this.subj.lat], zoom: v.zoom }); this.saveCam(av); },
+      resetView: () => this.patchView(av, (x) => ({ ...x, pos: {}, subjectLabel: null, apt: null })),
+      starEl: svg(40, 40, star(20, 20, 18, 7.6), 'drop-shadow(0 2px 3px rgba(0,0,0,.45))'),
+      status: this.state.status,
+      drawerTf: this.state.open ? 'translateX(0)' : 'translateX(105%)',
+      toggleLabel: this.state.open ? 'Close' : 'Edit Points',
+      toggleDrawer: () => this.setState((s) => ({ open: !s.open })),
+      refresh: () => this.source(),
+      resetAll: () => { if (FMConfirm('Reset all points, labels and map framing to defaults?')) { const def = this.defaults(); this.save(def); VIEWS.forEach((v) => { const m = this.maps[v.id]; m && m.jumpTo({ center: v.center || [def.subject.lng, def.subject.lat], zoom: v.zoom }); }); this.setState({}, () => { this.geocode(); this.source(); }); } },
+    };
+  }
+}
+</script>
+
+
+</body></html>

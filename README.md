@@ -11,6 +11,7 @@ Live at https://fsmarketing123.github.io/marketing-pages/
 | `team-decks/` | Team Decks |
 | `business-line-decks/` | Business Line Decks |
 | `emails/` | Email Templates (web version; `assets/email/` holds the images Constant Contact emails load) |
+| `maps/` | Maps (published maps, plus `maps/engine/` and `maps/editor.html`: the map engine FRAME embeds to edit maps; it holds no client data) |
 | `websites/` | FS Websites (client-branded sites with the Franklin Street footer; password-protected sites are published encrypted) |
 
 Files are named `<platform>-<business line>-<project name>.html`. `assets/` and `fonts/` are shared by every page; photos uploaded in the hub go in `assets/uploads/`. `manifest.json` lists every live page and drives `index.html`.

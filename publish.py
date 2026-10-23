@@ -23,6 +23,7 @@ FOLDERS = {
     "business-line-decks": "Business Line Decks",
     "emails": "Email Templates",
     "websites": "FS Websites",
+    "maps": "Maps",
 }
 
 

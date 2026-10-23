@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FRAME Maps · Editor</title><meta name="robots" content="noindex">
+<style>
+*{box-sizing:border-box}html,body{margin:0;height:100%}body{font:13px/1.45 Arial,Helvetica,sans-serif;color:#3F4443;background:#e9edef;display:grid;grid-template-rows:auto 1fr;overflow:hidden}
+header{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:8px 12px;background:#003349;color:#fff;border-bottom:3px solid #C6D83B}
+header b{font-size:13px;letter-spacing:.12em;text-transform:uppercase}header .tpl{font-size:12px;color:#7BA7BC;letter-spacing:.08em;text-transform:uppercase}
+header .sp{flex:1}header .st{font-size:12px;color:#C6D83B}
+button{font:700 11.5px Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;border-radius:6px;padding:7px 11px;cursor:pointer;border:1px solid rgba(255,255,255,.5);background:transparent;color:#fff}
+button.solid{background:#C6D83B;border-color:#C6D83B;color:#003349}button:disabled{opacity:.45;cursor:default}
+main{display:grid;grid-template-columns:360px minmax(0,1fr);min-height:0}main.hide-panel{grid-template-columns:0 minmax(0,1fr)}
+#panel{overflow-y:auto;background:#fff;border-right:1px solid #d9dcdb;padding:12px 14px 40px}main.hide-panel #panel{display:none}
+#frame{width:100%;height:100%;border:0;background:#2b3a42;display:block}
+.sec{border:1px solid #e3e7e8;border-radius:10px;margin-bottom:12px;overflow:hidden}.sec>h3{margin:0;padding:9px 12px;background:#f2f4f4;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#003349;cursor:pointer;display:flex;justify-content:space-between}
+.sec>div{padding:10px 12px;display:grid;gap:8px}.sec.closed>div{display:none}
+label{display:grid;gap:3px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#005670}
+input,select,textarea{font:13px Arial,sans-serif;color:#003349;border:1px solid #d9dcdb;border-radius:6px;padding:6px 8px;width:100%}textarea{min-height:56px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.chk{display:flex;align-items:center;gap:8px;font-size:12px;text-transform:none;letter-spacing:0;color:#3F4443;font-weight:400}.chk input{width:auto}
+.item{border:1px solid #e3e7e8;border-radius:8px;padding:8px;display:grid;gap:6px;background:#fafbfb}.item .hd{display:flex;justify-content:space-between;align-items:center;font-weight:700;color:#003349}
+.lnk{background:none;border:none;color:#005670;padding:2px 4px;text-transform:none;letter-spacing:0;font-size:12px}.lnk.red{color:#b42318}
+.add{background:#fff;color:#005670;border:1px dashed #7BA7BC;width:100%}
+.colors{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}.colors label{grid-template-columns:30px 1fr;align-items:center;text-transform:none;letter-spacing:0;font-weight:400;color:#3F4443;font-size:12px}
+.colors input[type=color]{width:30px;height:28px;padding:1px}
+.logo{display:flex;align-items:center;gap:8px}.logo img{height:30px;max-width:120px;object-fit:contain;background:#f2f4f4;border-radius:4px;padding:2px}
+.note{font-size:11.5px;color:#6b716f}
+.toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);background:#003349;color:#fff;padding:9px 16px;border-radius:999px;font-weight:700;opacity:0;transition:opacity .3s;pointer-events:none;z-index:9}.toast.on{opacity:1}
+dialog{border:none;border-radius:12px;padding:16px;width:min(560px,92vw);box-shadow:0 20px 60px rgba(0,0,0,.4)}dialog textarea{min-height:180px;font:11px ui-monospace,monospace}
+dialog .act{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}dialog button{color:#003349;border-color:#d9dcdb}
+</style></head>
+<body>
+<header>
+  <b>FRAME Maps</b><span class="tpl" id="tplName"></span><span class="sp"></span><span class="st" id="status">Loading…</span>
+  <button id="bPanel">Map Settings</button>
+  <button id="bPng">Download PNG</button><button id="bPdf">Download PDF</button>
+  <button id="bCode">Map Code</button>
+</header>
+<main id="main"><aside id="panel"></aside><iframe id="frame" title="Map"></iframe></main>
+<div class="toast" id="toast"></div>
+<dialog id="dlg"><b>Map code</b><p class="note">Copy this to keep or move the map. Paste a code here and choose Load to open it.</p><textarea id="code"></textarea><div class="act"><button id="dCopy">Copy</button><button id="dLoad">Load</button><button id="dClose">Close</button></div></dialog>
+<script src="engine/boot.js"></script>
+<script>
+(function () {
+  var NAMES = { area: 'Area POI Map', aerial: 'Aerial POI Map', competition: 'Competition Map · Digital' };
+  var host = window.parent !== window ? window.parent : (window.opener || null);
+  var cfg = null, assets = {}, connected = false, open = {}, pending = {};
+  var $ = function (id) { return document.getElementById(id); };
+  function toast(m) { var t = $('toast'); t.textContent = m; t.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(function () { t.classList.remove('on'); }, 2600); }
+  function status(m) { $('status').textContent = m; }
+  function send(msg) { if (host) try { host.postMessage(msg, '*'); } catch (e) {} }
+  function clone(o) { return JSON.parse(JSON.stringify(o)); }
+  function blank(t) {
+    var b = { template: t, title: 'New map', props: {}, brand: { kind: 'fs' }, logos: {}, state: null };
+    if (t === 'area') { b.props = { property: 'Subject Property', address: '', radiusMi: 3, mapStyle: 'light', showDrive: true }; b.views = [{ label: 'Close-In', zoom: 15.1 }, { label: 'Metro', zoom: 11.7 }]; b.seed = []; b.districts = []; }
+    if (t === 'aerial') { b.props = { property: 'Subject Property', market: '', heading: 0, radiusMi: 2, showHeader: false, showDestinations: true, showRoads: true, showParcel: true, roadWidth: 26, logoScale: 1 }; b.destinations = [{}, {}, {}]; }
+    if (t === 'competition') { b.digitalOnly = true; b.client = { name: 'Client', logo: '' }; b.subtitle = 'Competition'; b.detailsLabel = 'Details'; b.markets = []; b.locations = []; b.props = { showHalos: true, detailZoom: 13.2 }; }
+    return b;
+  }
+
+  // ---------- saving ----------
+  var saveT, renderT;
+  function changed(rebuild) {
+    clearTimeout(saveT); saveT = setTimeout(save, 500);
+    if (rebuild) { clearTimeout(renderT); renderT = setTimeout(render, rebuild === 'now' ? 0 : 700); }
+  }
+  function save() {
+    try { localStorage.setItem('frame-map-local', JSON.stringify(cfg)); } catch (e) {}
+    if (connected) { send({ type: 'frame-map-change', config: cfg }); status('Saved to FRAME'); } else status('Saved in this browser');
+  }
+
+  // ---------- map ----------
+  function render() {
+    $('tplName').textContent = NAMES[cfg.template] || cfg.template;
+    $('bPdf').style.display = cfg.digitalOnly ? 'none' : '';
+    $('frame').src = 'view.html?v=' + Date.now();
+  }
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (e.source === $('frame').contentWindow) {
+      if (d.type === 'frame-map-view-ready') $('frame').contentWindow.postMessage({ type: 'frame-map-load', config: cfg, opts: { mode: 'edit', assets: assets } }, '*');
+      if (d.type === 'frame-map-state') { cfg.state = d.state; changed(false); }
+      return;
+    }
+    if (host && e.source === host) {
+      if (d.type === 'frame-map-init') { connected = true; cfg = d.config || blank(d.template || 'area'); assets = d.assets || {}; panel(); render(); status('Connected to FRAME'); }
+      if (d.type === 'frame-map-asset-saved' && pending[d.reqId]) { pending[d.reqId](d.ref); delete pending[d.reqId]; }
+    }
+  });
+
+  // ---------- uploads: images go to FRAME's storage when connected, else stay in the page ----------
+  function readImage(file, maxW, cb) {
+    var r = new FileReader();
+    r.onload = function () {
+      var im = new Image(); im.onload = function () {
+        var k = Math.min(1, maxW / im.width), c = document.createElement('canvas'); c.width = Math.round(im.width * k); c.height = Math.round(im.height * k);
+        c.getContext('2d').drawImage(im, 0, 0, c.width, c.height);
+        cb(/png|svg|webp/.test(file.type) ? c.toDataURL('image/png') : c.toDataURL('image/jpeg', 0.88));
+      }; im.src = r.result;
+    }; r.readAsDataURL(file);
+  }
+  function upload(file, maxW, cb) {
+    readImage(file, maxW, function (url) {
+      if (!connected) { cb(url); return; }
+      var id = 'r' + Date.now() + Math.random().toString(36).slice(2, 6);
+      pending[id] = function (ref) { assets[ref] = url; cb(ref); };
+      send({ type: 'frame-map-asset', reqId: id, name: file.name, dataURL: url });
+      status('Uploading…');
+    });
+  }
+  function pick(accept, cb) { var i = document.createElement('input'); i.type = 'file'; i.accept = accept; i.onchange = function () { if (i.files[0]) cb(i.files[0]); }; i.click(); }
+  function geocode(q, cb) {
+    if (!q) return toast('Enter an address first');
+    status('Finding the address…');
+    fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + encodeURIComponent(q)).then(function (r) { return r.json(); }).then(function (r) {
+      if (r && r[0]) { cb(+r[0].lat, +r[0].lon); status('Address found'); } else { toast('Address not found. Try adding the city and state.'); status(''); }
+    }).catch(function () { toast('Address lookup is unavailable right now'); });
+  }
+
+  // ---------- panel ----------
+  function el(tag, attrs, kids) { var e = document.createElement(tag); Object.keys(attrs || {}).forEach(function (k) { if (k === 'on') Object.keys(attrs.on).forEach(function (ev) { e.addEventListener(ev, attrs.on[ev]); }); else if (k === 'text') e.textContent = attrs[k]; else e.setAttribute(k, attrs[k]); }); (kids || []).forEach(function (c) { if (c) e.appendChild(typeof c === 'string' ? document.createTextNode(c) : c); }); return e; }
+  function field(label, get, set, opts) {
+    opts = opts || {}; var inp;
+    if (opts.type === 'select') { inp = el('select'); opts.options.forEach(function (o) { var op = el('option', { value: o[0], text: o[1] }); inp.appendChild(op); }); inp.value = get() == null ? '' : get(); }
+    else if (opts.type === 'area') { inp = el('textarea'); inp.value = get() || ''; }
+    else { inp = el('input', { type: opts.type || 'text', step: opts.step || 'any' }); if (opts.min != null) inp.min = opts.min; if (opts.max != null) inp.max = opts.max; inp.value = get() == null ? '' : get(); if (opts.ph) inp.placeholder = opts.ph; }
+    inp.addEventListener(opts.type === 'select' ? 'change' : 'input', function () { var v = inp.value; set(opts.type === 'number' ? (v === '' ? null : +v) : v); changed(opts.live === false ? false : (opts.type === 'select' ? 'now' : true)); });
+    return el('label', {}, [label, inp]);
+  }
+  function check(label, get, set) { var i = el('input', { type: 'checkbox' }); i.checked = !!get(); i.addEventListener('change', function () { set(i.checked); changed('now'); }); return el('label', { class: 'chk' }, [i, label]); }
+  function section(key, title, kids) {
+    var s = el('div', { class: 'sec' + (open[key] ? '' : ' closed') }), h = el('h3', { text: title }); h.appendChild(el('span', { text: open[key] ? '−' : '+' }));
+    h.addEventListener('click', function () { open[key] = !open[key]; panel(); });
+    s.appendChild(h); s.appendChild(el('div', {}, kids)); return s;
+  }
+  function logoRow(label, ref, onSet, onClear) {
+    var img = ref ? el('img', { src: assets[ref] || FRAMEMAP.ENGINE + ref.replace(/^\.\.\//, '') }) : el('span', { class: 'note', text: 'None' });
+    if (ref && /^(data:|https?:)/.test(ref)) img.src = ref;
+    return el('div', { class: 'logo' }, [el('span', { style: 'flex:1;font-weight:700;color:#003349', text: label }), img,
+      el('button', { class: 'lnk', text: ref ? 'Replace' : 'Upload', on: { click: function () { pick('image/*', function (f) { upload(f, 500, function (r) { onSet(r); panel(); changed('now'); }); }); } } }),
+      ref ? el('button', { class: 'lnk red', text: 'Remove', on: { click: function () { onClear(); panel(); changed('now'); } } }) : null]);
+  }
+  function list(items, render1, make, addLabel) {
+    var box = el('div', { style: 'display:grid;gap:8px' });
+    items.forEach(function (it, i) {
+      var kids = render1(it, i);
+      var hd = el('div', { class: 'hd' }, [el('span', { text: kids.title || ('Item ' + (i + 1)) }), el('span', {}, [
+        i > 0 ? el('button', { class: 'lnk', text: '↑', on: { click: function () { items.splice(i - 1, 0, items.splice(i, 1)[0]); panel(); changed(true); } } }) : null,
+        el('button', { class: 'lnk red', text: 'Remove', on: { click: function () { items.splice(i, 1); panel(); changed(true); } } })])]);
+      box.appendChild(el('div', { class: 'item' }, [hd].concat(kids.fields)));
+    });
+    box.appendChild(el('button', { class: 'add', text: addLabel, on: { click: function () { items.push(make()); panel(); changed(true); } } }));
+    return box;
+  }
+  function brandSection() {
+    var b = cfg.brand = cfg.brand || { kind: 'fs' };
+    var kids = [field('Brand', function () { return b.kind; }, function (v) { b.kind = v; panel(); }, { type: 'select', options: [['fs', 'Franklin Street'], ['client', 'Client brand']] })];
+    if (b.kind === 'client') {
+      var th = FRAMEMAP.theme({ kind: 'fs' });
+      var cs = [['dark', 'Dark (panels, headers)'], ['primary', 'Primary'], ['accent', 'Accent (lines, retail)'], ['highlight', 'Highlight (rules, labels)'], ['highlightInk', 'Text on highlight'], ['light', 'Light (notes)'], ['text', 'Body text']];
+      kids.push(el('div', { class: 'colors' }, cs.map(function (c) {
+        var i = el('input', { type: 'color' }); i.value = b[c[0]] || th[c[0]];
+        i.addEventListener('input', function () { b[c[0]] = i.value; changed(true); });
+        return el('label', {}, [i, c[1]]);
+      })));
+      kids.push(logoRow('Logo (on dark)', b.logoWhite || b.logo, function (r) { b.logoWhite = r; }, function () { b.logoWhite = ''; }));
+      kids.push(field('Font (Google Fonts name, optional)', function () { return b.font; }, function (v) { b.font = v; }));
+    } else kids.push(el('p', { class: 'note', text: 'Navy, teal and lime with the Franklin Street logo.' }));
+    return section('brand', 'Brand', kids);
+  }
+  function panel() {
+    var P = $('panel'); P.innerHTML = ''; var p = cfg.props = cfg.props || {};
+    P.appendChild(brandSection());
+    if (cfg.template === 'area') {
+      P.appendChild(section('subject', 'Subject', [
+        field('Property name', function () { return p.property; }, function (v) { p.property = v; cfg.title = v + ' · Points of Interest'; }),
+        field('Address', function () { return p.address; }, function (v) { p.address = v; }, { live: false }),
+        el('button', { class: 'add', text: 'Find on the map', on: { click: function () { geocode(p.address, function (la, lo) { p.lat = la; p.lng = lo; if (cfg.state) { cfg.state.subject = { lat: la, lng: lo }; cfg.state.geocoded = true; Object.keys(cfg.state.views || {}).forEach(function (k) { cfg.state.views[k].center = null; }); } panel(); changed('now'); }); } } }),
+        el('div', { class: 'row' }, [field('Latitude', function () { return p.lat; }, function (v) { p.lat = v; }, { type: 'number' }), field('Longitude', function () { return p.lng; }, function (v) { p.lng = v; }, { type: 'number' })]),
+        el('div', { class: 'row' }, [field('Sourcing radius (mi)', function () { return p.radiusMi; }, function (v) { p.radiusMi = v; }, { type: 'number', min: 0.5, max: 5, step: 0.5 }),
+          field('Map style', function () { return p.mapStyle; }, function (v) { p.mapStyle = v; }, { type: 'select', options: [['light', 'Light'], ['color', 'Color'], ['bright', 'Bright']] })]),
+        check('Show drive times on landmarks', function () { return p.showDrive !== false; }, function (v) { p.showDrive = v; }),
+      ]));
+      cfg.views = cfg.views || [{}, {}];
+      P.appendChild(section('views', 'Views', [0, 1].map(function (i) { var v = cfg.views[i] = cfg.views[i] || {}; return el('div', { class: 'row' }, [field('View ' + (i + 1) + ' name', function () { return v.label; }, function (x) { v.label = x; }), field('Zoom', function () { return v.zoom; }, function (x) { v.zoom = x; }, { type: 'number', step: 0.1 })]); }).concat([el('p', { class: 'note', text: 'Drag a map to pan and use + / − to zoom; each view keeps its own framing. Edit Points (bottom right of the map) adds, renames and hides points.' })])));
+      P.appendChild(section('reset', 'Start Over', [el('p', { class: 'note', text: 'Clear every point, label position and framing and source this address fresh.' }), el('button', { class: 'add', text: 'Reset this map', on: { click: function () { cfg.state = null; cfg.seed = []; cfg.districts = []; changed('now'); toast('Map reset'); } } })]));
+    }
+    if (cfg.template === 'aerial') {
+      P.appendChild(section('subject', 'Subject', [
+        field('Property name', function () { return p.property; }, function (v) { p.property = v; cfg.title = v + ' · Points of Interest'; }),
+        field('Address line', function () { return p.market; }, function (v) { p.market = v; }),
+        el('button', { class: 'add', text: 'Find coordinates from the address', on: { click: function () { geocode(p.market, function (la, lo) { p.lat = la; p.lng = lo; panel(); changed('now'); }); } } }),
+        el('div', { class: 'row' }, [field('Latitude', function () { return p.lat; }, function (v) { p.lat = v; }, { type: 'number' }), field('Longitude', function () { return p.lng; }, function (v) { p.lng = v; }, { type: 'number' })]),
+      ]));
+      P.appendChild(section('aerial', 'Aerial Photo', [
+        logoRow('Aerial photo', cfg.aerial, function (r) { cfg.aerial = r; }, function () { cfg.aerial = ''; }),
+        el('div', { class: 'row' }, [field('Camera heading (°)', function () { return p.heading; }, function (v) { p.heading = v; }, { type: 'number', min: 0, max: 359 }), field('Sourcing radius (mi)', function () { return p.radiusMi; }, function (v) { p.radiusMi = v; }, { type: 'number', min: 0.5, max: 5, step: 0.5 })]),
+        el('p', { class: 'note', text: 'Heading is the compass direction the photo faces (0 = north). Use the draw tools on the map for the parcel and roads; Source POIs adds nearby places.' }),
+      ]));
+      cfg.destinations = cfg.destinations || [{}, {}, {}];
+      P.appendChild(section('dest', 'Drive-Time Cards', cfg.destinations.slice(0, 3).map(function (c, i) { return el('div', { class: 'item' }, [el('div', { class: 'hd', text: 'Card ' + (i + 1) }), field('Drive time', function () { return c.label; }, function (v) { c.label = v; }, { ph: '5-Minute Drive East to' }), field('Destination', function () { return c.name; }, function (v) { c.name = v; }), field('Note', function () { return c.note; }, function (v) { c.note = v; })]); })));
+      P.appendChild(section('layers', 'Layers', [
+        check('Header bar', function () { return p.showHeader; }, function (v) { p.showHeader = v; }), check('Drive-time cards', function () { return p.showDestinations !== false; }, function (v) { p.showDestinations = v; }),
+        check('Roads', function () { return p.showRoads !== false; }, function (v) { p.showRoads = v; }), check('Parcel outline', function () { return p.showParcel !== false; }, function (v) { p.showParcel = v; }),
+        el('div', { class: 'row' }, [field('Road width', function () { return p.roadWidth; }, function (v) { p.roadWidth = v; }, { type: 'number', min: 6, max: 60 }), field('Logo size', function () { return p.logoScale; }, function (v) { p.logoScale = v; }, { type: 'number', min: 0.5, max: 1.3, step: 0.05 })]),
+      ]));
+      var names = ((cfg.state && cfg.state.pois) || (cfg.aerialView && cfg.aerialView.pois) || []).map(function (x) { return x.name; });
+      cfg.logos = cfg.logos || {};
+      P.appendChild(section('logos', 'Point Logos', names.length ? names.map(function (n) { return logoRow(n, cfg.logos[n], function (r) { cfg.logos[n] = r; }, function () { delete cfg.logos[n]; }); }) : [el('p', { class: 'note', text: 'Add points first (Source POIs on the map).' })]));
+    }
+    if (cfg.template === 'competition') {
+      cfg.client = cfg.client || { name: 'Client' };
+      P.appendChild(section('subject', 'Titles', [
+        field('Client', function () { return cfg.client.name; }, function (v) { cfg.client.name = v; }),
+        logoRow('Client logo', cfg.client.logo, function (r) { cfg.client.logo = r; }, function () { cfg.client.logo = ''; }),
+        field('Market title', function () { return cfg.title; }, function (v) { cfg.title = v; }),
+        field('Subtitle', function () { return cfg.subtitle; }, function (v) { cfg.subtitle = v; }),
+        field('Details heading (in pop-ups)', function () { return cfg.detailsLabel; }, function (v) { cfg.detailsLabel = v; }),
+        el('div', { class: 'row' }, [check('Market halos', function () { return p.showHalos !== false; }, function (v) { p.showHalos = v; }), field('Logo zoom level', function () { return p.detailZoom; }, function (v) { p.detailZoom = v; }, { type: 'number', min: 12, max: 15, step: 0.1 })]),
+      ]));
+      cfg.locations = cfg.locations || [];
+      P.appendChild(section('locs', 'Client Locations', [list(cfg.locations, function (c) {
+        return { title: c.n || 'Location', fields: [field('Name', function () { return c.n; }, function (v) { c.n = v; }), field('Address', function () { return c.a; }, function (v) { c.a = v; }),
+          coords(c)] };
+      }, function () { return { n: '', a: '', ll: null }; }, '+ Add location')]));
+      cfg.markets = cfg.markets || [];
+      P.appendChild(section('markets', 'Competitor Markets', [list(cfg.markets, function (m) {
+        m.centers = m.centers || [];
+        return { title: m.name || 'Market', fields: [field('Market name', function () { return m.name; }, function (v) { m.name = v; }),
+          list(m.centers, function (c) {
+            return { title: c.n || 'Center', fields: [field('Center name', function () { return c.n; }, function (v) { c.n = v; }), field('Address', function () { return c.a; }, function (v) { c.a = v; }), coords(c),
+              field('Competitors (comma separated; add “(note)” for a tag)', function () { return (c.b || []).map(function (b) { return Array.isArray(b) ? b[0] + ' (' + b[1] + ')' : b; }).join(', '); }, function (v) { c.b = v.split(',').map(function (x) { x = x.trim(); var m2 = /^(.*?)\s*\((.*)\)$/.exec(x); return m2 ? [m2[1], m2[2]] : x; }).filter(function (x) { return Array.isArray(x) ? x[0] : x; }); }),
+              field('Co-tenants', function () { return c.co; }, function (v) { c.co = v; }),
+              field('Details (one per line)', function () { return (c.cl || []).join('\n'); }, function (v) { c.cl = v.split('\n').filter(Boolean); }, { type: 'area' }),
+              field('Notes (one per line)', function () { return (c.no || []).join('\n'); }, function (v) { c.no = v.split('\n').filter(Boolean); }, { type: 'area' })] };
+          }, function () { return { n: '', a: '', ll: null, b: [], co: '', cl: [], no: [] }; }, '+ Add center')] };
+      }, function () { return { id: 'm' + Date.now(), name: '', pos: [40, 40], centers: [] }; }, '+ Add market')]));
+      var brands = {}; cfg.markets.forEach(function (m) { (m.centers || []).forEach(function (c) { (c.b || []).forEach(function (b) { brands[Array.isArray(b) ? b[0] : b] = 1; }); }); });
+      cfg.logos = cfg.logos || {};
+      var slug = function (s) { return String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); };
+      P.appendChild(section('blogos', 'Competitor Logos', Object.keys(brands).length ? Object.keys(brands).sort().map(function (n) { var k = slug(n); return logoRow(n, cfg.logos[k], function (r) { cfg.logos[k] = r; }, function () { delete cfg.logos[k]; }); }).concat([el('p', { class: 'note', text: 'Brands without an upload use the FRAME logo library when it has them, else their name.' })]) : [el('p', { class: 'note', text: 'Add centers and competitors first.' })]));
+      P.appendChild(section('reset', 'Layout', [el('button', { class: 'add', text: 'Reset panel positions', on: { click: function () { cfg.state = null; changed('now'); } } })]));
+    }
+  }
+  function coords(c) {
+    return el('div', {}, [el('div', { class: 'row' }, [field('Latitude', function () { return c.ll ? c.ll[1] : ''; }, function (v) { c.ll = [c.ll ? c.ll[0] : 0, v]; }, { type: 'number' }), field('Longitude', function () { return c.ll ? c.ll[0] : ''; }, function (v) { c.ll = [v, c.ll ? c.ll[1] : 0]; }, { type: 'number' })]),
+      el('button', { class: 'lnk', text: 'Find from address', on: { click: function () { geocode(c.a, function (la, lo) { c.ll = [lo, la]; panel(); changed('now'); }); } } })]);
+  }
+
+  // ---------- export ----------
+  function capture(kind) {
+    var w = $('frame').contentWindow, doc = $('frame').contentDocument;
+    var target = cfg.template === 'aerial' ? doc.getElementById('page') : Array.prototype.find.call(doc.querySelectorAll('[data-pg]'), function (n) { return n.style.left !== '-20000px'; });
+    if (!target) return toast('The map is still loading');
+    status('Preparing ' + kind.toUpperCase() + '…');
+    var ensure = w.htmlToImage ? Promise.resolve() : new Promise(function (res, rej) { var s = doc.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js'; s.onload = res; s.onerror = rej; doc.head.appendChild(s); });
+    ensure.then(function () {
+      var tf = target.style.transform, hide = doc.createElement('style'); hide.textContent = '.edit-only{display:none!important}';
+      doc.head.appendChild(hide); target.style.transform = 'none';
+      return w.htmlToImage.toPng(target, { pixelRatio: 2, cacheBust: false }).then(function (png) { target.style.transform = tf; hide.remove(); return { png: png, w: target.offsetWidth, h: target.offsetHeight }; }, function (e) { target.style.transform = tf; hide.remove(); throw e; });
+    }).then(function (r) {
+      var name = String(cfg.title || 'map').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      if (kind === 'png') return deliver(name + '.png', r.png, 'image/png');
+      return new Promise(function (res, rej) { if (window.jspdf) return res(); var s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'; s.onload = res; s.onerror = rej; document.head.appendChild(s); }).then(function () {
+        var pdf = new window.jspdf.jsPDF({ orientation: r.w > r.h ? 'landscape' : 'portrait', unit: 'px', format: [r.w, r.h], hotfixes: ['px_scaling'] });
+        pdf.addImage(r.png, 'PNG', 0, 0, r.w, r.h); deliver(name + '.pdf', pdf.output('datauristring'), 'application/pdf');
+      });
+    }).catch(function (e) { status(''); toast('Could not export: ' + (e && e.message || 'try again')); });
+  }
+  function deliver(filename, dataURL, type) {
+    if (connected) { send({ type: 'frame-map-export', filename: filename, dataURL: dataURL, mime: type }); status('Sent to FRAME to download'); return; }
+    var a = document.createElement('a'); a.href = dataURL; a.download = filename; document.body.appendChild(a); a.click(); a.remove(); status('Downloaded');
+  }
+
+  // ---------- header ----------
+  $('bPanel').onclick = function () { $('main').classList.toggle('hide-panel'); };
+  $('bPng').onclick = function () { capture('png'); };
+  $('bPdf').onclick = function () { capture('pdf'); };
+  $('bCode').onclick = function () { $('code').value = JSON.stringify(cfg); $('dlg').showModal(); };
+  $('dClose').onclick = function () { $('dlg').close(); };
+  $('dCopy').onclick = function () { $('code').select(); try { navigator.clipboard.writeText($('code').value); } catch (e) { document.execCommand('copy'); } toast('Copied'); };
+  $('dLoad').onclick = function () { try { var c = JSON.parse($('code').value); if (!c.template) throw 0; cfg = c; panel(); render(); save(); $('dlg').close(); toast('Map loaded'); } catch (e) { toast('That code isn’t a FRAME map'); } };
+
+  // ---------- start: wait for FRAME, else open locally ----------
+  send({ type: 'frame-map-ready' });
+  setTimeout(function () {
+    if (connected) return;
+    var q = new URLSearchParams(location.search), t = q.get('template');
+    try { cfg = JSON.parse(localStorage.getItem('frame-map-local') || 'null'); } catch (e) {}
+    if (!cfg || (t && cfg.template !== t)) cfg = blank(t || 'area');
+    panel(); render(); status(host ? 'Not connected to FRAME · saving in this browser' : 'Saving in this browser');
+  }, host ? 2500 : 0);
+})();
+</script>
+</body></html>
