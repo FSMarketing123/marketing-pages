@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FRAME Maps · Editor</title><meta name="robots" content="noindex">
+<title>StreetStudio Maps · Editor</title><meta name="robots" content="noindex">
 <style>
 *{box-sizing:border-box}html,body{margin:0;height:100%}body{font:13px/1.45 Arial,Helvetica,sans-serif;color:#3F4443;background:#e9edef;display:grid;grid-template-rows:auto 1fr;overflow:hidden}
 header{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:8px 12px;background:#003349;color:#fff;border-bottom:3px solid #C6D83B}
@@ -31,7 +31,7 @@ dialog .act{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}dialog
 </style></head>
 <body>
 <header>
-  <b>FRAME Maps</b><span class="tpl" id="tplName"></span><span class="sp"></span><span class="st" id="status">Loading…</span>
+  <b>StreetStudio Maps</b><span class="tpl" id="tplName"></span><span class="sp"></span><span class="st" id="status">Loading…</span>
   <button id="bPanel">Map Settings</button>
   <button id="bPng">Download PNG</button><button id="bPdf">Download PDF</button>
   <button id="bCode">Map Code</button>
@@ -66,7 +66,7 @@ dialog .act{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}dialog
   }
   function save() {
     try { localStorage.setItem('frame-map-local', JSON.stringify(cfg)); } catch (e) {}
-    if (connected) { send({ type: 'frame-map-change', config: cfg }); status('Saved to FRAME'); } else status('Saved in this browser');
+    if (connected) { send({ type: 'frame-map-change', config: cfg }); status('Saved to StreetStudio'); } else status('Saved in this browser');
   }
 
   // ---------- map ----------
@@ -83,12 +83,12 @@ dialog .act{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}dialog
       return;
     }
     if (host && e.source === host) {
-      if (d.type === 'frame-map-init') { connected = true; cfg = d.config || blank(d.template || 'area'); assets = d.assets || {}; panel(); render(); status('Connected to FRAME'); }
+      if (d.type === 'frame-map-init') { connected = true; cfg = d.config || blank(d.template || 'area'); assets = d.assets || {}; panel(); render(); status('Connected to StreetStudio'); }
       if (d.type === 'frame-map-asset-saved' && pending[d.reqId]) { pending[d.reqId](d.ref); delete pending[d.reqId]; }
     }
   });
 
-  // ---------- uploads: images go to FRAME's storage when connected, else stay in the page ----------
+  // ---------- uploads: images go to StreetStudio's storage when connected, else stay in the page ----------
   function readImage(file, maxW, cb) {
     var r = new FileReader();
     r.onload = function () {
@@ -238,7 +238,7 @@ dialog .act{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}dialog
       var brands = {}; cfg.markets.forEach(function (m) { (m.centers || []).forEach(function (c) { (c.b || []).forEach(function (b) { brands[Array.isArray(b) ? b[0] : b] = 1; }); }); });
       cfg.logos = cfg.logos || {};
       var slug = function (s) { return String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); };
-      P.appendChild(section('blogos', 'Competitor Logos', Object.keys(brands).length ? Object.keys(brands).sort().map(function (n) { var k = slug(n); return logoRow(n, cfg.logos[k], function (r) { cfg.logos[k] = r; }, function () { delete cfg.logos[k]; }); }).concat([el('p', { class: 'note', text: 'Brands without an upload use the FRAME logo library when it has them, else their name.' })]) : [el('p', { class: 'note', text: 'Add centers and competitors first.' })]));
+      P.appendChild(section('blogos', 'Competitor Logos', Object.keys(brands).length ? Object.keys(brands).sort().map(function (n) { var k = slug(n); return logoRow(n, cfg.logos[k], function (r) { cfg.logos[k] = r; }, function () { delete cfg.logos[k]; }); }).concat([el('p', { class: 'note', text: 'Brands without an upload use the StreetStudio logo library when it has them, else their name.' })]) : [el('p', { class: 'note', text: 'Add centers and competitors first.' })]));
       P.appendChild(section('reset', 'Layout', [el('button', { class: 'add', text: 'Reset panel positions', on: { click: function () { cfg.state = null; changed('now'); } } })]));
     }
   }
@@ -268,7 +268,7 @@ dialog .act{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}dialog
     }).catch(function (e) { status(''); toast('Could not export: ' + (e && e.message || 'try again')); });
   }
   function deliver(filename, dataURL, type) {
-    if (connected) { send({ type: 'frame-map-export', filename: filename, dataURL: dataURL, mime: type }); status('Sent to FRAME to download'); return; }
+    if (connected) { send({ type: 'frame-map-export', filename: filename, dataURL: dataURL, mime: type }); status('Sent to StreetStudio to download'); return; }
     var a = document.createElement('a'); a.href = dataURL; a.download = filename; document.body.appendChild(a); a.click(); a.remove(); status('Downloaded');
   }
 
@@ -279,16 +279,16 @@ dialog .act{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}dialog
   $('bCode').onclick = function () { $('code').value = JSON.stringify(cfg); $('dlg').showModal(); };
   $('dClose').onclick = function () { $('dlg').close(); };
   $('dCopy').onclick = function () { $('code').select(); try { navigator.clipboard.writeText($('code').value); } catch (e) { document.execCommand('copy'); } toast('Copied'); };
-  $('dLoad').onclick = function () { try { var c = JSON.parse($('code').value); if (!c.template) throw 0; cfg = c; panel(); render(); save(); $('dlg').close(); toast('Map loaded'); } catch (e) { toast('That code isn’t a FRAME map'); } };
+  $('dLoad').onclick = function () { try { var c = JSON.parse($('code').value); if (!c.template) throw 0; cfg = c; panel(); render(); save(); $('dlg').close(); toast('Map loaded'); } catch (e) { toast('That code isn’t a StreetStudio map'); } };
 
-  // ---------- start: wait for FRAME, else open locally ----------
+  // ---------- start: wait for StreetStudio, else open locally ----------
   send({ type: 'frame-map-ready' });
   setTimeout(function () {
     if (connected) return;
     var q = new URLSearchParams(location.search), t = q.get('template');
     try { cfg = JSON.parse(localStorage.getItem('frame-map-local') || 'null'); } catch (e) {}
     if (!cfg || (t && cfg.template !== t)) cfg = blank(t || 'area');
-    panel(); render(); status(host ? 'Not connected to FRAME · saving in this browser' : 'Saving in this browser');
+    panel(); render(); status(host ? 'Not connected to StreetStudio · saving in this browser' : 'Saving in this browser');
   }, host ? 2500 : 0);
 })();
 </script>

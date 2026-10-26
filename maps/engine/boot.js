@@ -1,4 +1,4 @@
-/* FRAME map engine loader: builds a map page from a template and a config, in the chosen brand. */
+/* StreetStudio map engine loader: builds a map page from a template and a config, in the chosen brand. */
 (function () {
   var ENGINE = (function () { var s = document.currentScript && document.currentScript.src; return s ? s.replace(/[^/]*$/, '') : 'engine/'; })();
   var FS = { dark: '#003349', primary: '#005670', accent: '#00939D', highlight: '#C6D83B', highlightInk: '#404715', light: '#7BA7BC', text: '#3F4443' };

@@ -1,7 +1,7 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>FRAME Map</title>
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>StreetStudio Map</title>
 <script src="engine/boot.js"></script></head><body style="margin:0;background:#2b3a42">
 <script>
-// Map viewer for the FRAME editor: receives a map config from the parent page and draws it.
+// Map viewer for the StreetStudio editor: receives a map config from the parent page and draws it.
 addEventListener('message', function (e) {
   var d = e.data || {};
   if (e.source === parent && d.type === 'frame-map-load') FRAMEMAP.boot(d.config, d.opts || {});
