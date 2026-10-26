@@ -35,7 +35,7 @@ def load_queue(qdir):
                 with open(os.path.join(root, f), encoding="utf-8") as fh:
                     d = json.load(fh)
                 d = d.get("data", d)
-                if d.get("state") == "queued" and d.get("html") and d.get("folder") in FOLDERS:
+                if d.get("state") == "queued" and (d.get("html") or (d.get("relink") and d.get("fromFile"))) and d.get("folder") in FOLDERS:
                     docs.append(d)
     return docs
 
@@ -50,18 +50,34 @@ def main():
     for d in load_queue(qdir):
         pid, folder, filename = d["projectId"], d["folder"], os.path.basename(d["filename"])
         old = by_id.get(pid)
-        if old and old["file"] != folder + "/" + filename:
-            # Never break a link brokers already have: the old address becomes a redirect to the new one.
-            old_path = os.path.join(REPO, old["file"])
-            new_url = BASE_URL + "/" + folder + "/" + filename
+        # Never break a link brokers already have: an old address becomes a redirect to the new one (below).
+        os.makedirs(os.path.join(REPO, folder), exist_ok=True)
+        new_path = os.path.join(REPO, folder, filename)
+        if d.get("html"):
+            with open(new_path, "w", encoding="utf-8") as fh:
+                fh.write(d["html"])
+        else:
+            # An admin changed the link: move the live page as it is. The old address gets a forwarding page below.
+            src_rel = (old or {}).get("file") or d["fromFile"]
+            src_path = os.path.join(REPO, src_rel)
+            if not os.path.exists(src_path) or src_rel == folder + "/" + filename:
+                print(json.dumps({"projectId": pid, "error": "cannot move " + src_rel}), file=sys.stderr)
+                continue
+            shutil.copyfile(src_path, new_path)
+            old = {"file": src_rel}
+        here = folder + "/" + filename
+        redirects = set(((by_id.get(pid) or {}).get("redirects") or []))
+        if old and old["file"] != here:
+            redirects.add(old["file"])
+        redirects.discard(here)
+        new_url = BASE_URL + "/" + here
+        for r in redirects:  # every earlier address forwards straight to the current one
+            old_path = os.path.join(REPO, r)
             os.makedirs(os.path.dirname(old_path), exist_ok=True)
             with open(old_path, "w", encoding="utf-8") as fh:
                 fh.write('<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=' + new_url + '">'
                          '<link rel="canonical" href="' + new_url + '"><title>Moved</title>'
                          '<p>This page has moved to <a href="' + new_url + '">' + new_url + '</a>.</p>')
-        os.makedirs(os.path.join(REPO, folder), exist_ok=True)
-        with open(os.path.join(REPO, folder, filename), "w", encoding="utf-8") as fh:
-            fh.write(d["html"])
         for blob in d.get("blobs", []):
             src = next((os.path.join(updir, f) for f in os.listdir(updir) if f.startswith(blob)), None) if os.path.isdir(updir) else None
             if src:
@@ -71,6 +87,7 @@ def main():
         by_id[pid] = {
             "projectId": pid, "name": d.get("name", filename), "folder": folder, "file": folder + "/" + filename,
             "tags": d.get("tags", []), "version": d.get("version", 1), "protected": bool(d.get("protected")),
+            "redirects": sorted(redirects),
             "publishedAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         }
         print(json.dumps({"projectId": pid, "url": BASE_URL + "/" + folder + "/" + filename, "file": folder + "/" + filename}))
