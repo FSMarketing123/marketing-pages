@@ -51,9 +51,14 @@ def main():
         pid, folder, filename = d["projectId"], d["folder"], os.path.basename(d["filename"])
         old = by_id.get(pid)
         if old and old["file"] != folder + "/" + filename:
+            # Never break a link brokers already have: the old address becomes a redirect to the new one.
             old_path = os.path.join(REPO, old["file"])
-            if os.path.exists(old_path):
-                os.remove(old_path)
+            new_url = BASE_URL + "/" + folder + "/" + filename
+            os.makedirs(os.path.dirname(old_path), exist_ok=True)
+            with open(old_path, "w", encoding="utf-8") as fh:
+                fh.write('<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=' + new_url + '">'
+                         '<link rel="canonical" href="' + new_url + '"><title>Moved</title>'
+                         '<p>This page has moved to <a href="' + new_url + '">' + new_url + '</a>.</p>')
         os.makedirs(os.path.join(REPO, folder), exist_ok=True)
         with open(os.path.join(REPO, folder, filename), "w", encoding="utf-8") as fh:
             fh.write(d["html"])
