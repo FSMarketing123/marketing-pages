@@ -19,7 +19,8 @@ BASE_URL = "https://fsmarketing123.github.io/marketing-pages"
 FOLDERS = {
     "report-landing-pages": "Market Reports Site",
     "pitch-decks": "Pitch Decks",
-    "team-decks": "Team Decks",
+    "team-decks": "Capabilities Decks (older web versions)",
+    "team-deck-sites": "Team Deck Sites",
     "business-line-decks": "Business Line Decks",
     "emails": "Email Templates",
     "websites": "FS Websites",
