@@ -1,0 +1,14 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>StreetStudio 3D Map</title>
+<script src="engine/map3d.js"></script></head><body style="margin:0">
+<script>
+// 3D map frame for the StreetStudio editor: receives the map data from the parent page and draws it in edit mode.
+var app = null;
+addEventListener('message', function (e) {
+  var d = e.data || {};
+  if (e.source !== parent) return;
+  if (d.type === 'map3d-load') { if (app) app.update(d.data); else app = MAP3D.boot(d.data, { mode: d.mode || 'edit' }); }
+  if (d.type === 'map3d-select' && app) app.select(d.i);
+  if (d.type === 'map3d-home' && app) app.home();
+});
+if (parent !== window) parent.postMessage({ type: 'map3d-ready' }, '*');
+</script></body></html>
